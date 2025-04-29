@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=4 uid="uid://bsfkacdf1hmg6"]
+
+[ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon.tres" id="1_q5i2f"]
+[ext_resource type="Script" uid="uid://opemmo50pu8b" path="res://scripts/dungeons/dungeon_marker_test.gd" id="2_jwr70"]
+[ext_resource type="Script" uid="uid://bekmmhdlsupnb" path="res://scripts/dungeons/dungeon_marker_test_r.gd" id="3_0p532"]
+[ext_resource type="Script" uid="uid://cyaq4c0npvi6l" path="res://scripts/dungeons/dungeon_marker_test_l.gd" id="4_q5i2f"]
+
+[node name="DungeonTest" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+////AgAFAAMAAAABAP//AgAIAAMAAAD+//7/AgAFAAIAAAD+//3/AgAFAAEAAAABAP7/AgAIAAIAAAABAP3/AgAIAAEAAAD8//L/AgACAAEAAAD8//P/AgACAAIAAAD8//T/AgACAAIAAAD8//n/AgACAAQAAAD8//r/AgACAAQAAAD8//v/AgACAAUAAAD9//L/AgADAAEAAAD9//P/AgADAAIAAAD9//T/AgADAAMAAAD9//n/AgADAAQAAAD9//r/AgADAAQAAAD9//v/AgAEAAUAAAD+//b/AgAGAAQAAAD///b/AgAGAAQAAAAAAPb/AgAGAAQAAAABAPb/AgAGAAQAAAABAPv/AgAIAAUAAAACAPL/AgAKAAEAAAACAPP/AgAKAAIAAAACAPT/AgAKAAMAAAACAPv/AgAEAAUAAAADAPL/AgALAAEAAAADAPP/AgALAAIAAAADAPT/AgALAAIAAAADAPv/AgALAAUAAAD8//H/AgALAAYAAAD9//H/AgALAAYAAAD+//X/AgAGAAQAAAD///X/AgAGAAQAAAAAAPX/AgAGAAQAAAABAPX/AgAGAAQAAAACAPH/AgALAAYAAAACAPr/AgAKAAQAAAADAPH/AgALAAYAAAADAPr/AgALAAQAAAD+//z/AgACAAMAAAABAPz/AgALAAMAAAADAPn/AgALAAQAAAACAPn/AgAKAAQAAAD+//v/AgAFAAUAAAAAAPr/AgAGAAQAAAAAAPn/AgAGAAQAAAAAAPj/AgAGAAQAAAAAAPf/AgAGAAQAAAD///f/AgAGAAQAAAD+//f/AgAGAAQAAAD+//j/AgAGAAQAAAD+//n/AgAGAAQAAAD+//r/AgAGAAQAAAD///r/AgAGAAQAAAD///n/AgAGAAQAAAD///j/AgAGAAQAAAD///v/AgAGAAQAAAD///z/AgAGAAQAAAD///3/AgAGAAQAAAD///7/AgAGAAQAAAD/////AgAGAAQAAAAAAP//AgAGAAQAAAAAAP7/AgAGAAQAAAAAAP3/AgAGAAQAAAAAAPz/AgAGAAQAAAAAAPv/AgAGAAQAAAABAPf/AgAGAAQAAAABAPj/AgAGAAQAAAABAPn/AgAGAAQAAAABAPr/AgAGAAQAAAA=")
+tile_set = ExtResource("1_q5i2f")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -264)
+script = ExtResource("2_jwr70")
+
+[node name="Marker2DR" type="Marker2D" parent="."]
+position = Vector2(48, -192)
+script = ExtResource("3_0p532")
+
+[node name="Marker2DL" type="Marker2D" parent="."]
+position = Vector2(-48, -192)
+script = ExtResource("4_q5i2f")

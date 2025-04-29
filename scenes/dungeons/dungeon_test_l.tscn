@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=4 uid="uid://dkb2dnv255klp"]
+
+[ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon.tres" id="1_71gk6"]
+[ext_resource type="Script" uid="uid://opemmo50pu8b" path="res://scripts/dungeons/dungeon_marker_test.gd" id="2_eqvmb"]
+[ext_resource type="Script" uid="uid://cyaq4c0npvi6l" path="res://scripts/dungeons/dungeon_marker_test_l.gd" id="3_71gk6"]
+
+[node name="DungeonTest" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wEAAgADAAQAAAD//wAAAgAHAAQAAAD+/wAAAgAHAAQAAAD9/wAAAgAHAAQAAAD8/wAAAgAHAAQAAAD7/wAAAgAHAAQAAAD6/wAAAgAHAAQAAAD5/wAAAgAHAAQAAAD+/wEAAgAFAAUAAAD9/wEAAgAJAAUAAAD8/wEAAgAIAAUAAAD8/wIAAgALAAQAAAD8/wMAAgALAAUAAAD7/wMAAgAKAAUAAAD6/wMAAgAKAAUAAAD5/wMAAgAKAAUAAAD4/wMAAgAKAAUAAAD3/wMAAgACAAUAAAD3/wIAAgACAAQAAAD4/wIAAgADAAQAAAD5/wIAAgAHAAQAAAD6/wIAAgAHAAQAAAD7/wIAAgAHAAQAAAD5/wEAAgAHAAQAAAD6/wEAAgAHAAQAAAD7/wEAAgAHAAQAAAD5//3/AgAHAAQAAAD5//7/AgAHAAQAAAD5////AgAHAAQAAAD6//3/AgAHAAQAAAD6//7/AgAHAAQAAAD6////AgAHAAQAAAD8////AgAHAAQAAAD7////AgAHAAQAAAD7//7/AgAHAAMAAAD7//3/AgAKAAQAAAD/////AgAHAAQAAAD+////AgAHAAQAAAD9////AgAHAAQAAAD///7/AgAGAAMAAAD///3/AgADAAQAAAD+//7/AgAFAAMAAAD9//7/AgAEAAMAAAD8//7/AgAIAAMAAAD8//3/AgAIAAEAAAD9//3/AgAJAAEAAAD+//3/AgAFAAEAAAD8//z/AgALAAIAAAD8//v/AgALAAIAAAD8//r/AgAIAAAAAAD7//r/AgAHAAAAAAD7//v/AgAHAAEAAAD7//z/AgAHAAIAAAD9//z/AgALAAYAAAD8//n/AgALAAYAAAD7//n/AgALAAYAAAD3//r/AgAFAAAAAAD4//r/AgAGAAAAAAD4//v/AgAGAAEAAAD4//z/AgAGAAIAAAD3//v/AgACAAIAAAD3//z/AgACAAIAAAD3//n/AgALAAYAAAD4//n/AgALAAYAAAA=")
+tile_set = ExtResource("1_71gk6")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-144, -72)
+script = ExtResource("2_eqvmb")
+
+[node name="Marker2DR" type="Marker2D" parent="."]
+position = Vector2(-168, 0)
+script = ExtResource("3_71gk6")
