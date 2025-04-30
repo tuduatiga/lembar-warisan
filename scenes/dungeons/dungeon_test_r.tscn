@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=4 uid="uid://rsyt3eaarqly"]
+[gd_scene load_steps=6 format=4 uid="uid://rsyt3eaarqly"]
 
 [ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon.tres" id="1_pc6qo"]
 [ext_resource type="Script" uid="uid://opemmo50pu8b" path="res://scripts/dungeons/dungeon_marker_test.gd" id="2_pc6qo"]
 [ext_resource type="Script" uid="uid://bekmmhdlsupnb" path="res://scripts/dungeons/dungeon_marker_test_r.gd" id="3_pc6qo"]
+[ext_resource type="Script" uid="uid://dy64uy10chygy" path="res://scripts/dungeons/dungeon_area_test_r.gd" id="4_rwgn5"]
 
-[node name="DungeonTest" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc6qo"]
+size = Vector2(160, 208)
+
+[node name="DungeonTestR" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAP3/AgAKAAQAAAAAAP7/AgAKAAQAAAAAAP//AgAHAAMAAAAAAAAAAgAHAAQAAAAAAAEAAgAKAAQAAAABAP3/AgAIAAEAAAABAP7/AgAIAAIAAAABAP//AgAIAAMAAAABAAAAAgAHAAQAAAABAAEAAgAIAAUAAAACAP3/AgAEAAEAAAACAP7/AgAEAAIAAAACAP//AgAJAAMAAAACAAEAAgAJAAUAAAACAAAAAgAHAAQAAAADAAAAAgAHAAQAAAADAP//AgAFAAMAAAADAAEAAgAFAAUAAAADAP7/AgAFAAIAAAADAP3/AgAFAAEAAAADAAIAAgACAAQAAAADAAMAAgACAAUAAAAEAAMAAgADAAUAAAAEAAIAAgAHAAQAAAAEAAEAAgAHAAQAAAAEAP//AgAGAAMAAAAEAP7/AgADAAQAAAAFAP7/AgAHAAQAAAAFAP//AgAHAAQAAAAFAAAAAgAHAAQAAAAEAAAAAgAHAAQAAAAFAAEAAgAHAAQAAAAFAAIAAgAHAAQAAAAFAAMAAgAJAAUAAAAGAAMAAgAJAAUAAAAKAAIAAgALAAQAAAAKAAMAAgALAAUAAAAJAAMAAgAKAAUAAAAIAAMAAgAJAAUAAAAHAAMAAgAJAAUAAAAJAAIAAgAKAAQAAAAGAP7/AgAHAAQAAAAHAP7/AgAHAAQAAAAIAP//AgAHAAQAAAAIAP7/AgAHAAQAAAAHAP//AgAHAAQAAAAGAP//AgAHAAQAAAAGAAAAAgAHAAQAAAAGAAEAAgAHAAQAAAAGAAIAAgAHAAQAAAAHAAIAAgAHAAQAAAAIAAIAAgAHAAQAAAAIAAEAAgAHAAQAAAAIAAAAAgAHAAQAAAAHAAAAAgAHAAQAAAAHAAEAAgAHAAQAAAADAPr/AgACAAEAAAADAPv/AgACAAQAAAAEAPr/AgADAAEAAAAEAPv/AgADAAIAAAAEAPz/AgAGAAIAAAAJAPr/AgAKAAEAAAAJAPv/AgAKAAIAAAAJAPz/AgAKAAMAAAAKAPr/AgALAAEAAAAKAPv/AgALAAIAAAAKAPz/AgALAAIAAAADAPn/AgALAAYAAAAEAPn/AgALAAYAAAAJAPn/AgALAAYAAAAKAPn/AgALAAYAAAAEAP3/AgADAAQAAAADAPz/AgACAAQAAAACAPz/AgALAAYAAAAFAP3/AgAHAAQAAAAHAP3/AgAHAAQAAAAIAP3/AgAHAAQAAAAGAP3/AgAHAAQAAAA=")
@@ -17,3 +21,10 @@ script = ExtResource("2_pc6qo")
 [node name="Marker2DR" type="Marker2D" parent="."]
 position = Vector2(216, 0)
 script = ExtResource("3_pc6qo")
+
+[node name="Area2DR" type="Area2D" parent="."]
+script = ExtResource("4_rwgn5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DR"]
+position = Vector2(168, -32)
+shape = SubResource("RectangleShape2D_pc6qo")

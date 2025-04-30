@@ -10,6 +10,8 @@ script = ExtResource("1_lnu2h")
 [node name="start" parent="." instance=ExtResource("1_yqjtg")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_uwrxv")]
+z_index = 1
+texture_filter = 3
+scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(2, 2)
