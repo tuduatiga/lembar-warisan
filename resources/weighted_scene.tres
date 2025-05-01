@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WeightedScene" load_steps=2 format=3 uid="uid://cdvpw2nahx8c6"]
+
+[ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="1_fcued"]
+
+[resource]
+resource_name = "WeightedScene"
+script = ExtResource("1_fcued")
+weight = 0

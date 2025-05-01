@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://du0thsgt5ipfi"]
+
+[ext_resource type="Script" uid="uid://qejycy7q4v2f" path="res://scripts/gen_marker.gd" id="1_qa5nm"]
+
+[node name="GenMarker" type="Node2D"]
+script = ExtResource("1_qa5nm")
+
+[node name="Marker2D" type="Marker2D" parent="."]

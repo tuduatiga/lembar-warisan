@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=4 uid="uid://chxpbu1xgua37"]
+[gd_scene load_steps=6 format=4 uid="uid://chxpbu1xgua37"]
 
 [ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon.tres" id="1_n72fe"]
-[ext_resource type="Script" uid="uid://opemmo50pu8b" path="res://scripts/dungeons/dungeon_marker_test.gd" id="2_n72fe"]
+[ext_resource type="PackedScene" uid="uid://du0thsgt5ipfi" path="res://scenes/gen_marker.tscn" id="2_h4jbq"]
+[ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="3_tmeug"]
+
+[sub_resource type="Resource" id="Resource_ihmut"]
+script = ExtResource("3_tmeug")
+scene = "uid://deoy4cbvg2dns"
+weight = 1
+metadata/_custom_type_script = "uid://lkmg24m4cryd"
+
+[sub_resource type="Resource" id="Resource_agnw8"]
+script = ExtResource("3_tmeug")
+scene = "uid://bsfkacdf1hmg6"
+weight = 1
+metadata/_custom_type_script = "uid://lkmg24m4cryd"
 
 [node name="start" type="Node2D"]
 
@@ -9,6 +22,6 @@
 tile_map_data = PackedByteArray("AAD//wAAAgAEAAQAAAAAAAAAAgAEAAQAAAAAAP//AgAEAAQAAAD/////AgAEAAQAAAD+/wAAAgAEAAQAAAD+////AgAEAAQAAAABAP//AgAEAAQAAAABAAAAAgAEAAQAAAD+/wEAAgAEAAQAAAD//wEAAgAEAAQAAAAAAAEAAgAEAAQAAAABAAEAAgAEAAQAAAD9/wEAAgADAAQAAAD9/wAAAgADAAQAAAD9////AgADAAQAAAD9//7/AgADAAMAAAACAAEAAgAKAAQAAAACAAAAAgAKAAQAAAACAP7/AgAKAAMAAAACAP//AgAKAAQAAAD8/wEAAgACAAQAAAD8/wAAAgACAAQAAAD8////AgACAAQAAAD8//7/AgACAAQAAAD8//3/AgACAAQAAAD9//3/AgADAAIAAAACAP3/AgAKAAIAAAADAPz/AgALAAEAAAADAP3/AgALAAEAAAADAP7/AgALAAEAAAADAP//AgALAAEAAAADAAAAAgALAAEAAAADAAEAAgALAAEAAAACAPz/AgAKAAEAAAD9//z/AgADAAEAAAD8//z/AgACAAEAAAACAPv/AgALAAYAAAADAPv/AgALAAYAAAD9//v/AgALAAYAAAD8//v/AgALAAYAAAD8/wIAAgACAAUAAAD9/wIAAgADAAUAAAD+/wIAAgADAAUAAAD//wIAAgADAAUAAAABAAIAAgADAAUAAAAAAAIAAgADAAUAAAACAAIAAgADAAUAAAADAAIAAgALAAUAAAA=")
 tile_set = ExtResource("1_n72fe")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="GenMarker" parent="." instance=ExtResource("2_h4jbq")]
 position = Vector2(0, -24)
-script = ExtResource("2_n72fe")
+weighted_scenes = Array[ExtResource("3_tmeug")]([SubResource("Resource_ihmut"), SubResource("Resource_agnw8")])

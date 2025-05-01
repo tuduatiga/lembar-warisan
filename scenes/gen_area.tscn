@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnp1nookh8iv8"]
+
+[ext_resource type="Script" uid="uid://m55yd4okmmeh" path="res://scripts/gen_area.gd" id="1_wclno"]
+
+[node name="GenArea" type="Area2D"]
+script = ExtResource("1_wclno")

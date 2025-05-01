@@ -1,10 +1,45 @@
-[gd_scene load_steps=7 format=4 uid="uid://bsfkacdf1hmg6"]
+[gd_scene load_steps=12 format=4 uid="uid://bsfkacdf1hmg6"]
 
 [ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon.tres" id="1_q5i2f"]
-[ext_resource type="Script" uid="uid://opemmo50pu8b" path="res://scripts/dungeons/dungeon_marker_test.gd" id="2_jwr70"]
-[ext_resource type="Script" uid="uid://bekmmhdlsupnb" path="res://scripts/dungeons/dungeon_marker_test_r.gd" id="3_0p532"]
-[ext_resource type="Script" uid="uid://cyaq4c0npvi6l" path="res://scripts/dungeons/dungeon_marker_test_l.gd" id="4_q5i2f"]
-[ext_resource type="Script" uid="uid://k8d84pkof5na" path="res://scripts/dungeons/dungeon_area_test.gd" id="5_aefnn"]
+[ext_resource type="PackedScene" uid="uid://du0thsgt5ipfi" path="res://scenes/gen_marker.tscn" id="2_6mbrl"]
+[ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="3_0teo6"]
+[ext_resource type="PackedScene" uid="uid://bnp1nookh8iv8" path="res://scenes/gen_area.tscn" id="4_q5i2f"]
+
+[sub_resource type="Resource" id="Resource_5j5ro"]
+script = ExtResource("3_0teo6")
+scene = "uid://deoy4cbvg2dns"
+weight = 1
+metadata/_custom_type_script = "uid://lkmg24m4cryd"
+
+[sub_resource type="Resource" id="Resource_j5nch"]
+script = ExtResource("3_0teo6")
+scene = "uid://bsfkacdf1hmg6"
+weight = 1
+metadata/_custom_type_script = "uid://lkmg24m4cryd"
+
+[sub_resource type="Resource" id="Resource_6rvsb"]
+script = ExtResource("3_0teo6")
+scene = "uid://c1rof8k3nxy4k"
+weight = 2
+metadata/_custom_type_script = "uid://lkmg24m4cryd"
+
+[sub_resource type="Resource" id="Resource_b2pme"]
+script = ExtResource("3_0teo6")
+scene = "uid://rsyt3eaarqly"
+weight = 1
+metadata/_custom_type_script = "uid://lkmg24m4cryd"
+
+[sub_resource type="Resource" id="Resource_aefnn"]
+script = ExtResource("3_0teo6")
+scene = "uid://dixx3o6lwbfeh"
+weight = 2
+metadata/_custom_type_script = "uid://lkmg24m4cryd"
+
+[sub_resource type="Resource" id="Resource_6mbrl"]
+script = ExtResource("3_0teo6")
+scene = "uid://dkb2dnv255klp"
+weight = 1
+metadata/_custom_type_script = "uid://lkmg24m4cryd"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5i2f"]
 size = Vector2(160, 208)
@@ -15,21 +50,21 @@ size = Vector2(160, 208)
 tile_map_data = PackedByteArray("AAD+////AgAFAAMAAAABAP//AgAIAAMAAAD+//7/AgAFAAIAAAD+//3/AgAFAAEAAAABAP7/AgAIAAIAAAABAP3/AgAIAAEAAAD8//L/AgACAAEAAAD8//P/AgACAAIAAAD8//T/AgACAAIAAAD8//n/AgACAAQAAAD8//r/AgACAAQAAAD8//v/AgACAAUAAAD9//L/AgADAAEAAAD9//P/AgADAAIAAAD9//T/AgADAAMAAAD9//n/AgADAAQAAAD9//r/AgADAAQAAAD9//v/AgAEAAUAAAD+//b/AgAGAAQAAAD///b/AgAGAAQAAAAAAPb/AgAGAAQAAAABAPb/AgAGAAQAAAABAPv/AgAIAAUAAAACAPL/AgAKAAEAAAACAPP/AgAKAAIAAAACAPT/AgAKAAMAAAACAPv/AgAEAAUAAAADAPL/AgALAAEAAAADAPP/AgALAAIAAAADAPT/AgALAAIAAAADAPv/AgALAAUAAAD8//H/AgALAAYAAAD9//H/AgALAAYAAAD+//X/AgAGAAQAAAD///X/AgAGAAQAAAAAAPX/AgAGAAQAAAABAPX/AgAGAAQAAAACAPH/AgALAAYAAAACAPr/AgAKAAQAAAADAPH/AgALAAYAAAADAPr/AgALAAQAAAD+//z/AgACAAMAAAABAPz/AgALAAMAAAADAPn/AgALAAQAAAACAPn/AgAKAAQAAAD+//v/AgAFAAUAAAAAAPr/AgAGAAQAAAAAAPn/AgAGAAQAAAAAAPj/AgAGAAQAAAAAAPf/AgAGAAQAAAD///f/AgAGAAQAAAD+//f/AgAGAAQAAAD+//j/AgAGAAQAAAD+//n/AgAGAAQAAAD+//r/AgAGAAQAAAD///n/AgAGAAQAAAD///j/AgAGAAQAAAD///v/AgAGAAQAAAD///z/AgAGAAQAAAD///3/AgAGAAQAAAD///7/AgAGAAQAAAD/////AgAGAAQAAAAAAP//AgAGAAQAAAAAAP7/AgAGAAQAAAAAAP3/AgAGAAQAAAAAAPz/AgAGAAQAAAAAAPv/AgAGAAQAAAABAPf/AgAGAAQAAAABAPj/AgAGAAQAAAABAPn/AgAGAAQAAAABAPr/AgAGAAQAAAD///r/AgAGAAQAAAA=")
 tile_set = ExtResource("1_q5i2f")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="GenMarker" parent="." instance=ExtResource("2_6mbrl")]
 position = Vector2(0, -264)
-script = ExtResource("2_jwr70")
+weighted_scenes = Array[ExtResource("3_0teo6")]([SubResource("Resource_5j5ro"), SubResource("Resource_j5nch")])
 
-[node name="Marker2DR" type="Marker2D" parent="."]
+[node name="GenMarkerR" parent="." instance=ExtResource("2_6mbrl")]
 position = Vector2(48, -192)
-script = ExtResource("3_0p532")
+weighted_scenes = Array[ExtResource("3_0teo6")]([SubResource("Resource_6rvsb"), SubResource("Resource_b2pme")])
 
-[node name="Marker2DL" type="Marker2D" parent="."]
+[node name="GenMarkerL" parent="." instance=ExtResource("2_6mbrl")]
 position = Vector2(-48, -192)
-script = ExtResource("4_q5i2f")
+weighted_scenes = Array[ExtResource("3_0teo6")]([SubResource("Resource_aefnn"), SubResource("Resource_6mbrl")])
 
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("5_aefnn")
+[node name="GenArea" parent="." instance=ExtResource("4_q5i2f")]
+fallback_scene = "uid://deoy4cbvg2dns"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GenArea"]
 position = Vector2(0, -224)
 shape = SubResource("RectangleShape2D_q5i2f")
