@@ -1,21 +1,20 @@
 extends CharacterBody2D
 
-
-const SPEED = 200.0
-const JUMP_VELOCITY = -300.0
+const _SPEED: float = 200.0  # TODO: get value from GameManager
 
 
 func _physics_process(_delta: float) -> void:
-	var y_direction := Input.get_axis("ui_up", "ui_down")
+	var y_direction: float = Input.get_axis("ui_up", "ui_down")
+	var x_direction: float = Input.get_axis("ui_left", "ui_right")
+
 	if y_direction:
-		velocity.y = y_direction * SPEED
+		self.velocity.y = y_direction * self._SPEED
 	else:
-		velocity.y = move_toward(velocity.x, 0, SPEED)
+		self.velocity.y = move_toward(self.velocity.x, 0, self._SPEED)
 
-	var x_direction := Input.get_axis("ui_left", "ui_right")
 	if x_direction:
-		velocity.x = x_direction * SPEED
+		self.velocity.x = x_direction * _SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		self.velocity.x = move_toward(self.velocity.x, 0, self._SPEED)
 
-	move_and_slide()
+	self.move_and_slide()
