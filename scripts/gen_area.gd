@@ -1,5 +1,5 @@
-extends Area2D
 class_name GenArea
+extends Area2D
 
 @export_file("*.tscn") var fallback_scene: String
 

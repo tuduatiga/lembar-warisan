@@ -1,5 +1,5 @@
-extends Resource
 class_name WeightedScene
+extends Resource
 
 @export_file("*.tscn") var scene: String
 @export var weight: int = 1

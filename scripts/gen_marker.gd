@@ -1,5 +1,5 @@
-extends Node2D
 class_name GenMarker
+extends Node2D
 
 @export var weighted_scenes: Array[WeightedScene]
 
