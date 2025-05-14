@@ -14,19 +14,19 @@ metadata/_custom_type_script = "uid://lkmg24m4cryd"
 [sub_resource type="Resource" id="Resource_j5nch"]
 script = ExtResource("3_lsv5l")
 scene = "uid://bsfkacdf1hmg6"
-weight = 1
+weight = 3
 metadata/_custom_type_script = "uid://lkmg24m4cryd"
 
 [sub_resource type="Resource" id="Resource_aefnn"]
 script = ExtResource("3_lsv5l")
 scene = "uid://dixx3o6lwbfeh"
-weight = 2
+weight = 1
 metadata/_custom_type_script = "uid://lkmg24m4cryd"
 
 [sub_resource type="Resource" id="Resource_6mbrl"]
 script = ExtResource("3_lsv5l")
 scene = "uid://dkb2dnv255klp"
-weight = 1
+weight = 3
 metadata/_custom_type_script = "uid://lkmg24m4cryd"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71gk6"]
