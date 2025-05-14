@@ -7,6 +7,8 @@ extends Node2D
 
 
 func _ready() -> void:
+	self.find_child("Label").text = str(self.depth)
+
 	if self.weighted_scenes.size() <= 0:
 		return
 
