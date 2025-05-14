@@ -1,14 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://chxpbu1xgua37"]
+[gd_scene load_steps=5 format=4 uid="uid://chxpbu1xgua37"]
 
 [ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon.tres" id="1_n72fe"]
 [ext_resource type="PackedScene" uid="uid://du0thsgt5ipfi" path="res://scenes/gen_marker.tscn" id="2_h4jbq"]
 [ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="3_tmeug"]
-
-[sub_resource type="Resource" id="Resource_ihmut"]
-script = ExtResource("3_tmeug")
-scene = "uid://deoy4cbvg2dns"
-weight = 1
-metadata/_custom_type_script = "uid://lkmg24m4cryd"
 
 [sub_resource type="Resource" id="Resource_agnw8"]
 script = ExtResource("3_tmeug")
@@ -24,4 +18,6 @@ tile_set = ExtResource("1_n72fe")
 
 [node name="GenMarker" parent="." instance=ExtResource("2_h4jbq")]
 position = Vector2(0, -24)
-weighted_scenes = Array[ExtResource("3_tmeug")]([SubResource("Resource_ihmut"), SubResource("Resource_agnw8")])
+weighted_scenes = Array[ExtResource("3_tmeug")]([SubResource("Resource_agnw8")])
+depth = 7
+fallback_scene = "uid://deoy4cbvg2dns"

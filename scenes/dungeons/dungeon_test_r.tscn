@@ -41,10 +41,12 @@ tile_set = ExtResource("1_pc6qo")
 [node name="GenMarker" parent="." instance=ExtResource("2_rwgn5")]
 position = Vector2(168, -72)
 weighted_scenes = Array[ExtResource("3_dgpcc")]([SubResource("Resource_5j5ro"), SubResource("Resource_j5nch")])
+fallback_scene = "uid://deoy4cbvg2dns"
 
 [node name="GenMarkerR" parent="." instance=ExtResource("2_rwgn5")]
 position = Vector2(216, 0)
 weighted_scenes = Array[ExtResource("3_dgpcc")]([SubResource("Resource_6rvsb"), SubResource("Resource_b2pme")])
+fallback_scene = "uid://c1rof8k3nxy4k"
 
 [node name="GenArea" parent="." instance=ExtResource("4_rwgn5")]
 fallback_scene = "uid://c1rof8k3nxy4k"
