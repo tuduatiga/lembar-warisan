@@ -8,7 +8,6 @@ script = ExtResource("1_qa5nm")
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -24.0
 offset_top = -16.0
 offset_right = 16.0

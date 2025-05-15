@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkbqhoa5wuqm"
-path="res://.godot/imported/cakra.png-89639ee17831c6a30bb63b35deace83d.ctex"
+uid="uid://g4jq8nt36h0t"
+path="res://.godot/imported/cakra-old.png-09b589cb2e00414bb51dce13bc987b08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/players/cakra.png"
-dest_files=["res://.godot/imported/cakra.png-89639ee17831c6a30bb63b35deace83d.ctex"]
+source_file="res://assets/players/cakra-old.png"
+dest_files=["res://.godot/imported/cakra-old.png-09b589cb2e00414bb51dce13bc987b08.ctex"]
 
 [params]
 

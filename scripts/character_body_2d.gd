@@ -16,16 +16,13 @@ func _physics_process(_delta: float) -> void:
 			_dir = "back"
 	else:
 		self.velocity.y = move_toward(self.velocity.x, 0, self._SPEED)
+		_dir = "front"
 
 	if x_direction:
 		self.velocity.x = x_direction * _SPEED
-		_dir = "side"	
 		sprite.flip_h = x_direction < 0
 	else:
 		self.velocity.x = move_toward(self.velocity.x, 0, self._SPEED)
-
-	if _dir == "front" or _dir == "back":
-		sprite.flip_h = false
 
 	self.move_and_slide()
 
