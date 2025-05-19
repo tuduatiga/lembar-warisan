@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkrqlyaxjdiht"]
+
+[ext_resource type="Script" uid="uid://bxnk8epj4i6sb" path="res://scripts/monsters/tuyul.gd" id="1_l4m4o"]
+[ext_resource type="Texture2D" uid="uid://bfaspbu58pil2" path="res://assets/monster/tuyul.png" id="2_l4m4o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3f7h"]
+atlas = ExtResource("2_l4m4o")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u42g5"]
+atlas = ExtResource("2_l4m4o")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g1oc"]
+atlas = ExtResource("2_l4m4o")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbt8j"]
+atlas = ExtResource("2_l4m4o")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh877"]
+atlas = ExtResource("2_l4m4o")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8fyt"]
+atlas = ExtResource("2_l4m4o")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ejgg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3f7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u42g5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g1oc")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_qbt8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh877")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_j8fyt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c2xwj"]
+radius = 2.0
+height = 4.0
+
+[node name="Tuyul" type="CharacterBody2D"]
+script = ExtResource("1_l4m4o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0ejgg")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_c2xwj")
