@@ -1,33 +1,27 @@
 extends CharacterBody2D
 
-const _SPEED: float = 200.0  # TODO: get value from GameManager
-var _dir: String = "front"
+const SPEED: float = 200.0
 
-func _physics_process(_delta: float) -> void:
-	var y_direction: float = Input.get_axis("ui_up", "ui_down")
-	var x_direction: float = Input.get_axis("ui_left", "ui_right")
+var _sprite: AnimatedSprite2D
 
-	var sprite: AnimatedSprite2D = self.find_child("AnimatedSprite2D")
-	if y_direction:
-		self.velocity.y = y_direction * self._SPEED
-		if y_direction > 0:
-			_dir = "front"
-		else:
-			_dir = "back"
+func get_input():
+	return Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+
+func _ready():
+	_sprite = self.find_child("AnimatedSprite2D")
+
+func _physics_process(_delta):
+	self.velocity = get_input() * SPEED
+
+	if (self.velocity.x):
+		_sprite.flip_h = self.velocity.x < 0
+
+	_sprite.speed_scale = 1 + self.velocity.length() / SPEED
+
+	var dir: String = "back" if self.velocity.y < 0 else "front"
+	if self.velocity.length_squared() > 0:
+		_sprite.animation = dir + "_walk"
 	else:
-		self.velocity.y = move_toward(self.velocity.x, 0, self._SPEED)
-		_dir = "front"
+		_sprite.animation = dir + "_idle"
 
-	if x_direction:
-		self.velocity.x = x_direction * _SPEED
-		sprite.flip_h = x_direction < 0
-	else:
-		self.velocity.x = move_toward(self.velocity.x, 0, self._SPEED)
-
-	self.move_and_slide()
-
-	sprite.speed_scale = 1+self.velocity.length()/_SPEED
-	if self.velocity.length():
-		sprite.animation = _dir+"_walk"
-	else:
-		sprite.animation = _dir+"_idle"
+	move_and_slide()
