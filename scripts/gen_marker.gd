@@ -43,6 +43,5 @@ func _ready() -> void:
 
 		for marker in chosen_scene_instance.find_children("*", "GenMarker"):
 			marker.depth = max(self.depth - 1, 0)
-			pass
-		
+
 		self.get_child(0).add_child.call_deferred(chosen_scene_instance)

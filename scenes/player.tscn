@@ -1,6 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://dv1ianyk7wosn"]
+[gd_scene load_steps=35 format=3 uid="uid://dv1ianyk7wosn"]
 
-[ext_resource type="Script" uid="uid://dpkv41jwvfo5n" path="res://scripts/character_body_2d.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://dpkv41jwvfo5n" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dkbqhoa5wuqm" path="res://assets/players/cakra.png" id="2_g2els"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
@@ -226,14 +226,36 @@ animations = [{
 radius = 4.0
 height = 8.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 56.1427
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ur7pv")
 animation = &"front_idle"
 autoplay = "front_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+position = Vector2(0, -4)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="HurtBoxArea" type="Area2D" parent="."]
+position = Vector2(0, -4)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea"]
+shape = SubResource("CircleShape2D_qhqgy")
+debug_color = Color(0.7, 0, 0, 0.419608)

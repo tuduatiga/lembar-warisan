@@ -11,10 +11,10 @@ func _init(wait_time, time_scale = 0.5) -> void:
 
 
 func _ready() -> void:
-	self.body_entered.connect(_on_body_entered)
+	self.body_entered.connect(self._on_body_entered)
 
-	_timer = Timer.new()
-	_timer.one_shot = true  # By default, the timer will automatically restart.
+	self._timer = Timer.new()
+	self._timer.one_shot = true  # By default, the timer will automatically restart.
 
 	"""
 	Note: Timers are affected by Engine.time_scale.
@@ -23,16 +23,17 @@ func _ready() -> void:
 
 	sauce: https://docs.godotengine.org/en/stable/classes/class_timer.html
 	"""
-	_timer.wait_time = self._wait_time * self._time_scale  # README: Ku-* sama `_time_scale` supaya timenya ga terpengaruh sama `Engine.time_scale`
-	_timer.timeout.connect(_on_timer_timeout)
-	self.add_child(_timer)
+	# README: Ku-* sama `_time_scale` supaya timenya ga terpengaruh sama `Engine.time_scale`
+	self._timer.wait_time = self._wait_time * self._time_scale
+	self._timer.timeout.connect(self._on_timer_timeout)
+	self.add_child(self._timer)
 
 
 func _on_body_entered(body: Node2D) -> void:
 	body.get_node("CollisionShape2D").queue_free()
 
 	Engine.time_scale = self._time_scale
-	_timer.start()
+	self._timer.start()
 
 
 func _on_timer_timeout() -> void:
