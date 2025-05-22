@@ -17,5 +17,6 @@ func _area_entered(area: Area2D) -> void:
 		return
 
 	var node_parent: Node = self.get_parent()
-	node_parent.get_parent().add_child.call_deferred(FallbackScene.instantiate())
-	node_parent.queue_free()
+	if area.get_parent().get_path().get_name_count() <= node_parent.get_path().get_name_count():
+		node_parent.get_parent().add_child.call_deferred(FallbackScene.instantiate())
+		node_parent.queue_free()
