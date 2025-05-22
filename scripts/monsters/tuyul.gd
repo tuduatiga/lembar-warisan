@@ -1,6 +1,6 @@
 class_name Tuyul extends CharacterBody2D
 
-const _MOVEMENT_SPEED: float = 100.0
+const _MOVEMENT_SPEED: float = 250.0
 
 var _animated_sprite: AnimatedSprite2D
 var _navigation_agent: NavigationAgent2D
