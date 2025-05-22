@@ -19,9 +19,15 @@ func _ready():
 	self._hurt_box = self.find_child("HurtBoxArea")
 
 	self._hurt_box.body_entered.connect(self._on_hurt_box_area_body_entered)
+	self._hurt_box.body_exited.connect(func(_body: CharacterBody2D): self.modulate = Color.WHITE)
 
 
 func _physics_process(_delta: float) -> void:
+	if not self._health:
+		self._animated_sprite.animation = "front_idle"
+		self._animated_sprite.stop()
+		return
+
 	for body in self._enemy_detection_area.get_overlapping_bodies():
 		if body.collision_layer & 0b100 > 0:
 			body.set_movement_target(self.global_position)
@@ -45,6 +51,7 @@ func _physics_process(_delta: float) -> void:
 func _on_hurt_box_area_body_entered(body: CharacterBody2D) -> void:
 	if body.collision_layer & 0b100 > 0 and self._health:
 		self._health -= 1
+		self.modulate = Color.RED
 
 		if not self._health:
 			await get_tree().create_timer(3).timeout
