@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgctcj78aqmid"]
+[gd_scene load_steps=6 format=3 uid="uid://dgctcj78aqmid"]
 
 [ext_resource type="Script" uid="uid://b0mexiqrs1n47" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dv1ianyk7wosn" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://chxpbu1xgua37" path="res://scenes/dungeons/start.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dh3obpwont6v2" path="res://scenes/monsters/pocong.tscn" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://dkrqlyaxjdiht" path="res://scenes/monsters/tuyul.tscn" id="5_p57ef"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lnu2h")
@@ -10,8 +12,22 @@ script = ExtResource("1_lnu2h")
 [node name="Start" parent="." instance=ExtResource("1_yqjtg")]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-scale = Vector2(1.5, 1.5)
 collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
+
+[node name="Pocong" parent="." instance=ExtResource("4_iywne")]
+position = Vector2(35, 27)
+
+[node name="Tuyul" parent="." instance=ExtResource("5_p57ef")]
+position = Vector2(-43, 20)
+
+[node name="Tuyul2" parent="." instance=ExtResource("5_p57ef")]
+position = Vector2(-48, -9)
+
+[node name="Tuyul3" parent="." instance=ExtResource("5_p57ef")]
+position = Vector2(-16, 29)
+
+[node name="Tuyul4" parent="." instance=ExtResource("5_p57ef")]
+position = Vector2(-36, 35)

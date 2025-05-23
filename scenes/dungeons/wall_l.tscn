@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=4 uid="uid://dixx3o6lwbfeh"]
 
-[ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon.tres" id="1_bc8ko"]
+[ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon-old.tres" id="1_bc8ko"]
 
 [node name="WallR" type="Node2D"]
 

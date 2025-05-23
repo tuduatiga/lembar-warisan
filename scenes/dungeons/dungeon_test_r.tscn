@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://rsyt3eaarqly"]
 
-[ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon.tres" id="1_pc6qo"]
+[ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon-old.tres" id="1_pc6qo"]
 [ext_resource type="PackedScene" uid="uid://du0thsgt5ipfi" path="res://scenes/gen_marker.tscn" id="2_rwgn5"]
 [ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="3_dgpcc"]
 [ext_resource type="PackedScene" uid="uid://bnp1nookh8iv8" path="res://scenes/gen_area.tscn" id="4_rwgn5"]
