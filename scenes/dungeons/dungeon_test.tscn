@@ -45,30 +45,27 @@ metadata/_custom_type_script = "uid://lkmg24m4cryd"
 size = Vector2(160, 208)
 
 [node name="DungeonTest" type="Node2D"]
-position = Vector2(0, -120)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(0, 120)
 tile_map_data = PackedByteArray("AAD8//T/AgACAAQAAAD9//T/AgADAAQAAAD+//X/AgAGAAQAAAD+//b/AgAFAAUAAAD+//f/AgACAAMAAAD+//j/AgACAAMAAAD+//n/AgACAAMAAAD+//r/AgACAAMAAAD+//v/AgACAAMAAAD+//z/AgACAAMAAAD+//3/AgAFAAEAAAD+//7/AgAFAAIAAAD+////AgAFAAMAAAD///X/AgAGAAQAAAD///b/AgAGAAQAAAD///f/AgAGAAQAAAD///j/AgAGAAQAAAD///n/AgAGAAQAAAD///r/AgAGAAQAAAD///v/AgAGAAQAAAD///z/AgAGAAQAAAD///3/AgAGAAQAAAD///7/AgAGAAQAAAD/////AgAGAAQAAAAAAPX/AgAGAAQAAAAAAPb/AgAGAAQAAAAAAPf/AgAGAAQAAAAAAPj/AgAGAAQAAAAAAPn/AgAGAAQAAAAAAPr/AgAGAAQAAAAAAPv/AgAGAAQAAAAAAPz/AgAGAAQAAAAAAP3/AgAGAAQAAAAAAP7/AgAGAAQAAAAAAP//AgAGAAQAAAABAPX/AgAGAAQAAAABAPb/AgAIAAUAAAABAPf/AgALAAMAAAABAPj/AgALAAMAAAABAPn/AgALAAMAAAABAPr/AgALAAMAAAABAPv/AgALAAMAAAABAPz/AgALAAMAAAABAP3/AgAIAAEAAAABAP7/AgAIAAIAAAABAP//AgAIAAMAAAACAPT/AgAKAAQAAAADAPT/AgALAAQAAAD8/+z/AgALAAYAAAD8/+3/AgACAAEAAAD8/+7/AgACAAIAAAD8/+//AgACAAIAAAD8//X/AgACAAQAAAD8//b/AgACAAUAAAD9/+z/AgALAAYAAAD9/+3/AgADAAEAAAD9/+7/AgADAAIAAAD9/+//AgADAAMAAAD9//X/AgADAAQAAAD9//b/AgAEAAUAAAD+//D/AgAGAAQAAAD+//H/AgAGAAQAAAD+//L/AgAGAAQAAAD+//P/AgAGAAQAAAD+//T/AgAGAAQAAAD///D/AgAGAAQAAAD///H/AgAGAAQAAAD///L/AgAGAAQAAAD///P/AgAGAAQAAAD///T/AgAGAAQAAAAAAPD/AgAGAAQAAAAAAPH/AgAGAAQAAAAAAPL/AgAGAAQAAAAAAPP/AgAGAAQAAAAAAPT/AgAGAAQAAAABAPD/AgAGAAQAAAABAPH/AgAGAAQAAAABAPL/AgAGAAQAAAABAPP/AgAGAAQAAAABAPT/AgAGAAQAAAACAOz/AgALAAYAAAACAO3/AgAKAAEAAAACAO7/AgAKAAIAAAACAO//AgAKAAMAAAACAPX/AgAKAAQAAAACAPb/AgAEAAUAAAADAOz/AgALAAYAAAADAO3/AgALAAEAAAADAO7/AgALAAIAAAADAO//AgALAAIAAAADAPX/AgALAAQAAAADAPb/AgALAAUAAAA=")
 tile_set = ExtResource("1_q5i2f")
 
 [node name="GenMarker" parent="." instance=ExtResource("2_6mbrl")]
-position = Vector2(0, -264)
+position = Vector2(0, -384)
 weighted_scenes = Array[ExtResource("3_0teo6")]([SubResource("Resource_5j5ro"), SubResource("Resource_j5nch")])
 fallback_scene = "uid://deoy4cbvg2dns"
 
 [node name="GenMarkerR" parent="." instance=ExtResource("2_6mbrl")]
-position = Vector2(48, -192)
+position = Vector2(48, -312)
 weighted_scenes = Array[ExtResource("3_0teo6")]([SubResource("Resource_6rvsb"), SubResource("Resource_b2pme")])
 fallback_scene = "uid://c1rof8k3nxy4k"
 
 [node name="GenMarkerL" parent="." instance=ExtResource("2_6mbrl")]
-position = Vector2(-48, -192)
+position = Vector2(-48, -312)
 weighted_scenes = Array[ExtResource("3_0teo6")]([SubResource("Resource_aefnn"), SubResource("Resource_6mbrl")])
 fallback_scene = "uid://dixx3o6lwbfeh"
 
 [node name="GenArea" parent="." instance=ExtResource("4_q5i2f")]
-position = Vector2(0, 120)
 fallback_scene = "uid://deoy4cbvg2dns"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GenArea"]
