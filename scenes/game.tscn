@@ -15,7 +15,7 @@ script = ExtResource("1_lnu2h")
 collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 
 [node name="Pocong" parent="." instance=ExtResource("4_iywne")]
 position = Vector2(35, 27)

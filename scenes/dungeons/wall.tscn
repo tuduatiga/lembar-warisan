@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=4 uid="uid://deoy4cbvg2dns"]
+[gd_scene load_steps=2 format=3 uid="uid://deoy4cbvg2dns"]
 
-[ext_resource type="TileSet" uid="uid://d21u01kp4n16o" path="res://assets/tilemaps/dungeon-old.tres" id="1_bru8w"]
+[ext_resource type="TileSet" uid="uid://ceog32nq6kv54" path="res://assets/tilemaps/dungeon.tres" id="1_bru8w"]
 
 [node name="Wall" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD+////AgAEAAMAAAABAP//AgAEAAMAAAAAAP//AgAEAAMAAAD/////AgAEAAMAAAD+//7/AgAEAAIAAAD///7/AgAEAAIAAAAAAP7/AgAEAAIAAAABAP7/AgAEAAIAAAD+//3/AgAEAAEAAAD///3/AgAEAAEAAAAAAP3/AgAEAAEAAAABAP3/AgAEAAEAAAD+//z/AgALAAYAAAD///z/AgALAAYAAAAAAPz/AgALAAYAAAABAPz/AgALAAYAAAA=")
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 2, 0, 0, 0, 0, 0)
 tile_set = ExtResource("1_bru8w")
