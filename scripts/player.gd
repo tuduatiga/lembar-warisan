@@ -54,13 +54,15 @@ func _on_damage_taken(health: int) -> void:
 	await get_tree().create_timer(0.2).timeout
 	self.modulate = Color.WHITE
 
-	# if not health:
-	# 	await get_tree().create_timer(3).timeout
-	# 	self.get_tree().reload_current_scene()
+	if health <= 0:
+		await get_tree().create_timer(3).timeout
+		self.get_tree().reload_current_scene()
 
 func _input(event):
 	if event.is_action_pressed("LMB"):
 		fire()
+	if event.is_action_pressed("RMB"):
+		slash()
 
 func fire():
 	var bullet_instance = BULLET.instantiate()
@@ -69,6 +71,10 @@ func fire():
 	self.add_child.call_deferred(bullet_instance)
 
 	print("fire")
+
+func slash():
+	self._keris.find_child("AnimationPlayer").stop()
+	self._keris.find_child("AnimationPlayer").play("slash")
 
 func _is_enemy(body: CharacterBody2D) -> bool:
 	return body.collision_layer & Enums.CollisionLayer.ENEMY > 0

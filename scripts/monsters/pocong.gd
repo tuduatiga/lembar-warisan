@@ -51,5 +51,5 @@ func _on_damage_taken(health: int) -> void:
 	await get_tree().create_timer(0.2).timeout
 	self.modulate = Color.WHITE
 
-	if not health:
+	if health <= 0:
 		self.queue_free()
