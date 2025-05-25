@@ -1,7 +1,7 @@
 class_name Projectile
 extends Node2D
 
-const SPEED = 200.0
+const SPEED = 150.0
 
 var direction: Vector2 = Vector2.ZERO
 

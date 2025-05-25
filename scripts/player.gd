@@ -79,7 +79,9 @@ func _on_damage_taken(health: int) -> void:
 	self._blood.emitting = false
 
 	if health <= 0:
-		await get_tree().create_timer(3).timeout
+		Engine.time_scale = 0.1
+		await get_tree().create_timer(0.8, true, false, true).timeout
+		Engine.time_scale = 1
 		self.get_tree().reload_current_scene()
 
 

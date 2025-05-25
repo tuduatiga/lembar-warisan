@@ -22,3 +22,6 @@ drag_top_margin = 0.5
 drag_right_margin = 0.5
 drag_bottom_margin = 0.5
 script = ExtResource("4_lbhrr")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.214227, 0.214227, 0.214227, 1)

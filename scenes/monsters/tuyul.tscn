@@ -73,7 +73,7 @@ radius = 3.16228
 
 [sub_resource type="Resource" id="Resource_qbt8j"]
 script = ExtResource("6_mh877")
-damage = 0
+damage = 1
 position = Vector2(0, 0)
 knockback = 0
 metadata/_custom_type_script = "uid://byppnbums8a0i"
