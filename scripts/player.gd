@@ -1,7 +1,9 @@
 class_name Player extends CharacterBody2D
 
+@export var projectile_texture: Texture2D
+
 const _SPEED: float = 100.0
-const _BULLET := preload("res://scenes/bullet.tscn")
+const _PROJECTILE := preload("res://scenes/projectile.tscn")
 
 var _animated_sprite: AnimatedSprite2D
 var _collision_shape: CollisionShape2D
@@ -66,7 +68,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ranged_attack"):
 		self._keris.find_child("AnimationPlayer").stop()
 		self._keris.find_child("AnimationPlayer").play("ranged")
-		_BULLET.instantiate().spawn(self)
+		_PROJECTILE.instantiate().with_texture(projectile_texture).spawn(self)
 
 
 func _on_damage_taken(health: int) -> void:

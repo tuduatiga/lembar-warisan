@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvc0xfs4thkab"]
+
+[ext_resource type="Script" uid="uid://c6lsqa1de4ewa" path="res://scripts/projectile.gd" id="1_softn"]
+[ext_resource type="PackedScene" uid="uid://bv4kywbn3hhji" path="res://scenes/hitbox_component.tscn" id="2_6q2a6"]
+[ext_resource type="Script" uid="uid://byppnbums8a0i" path="res://scripts/attack.gd" id="3_byeak"]
+
+[sub_resource type="Resource" id="Resource_eoqba"]
+script = ExtResource("3_byeak")
+damage = 1
+position = Vector2(0, 0)
+knockback = 100
+metadata/_custom_type_script = "uid://byppnbums8a0i"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5glv"]
+radius = 5.0
+height = 10.0
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_softn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="HitboxComponent" parent="." groups=["Player"] instance=ExtResource("2_6q2a6")]
+collision_mask = 49
+attack = SubResource("Resource_eoqba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_l5glv")
+debug_color = Color(0.99656, 0, 0.184308, 0.42)

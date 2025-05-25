@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bsfkacdf1hmg6"]
+[gd_scene load_steps=18 format=4 uid="uid://bsfkacdf1hmg6"]
 
 [ext_resource type="PackedScene" uid="uid://du0thsgt5ipfi" path="res://scenes/gen_marker.tscn" id="2_6mbrl"]
 [ext_resource type="PackedScene" uid="uid://5j2uimwwyhq" path="res://scenes/bar.tscn" id="2_6rvsb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://blhrc48bok50r" path="res://scripts/dungeon_area.gd" id="5_6rvsb"]
 [ext_resource type="PackedScene" uid="uid://dh3obpwont6v2" path="res://scenes/monsters/pocong.tscn" id="7_6mbrl"]
 [ext_resource type="PackedScene" uid="uid://dkrqlyaxjdiht" path="res://scenes/monsters/tuyul.tscn" id="8_0teo6"]
+[ext_resource type="PackedScene" uid="uid://be8orjqr2fowc" path="res://scenes/monsters/leak.tscn" id="9_0teo6"]
 
 [sub_resource type="Resource" id="Resource_5j5ro"]
 script = ExtResource("3_0teo6")
@@ -138,3 +139,6 @@ position = Vector2(-43, -327)
 
 [node name="Tuyul6" parent="." instance=ExtResource("8_0teo6")]
 position = Vector2(61, -327)
+
+[node name="Leak" parent="." instance=ExtResource("9_0teo6")]
+position = Vector2(0, -336)

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://be8orjqr2fowc"]
+
+[ext_resource type="Script" uid="uid://dk0c7g68iqigq" path="res://scripts/monsters/leak.gd" id="1_hmryc"]
+[ext_resource type="Texture2D" uid="uid://dk8swk72d7xj4" path="res://assets/monster/leak.png" id="1_ouaex"]
+[ext_resource type="Texture2D" uid="uid://chjp6rfi0brxy" path="res://assets/bullet.png" id="2_5lqms"]
+[ext_resource type="PackedScene" uid="uid://uommemjb8j1l" path="res://scenes/hurtbox_component.tscn" id="2_08sb5"]
+[ext_resource type="PackedScene" uid="uid://bennnpfghvch1" path="res://scenes/health_component.tscn" id="3_hmryc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p58mk"]
+radius = 6.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_08sb5"]
+radius = 7.0
+height = 24.0
+
+[node name="Leak" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 5
+collision_mask = 29
+script = ExtResource("1_hmryc")
+projectile_texture = ExtResource("2_5lqms")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_ouaex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_p58mk")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 48.0
+avoidance_enabled = true
+radius = 20.0
+neighbor_distance = 50.0
+max_speed = 20.0
+avoidance_layers = 2
+avoidance_mask = 2
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy"] instance=ExtResource("2_08sb5")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_08sb5")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="HealthComponent" parent="." groups=["Enemy"] instance=ExtResource("3_hmryc")]
+max_health = 6
+
+[node name="CastTimer" type="Timer" parent="."]
+one_shot = true
