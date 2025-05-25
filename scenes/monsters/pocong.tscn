@@ -62,15 +62,18 @@ position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_xf2cq")
 autoplay = "default"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_c2xwj")
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 20.0
 avoidance_enabled = true
 radius = 20.0
 neighbor_distance = 50.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-shape = SubResource("CapsuleShape2D_c2xwj")
+[node name="HealthComponent" parent="." instance=ExtResource("4_o11gq")]
+max_health = 3
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ros2q")]
 health_component = NodePath("../HealthComponent")
@@ -79,6 +82,3 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_c2xwj")
 debug_color = Color(1, 0, 0, 0.419608)
-
-[node name="HealthComponent" parent="." instance=ExtResource("4_o11gq")]
-max_health = 3

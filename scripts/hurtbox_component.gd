@@ -2,6 +2,7 @@ class_name HurtboxComponent extends Area2D
 
 @export var health_component: HealthComponent
 
+
 func _init() -> void:
 	self.collision_layer = Enums.CollisionLayer.HURTBOX
 	self.collision_mask = Enums.CollisionLayer.HITBOX

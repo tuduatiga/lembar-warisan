@@ -6,8 +6,10 @@ signal damage_taken(health: int)
 
 var _health: int
 
+
 func _ready() -> void:
 	self._health = self.max_health
+
 
 func damage(attack: Attack):
 	self._health -= attack.attack_damage

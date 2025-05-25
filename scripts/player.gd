@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 const _SPEED: float = 100.0
-const BULLET := preload("res://scenes/bullet.tscn")
+const _BULLET := preload("res://scenes/bullet.tscn")
 
 var _animated_sprite: AnimatedSprite2D
 var _collision_shape: CollisionShape2D
@@ -11,15 +11,16 @@ var _keris: Node2D
 
 var _dash_timer: Timer
 
+
 func _ready():
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
 	self._collision_shape = self.find_child("CollisionShape2D")
+	self._keris = self.find_child("Keris")
 	self._enemy_detection_area = self.find_child("EnemyDetectionArea")
 	self._health_component = self.find_child("HealthComponent")
-	self._keris = self.find_child("Keris")
+	self._dash_timer = self.find_child("DashTimer")
 
 	self._health_component.damage_taken.connect(_on_damage_taken)
-	self._dash_timer = self.find_child("DashTimer")
 
 
 func _physics_process(_delta: float) -> void:
@@ -28,11 +29,13 @@ func _physics_process(_delta: float) -> void:
 			body.set_movement_target(self.global_position)
 
 	var dash_mult = 1
-	if Input.is_key_pressed(KEY_SPACE) and self._dash_timer.time_left==0:
+	if Input.is_key_pressed(KEY_SPACE) and self._dash_timer.time_left == 0:
 		self._dash_timer.start()
 		dash_mult = 10
 
-	self.velocity = (Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED * dash_mult)
+	self.velocity = (
+		Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED * dash_mult
+	)
 
 	if self.velocity.x:
 		self._animated_sprite.flip_h = self.velocity.x < 0
@@ -49,6 +52,19 @@ func _physics_process(_delta: float) -> void:
 
 	self.move_and_slide()
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("RMB"):
+		self.slash()
+
+	if event.is_action_pressed("LMB"):
+		self.fire()
+
+
+func _is_enemy(body: CharacterBody2D) -> bool:
+	return body.collision_layer & Enums.CollisionLayer.ENEMY > 0
+
+
 func _on_damage_taken(health: int) -> void:
 	self.modulate = Color.RED
 	await get_tree().create_timer(0.2).timeout
@@ -58,23 +74,16 @@ func _on_damage_taken(health: int) -> void:
 		await get_tree().create_timer(3).timeout
 		self.get_tree().reload_current_scene()
 
-func _input(event):
-	if event.is_action_pressed("LMB"):
-		fire()
-	if event.is_action_pressed("RMB"):
-		slash()
-
-func fire():
-	var bullet_instance = BULLET.instantiate()
-	bullet_instance.direction = (self.get_global_mouse_position() - self.global_position).normalized()
-
-	self.add_child.call_deferred(bullet_instance)
-
-	print("fire")
 
 func slash():
 	self._keris.find_child("AnimationPlayer").stop()
 	self._keris.find_child("AnimationPlayer").play("slash")
 
-func _is_enemy(body: CharacterBody2D) -> bool:
-	return body.collision_layer & Enums.CollisionLayer.ENEMY > 0
+
+func fire():
+	var bullet_instance = self._BULLET.instantiate()
+	bullet_instance.direction = (
+		(self.get_global_mouse_position() - self.global_position).normalized()
+	)
+
+	self.add_child.call_deferred(bullet_instance)
