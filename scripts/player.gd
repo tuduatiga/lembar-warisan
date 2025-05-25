@@ -22,10 +22,12 @@ func _ready():
 
 	self._health_component.damage_taken.connect(_on_damage_taken)
 
+	self._keris.find_child("Wrapper").find_child("HitboxComponent").proprietor = self
+
 
 func _physics_process(_delta: float) -> void:
 	for body in self._enemy_detection_area.get_overlapping_bodies():
-		if self._is_enemy(body):
+		if body.is_in_group("Enemy"):
 			body.set_movement_target(self.global_position)
 
 	var dash_mult = 1
@@ -54,15 +56,11 @@ func _physics_process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("RMB"):
+	if event.is_action_pressed("melee_attack"):
 		self.slash()
 
-	if event.is_action_pressed("LMB"):
-		self.fire()
-
-
-func _is_enemy(body: CharacterBody2D) -> bool:
-	return body.collision_layer & Enums.CollisionLayer.ENEMY > 0
+	if event.is_action_pressed("ranged_attack"):
+		_BULLET.instantiate().spawn(self)
 
 
 func _on_damage_taken(health: int) -> void:
@@ -78,12 +76,3 @@ func _on_damage_taken(health: int) -> void:
 func slash():
 	self._keris.find_child("AnimationPlayer").stop()
 	self._keris.find_child("AnimationPlayer").play("slash")
-
-
-func fire():
-	var bullet_instance = self._BULLET.instantiate()
-	bullet_instance.direction = (
-		(self.get_global_mouse_position() - self.global_position).normalized()
-	)
-
-	self.add_child.call_deferred(bullet_instance)

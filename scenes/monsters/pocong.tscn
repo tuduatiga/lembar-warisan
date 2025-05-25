@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dh3obpwont6v2"]
+[gd_scene load_steps=13 format=3 uid="uid://dh3obpwont6v2"]
 
 [ext_resource type="Texture2D" uid="uid://bjcgoeyj3iyi0" path="res://assets/monster/pocong.png" id="1_c2xwj"]
 [ext_resource type="Script" uid="uid://bjacw1f1jhcx0" path="res://scripts/monsters/pocong.gd" id="1_wcc33"]
@@ -52,7 +52,11 @@ animations = [{
 radius = 3.0
 height = 6.0
 
-[node name="Pocong" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ros2q"]
+radius = 3.0
+height = 12.0
+
+[node name="Pocong" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 29
 script = ExtResource("1_wcc33")
@@ -75,10 +79,14 @@ neighbor_distance = 50.0
 [node name="HealthComponent" parent="." instance=ExtResource("4_o11gq")]
 max_health = 3
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ros2q")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy"] instance=ExtResource("3_ros2q")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(0, -3)
-shape = SubResource("CapsuleShape2D_c2xwj")
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_ros2q")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="HealthComponent2" parent="." groups=["Enemy"] instance=ExtResource("4_o11gq")]
+position = Vector2(0, -2)
+max_health = 3

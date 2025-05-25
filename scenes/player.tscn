@@ -245,7 +245,8 @@ sprite_frames = SubResource("SpriteFrames_ur7pv")
 animation = &"front_idle"
 autoplay = "front_idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
+visible = false
 position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_g2els")
 

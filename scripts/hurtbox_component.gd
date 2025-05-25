@@ -11,13 +11,13 @@ func _init() -> void:
 	self.area_exited.connect(self._on_area_exited)
 
 
-func _on_area_entered(hitbox: Area2D) -> void:
-	if hitbox is HitboxComponent:
-		if not self.owner.is_ancestor_of(hitbox):
-			health_component.damage(hitbox.attack)
+func _on_area_entered(area: Area2D) -> void:
+	if area is HitboxComponent:
+		if not self.owner == area.proprietor:
+			health_component.damage(area.attack)
 
 
-func _on_area_exited(hitbox: Area2D) -> void:
-	if hitbox is HitboxComponent and self.owner:
-		if self.owner == hitbox.owner:
+func _on_area_exited(area: Area2D) -> void:
+	if area is HitboxComponent and self.owner:
+		if self.owner == area.owner:
 			return

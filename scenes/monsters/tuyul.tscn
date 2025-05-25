@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bfaspbu58pil2" path="res://assets/monster/tuyul.png" id="2_l4m4o"]
 [ext_resource type="Script" uid="uid://bcqo1l6oqsf0" path="res://scripts/hurtbox_component.gd" id="3_u42g5"]
 [ext_resource type="Script" uid="uid://clcgs75gkdcsh" path="res://scripts/health_component.gd" id="4_3g1oc"]
-[ext_resource type="Script" uid="uid://cr6tyguas6c7j" path="res://scripts/hitbox_component.gd" id="5_qbt8j"]
+[ext_resource type="PackedScene" uid="uid://bv4kywbn3hhji" path="res://scenes/hitbox_component.tscn" id="5_3g1oc"]
 [ext_resource type="Script" uid="uid://byppnbums8a0i" path="res://scripts/attack.gd" id="6_mh877"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3f7h"]
@@ -69,7 +69,7 @@ height = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_u42g5"]
 radius = 3.16228
 
-[sub_resource type="Resource" id="Resource_j8fyt"]
+[sub_resource type="Resource" id="Resource_qbt8j"]
 script = ExtResource("6_mh877")
 attack_damage = 1
 metadata/_custom_type_script = "uid://byppnbums8a0i"
@@ -77,7 +77,7 @@ metadata/_custom_type_script = "uid://byppnbums8a0i"
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbt8j"]
 radius = 2.0
 
-[node name="Tuyul" type="CharacterBody2D"]
+[node name="Tuyul" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 29
 script = ExtResource("1_l4m4o")
@@ -103,7 +103,9 @@ max_speed = 250.0
 script = ExtResource("4_3g1oc")
 max_health = 2
 
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy"]]
+collision_layer = 32
+collision_mask = 64
 script = ExtResource("3_u42g5")
 health_component = NodePath("../HealthComponent")
 
@@ -112,11 +114,9 @@ position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_u42g5")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="HitboxComponent" type="Area2D" parent="."]
-position = Vector2(0, -2)
-script = ExtResource("5_qbt8j")
-attack = SubResource("Resource_j8fyt")
-metadata/_custom_type_script = "uid://cr6tyguas6c7j"
+[node name="HitboxComponent" parent="." instance=ExtResource("5_3g1oc")]
+attack = SubResource("Resource_qbt8j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_qbt8j")
