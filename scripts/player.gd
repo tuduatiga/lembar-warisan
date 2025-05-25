@@ -5,10 +5,10 @@ const _BULLET := preload("res://scenes/bullet.tscn")
 
 var _animated_sprite: AnimatedSprite2D
 var _collision_shape: CollisionShape2D
-var _enemy_detection_area: Area2D
-var _health_component: HealthComponent
 var _keris: Node2D
-
+var _health_component: HealthComponent
+var _enemy_detection_area: Area2D
+var _blood: CPUParticles2D
 var _dash_timer: Timer
 
 
@@ -18,6 +18,7 @@ func _ready():
 	self._keris = self.find_child("Keris")
 	self._enemy_detection_area = self.find_child("EnemyDetectionArea")
 	self._health_component = self.find_child("HealthComponent")
+	self._blood = self.find_child("Blood")
 	self._dash_timer = self.find_child("DashTimer")
 
 	self._health_component.damage_taken.connect(_on_damage_taken)
@@ -26,9 +27,10 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
-	for body in self._enemy_detection_area.get_overlapping_bodies():
-		if body.is_in_group("Enemy"):
-			body.set_movement_target(self.global_position)
+	if self._enemy_detection_area.monitoring:
+		for body in self._enemy_detection_area.get_overlapping_bodies():
+			if body.is_in_group("Enemy"):
+				body.set_movement_target(self.global_position)
 
 	var dash_mult = 1
 	if Input.is_key_pressed(KEY_SPACE) and self._dash_timer.time_left == 0:
@@ -46,7 +48,9 @@ func _physics_process(_delta: float) -> void:
 
 	self._animated_sprite.speed_scale = 1 + self.velocity.length() / self._SPEED
 
-	var dir: String = "back" if (get_global_mouse_position() - self.global_position).y < 0 else "front"
+	var dir: String = (
+		"back" if (get_global_mouse_position() - self.global_position).y < 0 else "front"
+	)
 	if self.velocity.length_squared() > 0:
 		self._animated_sprite.animation = dir + "_walk"
 	else:
@@ -62,13 +66,15 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ranged_attack"):
 		self._keris.find_child("AnimationPlayer").stop()
 		self._keris.find_child("AnimationPlayer").play("slash")
-		_BULLET.instantiate().spawn(self)
+		self._BULLET.instantiate().spawn(self)
 
 
 func _on_damage_taken(health: int) -> void:
+	self._blood.emitting = true
 	self.modulate = Color.RED
 	await get_tree().create_timer(0.2).timeout
 	self.modulate = Color.WHITE
+	self._blood.emitting = false
 
 	if health <= 0:
 		await get_tree().create_timer(3).timeout
@@ -78,3 +84,7 @@ func _on_damage_taken(health: int) -> void:
 func slash():
 	self._keris.find_child("AnimationPlayer").stop()
 	self._keris.find_child("AnimationPlayer").play("slash")
+
+
+func set_enemies_monitoring_status(status: bool):
+	self._enemy_detection_area.monitoring = status

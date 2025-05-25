@@ -71,7 +71,7 @@ radius = 3.16228
 
 [sub_resource type="Resource" id="Resource_qbt8j"]
 script = ExtResource("6_mh877")
-attack_damage = 1
+damage = 0
 metadata/_custom_type_script = "uid://byppnbums8a0i"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbt8j"]
@@ -95,9 +95,11 @@ shape = SubResource("CapsuleShape2D_c2xwj")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 20.0
 avoidance_enabled = true
-radius = 20.0
-neighbor_distance = 50.0
+radius = 5.0
+neighbor_distance = 20.0
 max_speed = 250.0
+avoidance_layers = 2
+avoidance_mask = 2
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("4_3g1oc")

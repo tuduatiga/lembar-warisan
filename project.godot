@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Enums="*res://scripts/enums/collision_layer.gd"
+AtmosphereMusic="*res://scenes/audios/atmospheres/atmosphere_music.tscn"
 
 [global_group]
 
@@ -80,6 +81,9 @@ melee_attack={
 2d_physics/layer_6="hurtbox"
 2d_physics/layer_7="hitbox"
 2d_physics/layer_8="bullet"
+avoidance/layer_1="Pocong"
+avoidance/layer_2="Tuyul"
+avoidance/layer_3="Leyak"
 
 [rendering]
 

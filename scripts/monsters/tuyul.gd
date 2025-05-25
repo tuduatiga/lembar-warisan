@@ -1,6 +1,6 @@
 class_name Tuyul extends CharacterBody2D
 
-const _MOVEMENT_SPEED: float = 250.0
+var _movement_speed: float = 250.0
 
 var _animated_sprite: AnimatedSprite2D
 var _navigation_agent: NavigationAgent2D
@@ -19,6 +19,13 @@ func _ready() -> void:
 
 
 func set_movement_target(movement_target: Vector2) -> void:
+	if movement_target.distance_to(self.global_position) < 27:
+		self._navigation_agent.target_desired_distance = 5
+		self._movement_speed = 70
+	else:
+		self._navigation_agent.target_desired_distance = 30
+		self._movement_speed = 150
+
 	self._navigation_agent.set_target_position(movement_target)
 
 
@@ -39,7 +46,7 @@ func _physics_process(_delta) -> void:
 
 	var new_velocity: Vector2 = (
 		self.global_position.direction_to(self._navigation_agent.get_next_path_position())
-		* self._MOVEMENT_SPEED
+		* self._movement_speed
 	)
 
 	if self._navigation_agent.avoidance_enabled:

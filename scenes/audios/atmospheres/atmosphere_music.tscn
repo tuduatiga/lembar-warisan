@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8d7n6nx0ndkw"]
+
+[ext_resource type="AudioStream" uid="uid://e58h0jjp2u7w" path="res://assets/audios/atmospheres/main.mp3" id="1_o6ryh"]
+
+[node name="AtmosphereMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_o6ryh")
+autoplay = true

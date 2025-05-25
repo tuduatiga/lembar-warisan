@@ -116,25 +116,25 @@ position = Vector2(8, -240)
 position = Vector2(24, -240)
 
 [node name="Pocong" parent="." instance=ExtResource("7_6mbrl")]
-position = Vector2(48, -280)
+position = Vector2(53, -343)
 
 [node name="Pocong2" parent="." instance=ExtResource("7_6mbrl")]
-position = Vector2(-56, -272)
+position = Vector2(-51, -335)
 
 [node name="Tuyul" parent="." instance=ExtResource("8_0teo6")]
-position = Vector2(40, -272)
+position = Vector2(45, -335)
 
 [node name="Tuyul2" parent="." instance=ExtResource("8_0teo6")]
-position = Vector2(-40, -272)
+position = Vector2(-35, -335)
 
 [node name="Tuyul3" parent="." instance=ExtResource("8_0teo6")]
-position = Vector2(-48, -288)
+position = Vector2(-43, -351)
 
 [node name="Tuyul4" parent="." instance=ExtResource("8_0teo6")]
-position = Vector2(32, -288)
+position = Vector2(37, -351)
 
 [node name="Tuyul5" parent="." instance=ExtResource("8_0teo6")]
-position = Vector2(-48, -264)
+position = Vector2(-43, -327)
 
 [node name="Tuyul6" parent="." instance=ExtResource("8_0teo6")]
-position = Vector2(56, -264)
+position = Vector2(61, -327)
