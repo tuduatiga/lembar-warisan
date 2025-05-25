@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dkrqlyaxjdiht"]
+[gd_scene load_steps=20 format=3 uid="uid://dkrqlyaxjdiht"]
 
 [ext_resource type="Script" uid="uid://bxnk8epj4i6sb" path="res://scripts/monsters/tuyul.gd" id="1_l4m4o"]
 [ext_resource type="Texture2D" uid="uid://bfaspbu58pil2" path="res://assets/monster/tuyul.png" id="2_l4m4o"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://clcgs75gkdcsh" path="res://scripts/health_component.gd" id="4_3g1oc"]
 [ext_resource type="PackedScene" uid="uid://bv4kywbn3hhji" path="res://scenes/hitbox_component.tscn" id="5_3g1oc"]
 [ext_resource type="Script" uid="uid://byppnbums8a0i" path="res://scripts/attack.gd" id="6_mh877"]
+[ext_resource type="PackedScene" uid="uid://csqdj1o2x2405" path="res://scenes/explosion.tscn" id="7_mh877"]
+[ext_resource type="PackedScene" uid="uid://dm3o5dyy5xbdm" path="res://scenes/blood.tscn" id="8_j8fyt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3f7h"]
 atlas = ExtResource("2_l4m4o")
@@ -72,6 +74,8 @@ radius = 3.16228
 [sub_resource type="Resource" id="Resource_qbt8j"]
 script = ExtResource("6_mh877")
 damage = 0
+position = Vector2(0, 0)
+knockback = 0
 metadata/_custom_type_script = "uid://byppnbums8a0i"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbt8j"]
@@ -122,3 +126,7 @@ attack = SubResource("Resource_qbt8j")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_qbt8j")
+
+[node name="Explosion" parent="." instance=ExtResource("7_mh877")]
+
+[node name="Blood" parent="." instance=ExtResource("8_j8fyt")]

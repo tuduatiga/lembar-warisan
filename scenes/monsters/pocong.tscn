@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dh3obpwont6v2"]
+[gd_scene load_steps=15 format=3 uid="uid://dh3obpwont6v2"]
 
 [ext_resource type="Texture2D" uid="uid://bjcgoeyj3iyi0" path="res://assets/monster/pocong.png" id="1_c2xwj"]
 [ext_resource type="Script" uid="uid://bjacw1f1jhcx0" path="res://scripts/monsters/pocong.gd" id="1_wcc33"]
 [ext_resource type="PackedScene" uid="uid://uommemjb8j1l" path="res://scenes/hurtbox_component.tscn" id="3_ros2q"]
 [ext_resource type="PackedScene" uid="uid://bennnpfghvch1" path="res://scenes/health_component.tscn" id="4_o11gq"]
+[ext_resource type="PackedScene" uid="uid://csqdj1o2x2405" path="res://scenes/explosion.tscn" id="5_o11gq"]
+[ext_resource type="PackedScene" uid="uid://dm3o5dyy5xbdm" path="res://scenes/blood.tscn" id="6_u53we"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcc33"]
 atlas = ExtResource("1_c2xwj")
@@ -60,6 +62,7 @@ height = 12.0
 collision_layer = 4
 collision_mask = 29
 script = ExtResource("1_wcc33")
+metadata/_edit_vertical_guides_ = [-35.0]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
@@ -90,3 +93,7 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="HealthComponent2" parent="." groups=["Enemy"] instance=ExtResource("4_o11gq")]
 position = Vector2(0, -2)
 max_health = 3
+
+[node name="Explosion" parent="." instance=ExtResource("5_o11gq")]
+
+[node name="Blood" parent="." instance=ExtResource("6_u53we")]

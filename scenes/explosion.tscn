@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://csqdj1o2x2405"]
+
+[ext_resource type="Texture2D" uid="uid://iph2n7u2mo68" path="res://assets/other/explode2.png" id="1_q7epf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf2cq"]
+atlas = ExtResource("1_q7epf")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqhuh"]
+atlas = ExtResource("1_q7epf")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xu6o"]
+atlas = ExtResource("1_q7epf")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3jweo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf2cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqhuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xu6o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[node name="Explosion" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3jweo")
+frame = 1
+frame_progress = 0.774199

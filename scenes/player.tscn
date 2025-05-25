@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://dv1ianyk7wosn"]
+[gd_scene load_steps=38 format=3 uid="uid://dv1ianyk7wosn"]
 
 [ext_resource type="Script" uid="uid://dpkv41jwvfo5n" path="res://scripts/player.gd" id="1_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dkbqhoa5wuqm" path="res://assets/players/cakra.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://uommemjb8j1l" path="res://scenes/hurtbox_component.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://d20o8dycooh4h" path="res://scenes/keris.tscn" id="3_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://bennnpfghvch1" path="res://scenes/health_component.tscn" id="4_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://dm3o5dyy5xbdm" path="res://scenes/blood.tscn" id="6_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("2_g2els")
@@ -271,22 +272,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 shape = SubResource("CircleShape2D_g2els")
 
-[node name="Blood" type="CPUParticles2D" parent="."]
-emitting = false
-lifetime = 0.05
-one_shot = true
-speed_scale = 0.1
-explosiveness = 1.0
-randomness = 1.0
-lifetime_randomness = 1.0
-direction = Vector2(0, 10)
-spread = 180.0
-gravity = Vector2(0, 100)
-initial_velocity_min = 147.46
-initial_velocity_max = 303.24
-scale_amount_min = 0.5
-scale_amount_max = 2.0
-color = Color(0.88, 0.1232, 0.1232, 0.984314)
+[node name="Blood" parent="." instance=ExtResource("6_tuyoq")]
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.5

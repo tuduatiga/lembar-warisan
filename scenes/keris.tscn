@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d20o8dycooh4h"]
+[gd_scene load_steps=18 format=3 uid="uid://d20o8dycooh4h"]
 
 [ext_resource type="Texture2D" uid="uid://dx7v1yvdumpwm" path="res://assets/weapons/keris.png" id="1_ea8ds"]
 [ext_resource type="PackedScene" uid="uid://bv4kywbn3hhji" path="res://scenes/hitbox_component.tscn" id="2_nvlwf"]
@@ -68,6 +68,58 @@ tracks/4/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_ay26d"]
+resource_name = "ranged"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.2),
+"transitions": PackedFloat32Array(0.118271, 3.06777, 3.06777),
+"update": 0,
+"values": [0.0, 1.65806, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxComponent:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimatedSprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, false]
+}
+
 [sub_resource type="Animation" id="Animation_nvlwf"]
 resource_name = "slash"
 length = 0.25
@@ -135,12 +187,15 @@ tracks/4/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ay26d"]
 _data = {
 &"RESET": SubResource("Animation_gkl2f"),
+&"ranged": SubResource("Animation_ay26d"),
 &"slash": SubResource("Animation_nvlwf")
 }
 
 [sub_resource type="Resource" id="Resource_ay26d"]
 script = ExtResource("3_gkl2f")
-attack_damage = 2
+damage = 0
+position = Vector2(0, 0)
+knockback = 0
 metadata/_custom_type_script = "uid://byppnbums8a0i"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2ktd"]

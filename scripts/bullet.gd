@@ -16,6 +16,7 @@ func spawn(proprietor: Node2D):
 	proprietor.get_tree().root.get_child(1).add_child(self)
 	self._hitbox.proprietor = proprietor
 	self.direction = (self.get_global_mouse_position() - proprietor.global_position).normalized()
+	self.rotate(self.direction.angle())
 	self.global_position = proprietor.global_position + self.direction * 10
 	self.find_child("HitboxComponent").proprietor = proprietor
 

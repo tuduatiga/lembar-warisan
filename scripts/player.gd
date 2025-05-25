@@ -65,8 +65,8 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("ranged_attack"):
 		self._keris.find_child("AnimationPlayer").stop()
-		self._keris.find_child("AnimationPlayer").play("slash")
-		self._BULLET.instantiate().spawn(self)
+		self._keris.find_child("AnimationPlayer").play("ranged")
+		_BULLET.instantiate().spawn(self)
 
 
 func _on_damage_taken(health: int) -> void:
