@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-const _SPEED: float = 200.0
+const _SPEED: float = 100.0
 const BULLET := preload("res://scenes/bullet.tscn")
 
 var _animated_sprite: AnimatedSprite2D
@@ -8,6 +8,7 @@ var _collision_shape: CollisionShape2D
 var _enemy_detection_area: Area2D
 var _health_component: HealthComponent
 
+var _dash_timer: Timer
 
 func _ready():
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
@@ -16,6 +17,7 @@ func _ready():
 	self._health_component = self.find_child("HealthComponent")
 
 	self._health_component.damage_taken.connect(_on_damage_taken)
+	self._dash_timer = self.find_child("DashTimer")
 
 
 func _physics_process(_delta: float) -> void:
@@ -23,7 +25,12 @@ func _physics_process(_delta: float) -> void:
 		if self._is_enemy(body):
 			body.set_movement_target(self.global_position)
 
-	self.velocity = (Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED)
+	var dash_mult = 1
+	if Input.is_key_pressed(KEY_SPACE) and self._dash_timer.time_left==0:
+		self._dash_timer.start()
+		dash_mult = 10
+
+	self.velocity = (Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED * dash_mult)
 
 	if self.velocity.x:
 		self._animated_sprite.flip_h = self.velocity.x < 0
@@ -43,9 +50,9 @@ func _on_damage_taken(health: int) -> void:
 	await get_tree().create_timer(0.2).timeout
 	self.modulate = Color.WHITE
 
-	if not health:
-		await get_tree().create_timer(3).timeout
-		self.get_tree().reload_current_scene()
+	# if not health:
+	# 	await get_tree().create_timer(3).timeout
+	# 	self.get_tree().reload_current_scene()
 
 func _input(event):
 	if event.is_action_pressed("LMB"):

@@ -3,7 +3,9 @@
 [ext_resource type="TileSet" uid="uid://ceog32nq6kv54" path="res://assets/tilemaps/dungeon.tres" id="1_evot3"]
 
 [node name="WallR" type="Node2D"]
+y_sort_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
 tile_map_data = PackedByteArray(0, 0, 0, 0, 1, 0, 0, 0, 4, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 3, 0, 0, 0, 0, 0, 255, 255, 0, 0, 4, 0, 3, 0, 0, 0, 0, 0, 254, 255, 0, 0, 4, 0, 3, 0, 0, 0)
 tile_set = ExtResource("1_evot3")

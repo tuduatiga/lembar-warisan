@@ -1,9 +1,13 @@
-[gd_scene load_steps=12 format=4 uid="uid://bsfkacdf1hmg6"]
+[gd_scene load_steps=17 format=4 uid="uid://bsfkacdf1hmg6"]
 
 [ext_resource type="PackedScene" uid="uid://du0thsgt5ipfi" path="res://scenes/gen_marker.tscn" id="2_6mbrl"]
+[ext_resource type="PackedScene" uid="uid://5j2uimwwyhq" path="res://scenes/bar.tscn" id="2_6rvsb"]
 [ext_resource type="TileSet" uid="uid://ceog32nq6kv54" path="res://assets/tilemaps/dungeon.tres" id="2_aefnn"]
 [ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="3_0teo6"]
 [ext_resource type="PackedScene" uid="uid://bnp1nookh8iv8" path="res://scenes/gen_area.tscn" id="4_q5i2f"]
+[ext_resource type="Script" uid="uid://blhrc48bok50r" path="res://scripts/dungeon_area.gd" id="5_6rvsb"]
+[ext_resource type="PackedScene" uid="uid://dh3obpwont6v2" path="res://scenes/monsters/pocong.tscn" id="7_6mbrl"]
+[ext_resource type="PackedScene" uid="uid://dkrqlyaxjdiht" path="res://scenes/monsters/tuyul.tscn" id="8_0teo6"]
 
 [sub_resource type="Resource" id="Resource_5j5ro"]
 script = ExtResource("3_0teo6")
@@ -44,9 +48,14 @@ metadata/_custom_type_script = "uid://lkmg24m4cryd"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5i2f"]
 size = Vector2(160, 192)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aefnn"]
+size = Vector2(160, 176)
+
 [node name="DungeonTest" type="Node2D"]
+y_sort_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
 tile_map_data = PackedByteArray("AAABAP//AAAEAAEAAAD+////AAABAAEAAAD/////AAADAAIAAAAAAP//AAADAAIAAAD///j/AAADAAIAAAAAAPj/AAADAAIAAAABAPj/AAAEAAMAAAD+//n/AAABAAMAAAD///n/AAADAAIAAAAAAPn/AAADAAIAAAABAPn/AAAEAAMAAAD+//r/AAABAAMAAAD///r/AAADAAIAAAAAAPr/AAADAAIAAAABAPr/AAAEAAMAAAD+//v/AAABAAMAAAD///v/AAADAAIAAAAAAPv/AAADAAIAAAABAPv/AAAEAAMAAAD+//z/AAABAAMAAAD///z/AAADAAIAAAAAAPz/AAADAAIAAAABAPz/AAAEAAMAAAD+//3/AAABAAMAAAD///3/AAADAAIAAAAAAP3/AAADAAIAAAABAP3/AAAEAAMAAAD+//7/AAABAAMAAAD///7/AAADAAIAAAAAAP7/AAADAAIAAAABAP7/AAAEAAMAAAD///T/AAADAAIAAAAAAPT/AAADAAIAAAABAPT/AAAEAAMAAAD///X/AAADAAIAAAAAAPX/AAADAAIAAAABAPX/AAAEAAMAAAD///b/AAADAAIAAAAAAPb/AAADAAIAAAABAPb/AAAEAAMAAAD///f/AAADAAIAAAAAAPf/AAADAAIAAAABAPf/AAAEAAMAAAD///D/AAADAAIAAAAAAPD/AAADAAIAAAABAPD/AAAEAAMAAAD///H/AAADAAIAAAAAAPH/AAADAAIAAAABAPH/AAAEAAMAAAD///L/AAADAAIAAAAAAPL/AAADAAIAAAABAPL/AAAEAAMAAAD///P/AAADAAIAAAAAAPP/AAADAAIAAAABAPP/AAAEAAMAAAACAPD/AAACAAAAAAD9//D/AAACAAAAAAADAPD/AAACAAAAAAAEAPD/AAACAAAAAAD8//D/AAACAAAAAAD7/+//AAABAAMAAAD7/+7/AAABAAMAAAD7/+3/AAABAAMAAAD7/+f/AAABAAMAAAD7/+b/AAABAAMAAAD7/+X/AAABAAAAAAAEAO//AAAEAAMAAAAEAO7/AAAEAAMAAAAEAO3/AAAEAAMAAAAEAOf/AAAEAAMAAAAEAOb/AAAEAAMAAAAEAOX/AAAEAAAAAAD8/+X/AAACAAAAAAD8/+b/AAADAAIAAAD8/+f/AAADAAIAAAD8/+j/AAADAAIAAAD8/+n/AAADAAIAAAD8/+r/AAADAAIAAAD8/+v/AAADAAIAAAD8/+z/AAADAAIAAAD8/+3/AAADAAIAAAD8/+7/AAADAAIAAAD8/+//AAADAAIAAAD9/+X/AAACAAAAAAD9/+b/AAADAAIAAAD9/+f/AAADAAIAAAD9/+j/AAADAAIAAAD9/+n/AAADAAIAAAD9/+r/AAADAAIAAAD9/+v/AAADAAIAAAD9/+z/AAADAAIAAAD9/+3/AAADAAIAAAD9/+7/AAADAAIAAAD9/+//AAADAAIAAAD+/+b/AAADAAIAAAD+/+f/AAADAAIAAAD+/+j/AAADAAIAAAD+/+n/AAADAAIAAAD+/+r/AAADAAIAAAD+/+v/AAADAAIAAAD+/+z/AAADAAIAAAD+/+3/AAADAAIAAAD+/+7/AAADAAIAAAD+/+//AAADAAIAAAD//+b/AAADAAIAAAD//+f/AAADAAIAAAD//+j/AAADAAIAAAD//+n/AAADAAIAAAD//+r/AAADAAIAAAD//+v/AAADAAIAAAD//+z/AAADAAIAAAD//+3/AAADAAIAAAD//+7/AAADAAIAAAD//+//AAADAAIAAAAAAOb/AAADAAIAAAAAAOf/AAADAAIAAAAAAOj/AAADAAIAAAAAAOn/AAADAAIAAAAAAOr/AAADAAIAAAAAAOv/AAADAAIAAAAAAOz/AAADAAIAAAAAAO3/AAADAAIAAAAAAO7/AAADAAIAAAAAAO//AAADAAIAAAABAOb/AAADAAIAAAABAOf/AAADAAIAAAABAOj/AAADAAIAAAABAOn/AAADAAIAAAABAOr/AAADAAIAAAABAOv/AAADAAIAAAABAOz/AAADAAIAAAABAO3/AAADAAIAAAABAO7/AAADAAIAAAABAO//AAADAAIAAAACAOX/AAACAAAAAAACAOb/AAADAAIAAAACAOf/AAADAAIAAAACAOj/AAADAAIAAAACAOn/AAADAAIAAAACAOr/AAADAAIAAAACAOv/AAADAAIAAAACAOz/AAADAAIAAAACAO3/AAADAAIAAAACAO7/AAADAAIAAAACAO//AAADAAIAAAADAOX/AAACAAAAAAADAOb/AAADAAIAAAADAOf/AAADAAIAAAADAOj/AAADAAIAAAADAOn/AAADAAIAAAADAOr/AAADAAIAAAADAOv/AAADAAIAAAADAOz/AAADAAIAAAADAO3/AAADAAIAAAADAO7/AAADAAIAAAADAO//AAADAAIAAAD7/+j/AAABAAMAAAAEAOj/AAAEAAMAAAD+//f/AAABAAMAAAD+//j/AAABAAMAAAD+//D/AAABAAMAAAD+//H/AAABAAMAAAD+//L/AAABAAMAAAD+//P/AAABAAMAAAD+//T/AAABAAMAAAD+//X/AAABAAMAAAD+//b/AAABAAMAAAD7//D/AAACAAAAAAA=")
 tile_set = ExtResource("2_aefnn")
 
@@ -72,3 +81,60 @@ fallback_scene = "uid://deoy4cbvg2dns"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GenArea"]
 position = Vector2(0, -336)
 shape = SubResource("RectangleShape2D_q5i2f")
+
+[node name="DungeonArea" type="Area2D" parent="."]
+position = Vector2(0, -240)
+collision_mask = 22
+script = ExtResource("5_6rvsb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonArea"]
+position = Vector2(0, -104)
+shape = SubResource("RectangleShape2D_aefnn")
+
+[node name="Bar" parent="." instance=ExtResource("2_6rvsb")]
+position = Vector2(-24, 0)
+
+[node name="Bar2" parent="." instance=ExtResource("2_6rvsb")]
+position = Vector2(-8, 0)
+
+[node name="Bar3" parent="." instance=ExtResource("2_6rvsb")]
+position = Vector2(8, 0)
+
+[node name="Bar4" parent="." instance=ExtResource("2_6rvsb")]
+position = Vector2(24, 0)
+
+[node name="Bar5" parent="." instance=ExtResource("2_6rvsb")]
+position = Vector2(-24, -240)
+
+[node name="Bar6" parent="." instance=ExtResource("2_6rvsb")]
+position = Vector2(-8, -240)
+
+[node name="Bar7" parent="." instance=ExtResource("2_6rvsb")]
+position = Vector2(8, -240)
+
+[node name="Bar8" parent="." instance=ExtResource("2_6rvsb")]
+position = Vector2(24, -240)
+
+[node name="Pocong" parent="." instance=ExtResource("7_6mbrl")]
+position = Vector2(48, -280)
+
+[node name="Pocong2" parent="." instance=ExtResource("7_6mbrl")]
+position = Vector2(-56, -272)
+
+[node name="Tuyul" parent="." instance=ExtResource("8_0teo6")]
+position = Vector2(40, -272)
+
+[node name="Tuyul2" parent="." instance=ExtResource("8_0teo6")]
+position = Vector2(-40, -272)
+
+[node name="Tuyul3" parent="." instance=ExtResource("8_0teo6")]
+position = Vector2(-48, -288)
+
+[node name="Tuyul4" parent="." instance=ExtResource("8_0teo6")]
+position = Vector2(32, -288)
+
+[node name="Tuyul5" parent="." instance=ExtResource("8_0teo6")]
+position = Vector2(-48, -264)
+
+[node name="Tuyul6" parent="." instance=ExtResource("8_0teo6")]
+position = Vector2(56, -264)

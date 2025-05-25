@@ -1,18 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgctcj78aqmid"]
+[gd_scene load_steps=4 format=3 uid="uid://dgctcj78aqmid"]
 
 [ext_resource type="Script" uid="uid://b0mexiqrs1n47" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dv1ianyk7wosn" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://chxpbu1xgua37" path="res://scenes/dungeons/start.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://dh3obpwont6v2" path="res://scenes/monsters/pocong.tscn" id="4_iywne"]
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_lnu2h")
 
 [node name="Start" parent="." instance=ExtResource("1_yqjtg")]
-position = Vector2(0, 72)
+position = Vector2(0, 64)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -24,6 +23,3 @@ drag_left_margin = 0.5
 drag_top_margin = 0.5
 drag_right_margin = 0.5
 drag_bottom_margin = 0.5
-
-[node name="Pocong" parent="." instance=ExtResource("4_iywne")]
-position = Vector2(35, 27)
