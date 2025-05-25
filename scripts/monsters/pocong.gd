@@ -3,22 +3,18 @@ class_name Pocong extends CharacterBody2D
 const _MOVEMENT_SPEED: float = 30.0
 
 var _animated_sprite: AnimatedSprite2D
-var _explosion_sprite: AnimatedSprite2D
 var _navigation_agent: NavigationAgent2D
 
 var _health_component: HealthComponent
 
 @onready var _blood: CPUParticles2D = self.find_child("Blood")
+@onready var _explosion_sprite: AnimatedSprite2D = self.find_child("Explosion")
 
 
 func _ready() -> void:
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
 
-	self._explosion_sprite = self.find_child("Explosion")
-	self._explosion_sprite.visible = false
-
 	self._navigation_agent = self.find_child("NavigationAgent2D")
-
 	self._navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 
 	self._health_component = self.find_child("HealthComponent")

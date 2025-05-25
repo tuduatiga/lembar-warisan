@@ -13,6 +13,7 @@ var _enemy_detection_area: Area2D
 var _blood: CPUParticles2D
 var _dash_timer: Timer
 
+@onready var _slash_sound: Node2D = self.find_child("SlashSound")
 
 func _ready():
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
@@ -68,6 +69,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ranged_attack"):
 		self._keris.find_child("AnimationPlayer").stop()
 		self._keris.find_child("AnimationPlayer").play("ranged")
+		self._slash_sound.play_sound()
 		_PROJECTILE.instantiate().with_texture(projectile_texture).spawn(self)
 
 

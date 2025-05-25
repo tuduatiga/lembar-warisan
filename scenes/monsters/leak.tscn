@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://be8orjqr2fowc"]
+[gd_scene load_steps=10 format=3 uid="uid://be8orjqr2fowc"]
 
 [ext_resource type="Script" uid="uid://dk0c7g68iqigq" path="res://scripts/monsters/leak.gd" id="1_hmryc"]
 [ext_resource type="Texture2D" uid="uid://dk8swk72d7xj4" path="res://assets/monster/leak.png" id="1_ouaex"]
 [ext_resource type="Texture2D" uid="uid://chjp6rfi0brxy" path="res://assets/bullet.png" id="2_5lqms"]
 [ext_resource type="PackedScene" uid="uid://uommemjb8j1l" path="res://scenes/hurtbox_component.tscn" id="2_08sb5"]
 [ext_resource type="PackedScene" uid="uid://bennnpfghvch1" path="res://scenes/health_component.tscn" id="3_hmryc"]
+[ext_resource type="PackedScene" uid="uid://csqdj1o2x2405" path="res://scenes/explosion.tscn" id="6_cvtsc"]
+[ext_resource type="PackedScene" uid="uid://dm3o5dyy5xbdm" path="res://scenes/blood.tscn" id="7_imeb3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p58mk"]
 radius = 6.0
@@ -50,3 +52,7 @@ max_health = 6
 
 [node name="CastTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Explosion" parent="." instance=ExtResource("6_cvtsc")]
+
+[node name="Blood" parent="." instance=ExtResource("7_imeb3")]

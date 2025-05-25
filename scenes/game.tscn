@@ -15,7 +15,7 @@ position = Vector2(0, 64)
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 drag_left_margin = 0.5
 drag_top_margin = 0.5

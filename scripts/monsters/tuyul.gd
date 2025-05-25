@@ -7,9 +7,9 @@ var _movement_speed: float = 250.0
 @onready var _navigation_agent: NavigationAgent2D = self.find_child("NavigationAgent2D")
 @onready var _health_component: HealthComponent = self.find_child("HealthComponent")
 @onready var _blood: CPUParticles2D = self.find_child("Blood")
+@onready var _hit_sound: Node2D = self.find_child("HitSound")
 
 func _ready() -> void:
-	self._explosion_sprite.visible = false
 	self._navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 	self._health_component.damage_taken.connect(_on_damage_taken)
 
@@ -68,6 +68,8 @@ func _on_damage_taken(health: int) -> void:
 	await get_tree().create_timer(0.2).timeout
 	self.modulate = Color.WHITE
 	self._blood.emitting = false
+
+	self._hit_sound.play_hit_sound()
 
 	if health <= 0:
 		self._explosion_sprite.visible = true

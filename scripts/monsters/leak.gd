@@ -11,6 +11,9 @@ var _cast_timer: Timer
 
 var _health_component: HealthComponent
 
+@onready var _blood: CPUParticles2D = self.find_child("Blood")
+@onready var _explosion_sprite: AnimatedSprite2D = self.find_child("Explosion")
+
 
 func _ready() -> void:
 	self._sprite = self.find_child("Sprite2D")
@@ -25,6 +28,9 @@ func _ready() -> void:
 
 
 func set_movement_target(movement_target: Vector2) -> void:
+	if not self._navigation_agent:
+		return
+
 	self._navigation_agent.set_target_position(movement_target)
 	if self._cast_timer.time_left == 0:
 		self._cast_timer.start()
@@ -32,6 +38,9 @@ func set_movement_target(movement_target: Vector2) -> void:
 
 
 func _physics_process(delta) -> void:
+	if not self._navigation_agent:
+		return
+
 	if self.velocity.x:
 		self._sprite.flip_h = self.velocity.x < 0
 
@@ -59,20 +68,44 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 
 func _on_damage_taken(health: int) -> void:
 	self.modulate = Color.RED
+	self._blood.emitting = true
 	await get_tree().create_timer(0.2).timeout
 	self.modulate = Color.WHITE
+	self._blood.emitting = false
+
 
 	if health <= 0:
+		self._explosion_sprite.visible = true
+		self._explosion_sprite.play()
+		self._sprite.visible = false
+		self._navigation_agent.queue_free()
+		await get_tree().create_timer(0.5).timeout
 		self.queue_free()
 
 
 func cast(target_position: Vector2):
-	_PROJECTILE.instantiate().with_texture(self.projectile_texture).spawn_with_direction(
-		self, (target_position - self.global_position).normalized()
-	).with_modulate(Color.BLACK)
-	_PROJECTILE.instantiate().with_texture(self.projectile_texture).spawn_with_direction(
-		self, (target_position - self.global_position).normalized().rotated(PI / 4.0)
-	).with_modulate(Color.BLACK)
-	_PROJECTILE.instantiate().with_texture(self.projectile_texture).spawn_with_direction(
-		self, (target_position - self.global_position).normalized().rotated(-PI / 4.0)
-	).with_modulate(Color.BLACK)
+	(
+		_PROJECTILE
+		. instantiate()
+		. with_texture(self.projectile_texture)
+		. spawn_with_direction(self, (target_position - self.global_position).normalized())
+		. with_modulate(Color.BLACK)
+	)
+	(
+		_PROJECTILE
+		. instantiate()
+		. with_texture(self.projectile_texture)
+		. spawn_with_direction(
+			self, (target_position - self.global_position).normalized().rotated(PI / 4.0)
+		)
+		. with_modulate(Color.BLACK)
+	)
+	(
+		_PROJECTILE
+		. instantiate()
+		. with_texture(self.projectile_texture)
+		. spawn_with_direction(
+			self, (target_position - self.global_position).normalized().rotated(-PI / 4.0)
+		)
+		. with_modulate(Color.BLACK)
+	)

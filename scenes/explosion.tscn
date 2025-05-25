@@ -32,6 +32,7 @@ animations = [{
 }]
 
 [node name="Explosion" type="AnimatedSprite2D"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_3jweo")
 frame = 1
 frame_progress = 0.774199

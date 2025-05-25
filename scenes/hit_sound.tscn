@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://fp27mmiga5cg"]
+
+[ext_resource type="Script" uid="uid://umoe5s0e4erw" path="res://hit_sound.gd" id="1_qu8rw"]
+[ext_resource type="AudioStream" uid="uid://d27qb7qyo55ki" path="res://scenes/audios/sfx/hit-flesh-1.mp3" id="2_08xy8"]
+[ext_resource type="AudioStream" uid="uid://dx66546ic4j68" path="res://scenes/audios/sfx/hit-flesh-2.mp3" id="3_yebx7"]
+[ext_resource type="AudioStream" uid="uid://dkr61tb387lr6" path="res://scenes/audios/sfx/hit-flesh-3.mp3" id="4_08xy8"]
+[ext_resource type="AudioStream" uid="uid://d1tg686b34d5d" path="res://scenes/audios/sfx/hit-flesh-4.mp3" id="5_yebx7"]
+
+[node name="HitSound" type="Node2D"]
+script = ExtResource("1_qu8rw")
+
+[node name="HitFlesh1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_08xy8")
+
+[node name="HitFlesh2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yebx7")
+
+[node name="HitFlesh3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_08xy8")
+
+[node name="HitFlesh4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_yebx7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.131
