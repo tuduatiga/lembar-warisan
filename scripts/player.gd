@@ -7,6 +7,7 @@ var _animated_sprite: AnimatedSprite2D
 var _collision_shape: CollisionShape2D
 var _enemy_detection_area: Area2D
 var _health_component: HealthComponent
+var _keris: Node2D
 
 var _dash_timer: Timer
 
@@ -15,6 +16,7 @@ func _ready():
 	self._collision_shape = self.find_child("CollisionShape2D")
 	self._enemy_detection_area = self.find_child("EnemyDetectionArea")
 	self._health_component = self.find_child("HealthComponent")
+	self._keris = self.find_child("Keris")
 
 	self._health_component.damage_taken.connect(_on_damage_taken)
 	self._dash_timer = self.find_child("DashTimer")
@@ -34,6 +36,8 @@ func _physics_process(_delta: float) -> void:
 
 	if self.velocity.x:
 		self._animated_sprite.flip_h = self.velocity.x < 0
+		self._keris.scale.x = -1 if self.velocity.x < 0 else 1
+		self._keris.position.x = abs(self._keris.position.x) * (-1 if self.velocity.x < 0 else 1)
 
 	self._animated_sprite.speed_scale = 1 + self.velocity.length() / self._SPEED
 

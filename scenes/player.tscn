@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://dv1ianyk7wosn"]
+[gd_scene load_steps=37 format=3 uid="uid://dv1ianyk7wosn"]
 
 [ext_resource type="Script" uid="uid://dpkv41jwvfo5n" path="res://scripts/player.gd" id="1_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dkbqhoa5wuqm" path="res://assets/players/cakra.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://uommemjb8j1l" path="res://scenes/hurtbox_component.tscn" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://d20o8dycooh4h" path="res://scenes/keris.tscn" id="3_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://bennnpfghvch1" path="res://scenes/health_component.tscn" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
@@ -244,11 +245,16 @@ sprite_frames = SubResource("SpriteFrames_ur7pv")
 animation = &"front_idle"
 autoplay = "front_idle"
 
+[node name="Keris" parent="." instance=ExtResource("3_qlg0r")]
+position = Vector2(6, -5)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_g2els")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -4)
 collision_mask = 4
 
@@ -256,6 +262,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_g2els")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_dqkch")]
+visible = false
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
