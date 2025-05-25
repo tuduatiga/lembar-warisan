@@ -12,7 +12,8 @@ func _init() -> void:
 
 func _on_area_entered(hitbox: Area2D) -> void:
 	if hitbox is HitboxComponent:
-		health_component.damage(hitbox.attack)
+		if not self.owner.is_ancestor_of(hitbox):
+			health_component.damage(hitbox.attack)
 
 
 func _on_area_exited(hitbox: Area2D) -> void:

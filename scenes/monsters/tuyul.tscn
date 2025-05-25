@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxnk8epj4i6sb" path="res://scripts/monsters/tuyul.gd" id="1_l4m4o"]
 [ext_resource type="Texture2D" uid="uid://bfaspbu58pil2" path="res://assets/monster/tuyul.png" id="2_l4m4o"]
-[ext_resource type="Script" path="res://scripts/hurtbox_component.gd" id="3_u42g5"]
+[ext_resource type="Script" uid="uid://bcqo1l6oqsf0" path="res://scripts/hurtbox_component.gd" id="3_u42g5"]
 [ext_resource type="Script" path="res://scripts/health_component.gd" id="4_3g1oc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3f7h"]
