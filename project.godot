@@ -15,6 +15,10 @@ run/main_scene="uid://dgctcj78aqmid"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Enums="*res://scripts/enums/collision_layer.gd"
+
 [input]
 
 ui_left={
@@ -55,7 +59,11 @@ ui_down={
 2d_render/layer_1="Map"
 2d_physics/layer_1="environment"
 2d_physics/layer_2="player"
-2d_physics/layer_3="enemies"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="object"
+2d_physics/layer_5="bar"
+2d_physics/layer_6="hurtbox"
+2d_physics/layer_7="hitbox"
 
 [rendering]
 

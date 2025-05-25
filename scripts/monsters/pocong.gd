@@ -5,8 +5,12 @@ const _MOVEMENT_SPEED: float = 100.0
 var _animated_sprite: AnimatedSprite2D
 var _navigation_agent: NavigationAgent2D
 
+var _health: int
+
 
 func _ready() -> void:
+	self._health = 3
+
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
 	self._navigation_agent = self.find_child("NavigationAgent2D")
 
@@ -18,6 +22,14 @@ func set_movement_target(movement_target: Vector2) -> void:
 
 
 func _physics_process(_delta) -> void:
+	if not self._health:
+		self._animated_sprite.stop()
+
+		await self.get_tree().create_timer(3).timeout
+
+		self.queue_free()
+		return
+
 	if self.velocity.x:
 		self._animated_sprite.flip_h = self.velocity.x < 0
 
@@ -41,3 +53,8 @@ func _physics_process(_delta) -> void:
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	self.velocity = safe_velocity
 	self.move_and_slide()
+
+
+func take_damage(amount: int) -> void:
+	if self._health:
+		self._health -= amount

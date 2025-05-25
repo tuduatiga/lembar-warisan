@@ -7,7 +7,6 @@ var _health: int
 var _animated_sprite: AnimatedSprite2D
 var _collision_shape: CollisionShape2D
 var _enemy_detection_area: Area2D
-var _hurt_box: Area2D
 
 
 func _ready():
@@ -16,20 +15,20 @@ func _ready():
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
 	self._collision_shape = self.find_child("CollisionShape2D")
 	self._enemy_detection_area = self.find_child("EnemyDetectionArea")
-	self._hurt_box = self.find_child("HurtBoxArea")
-
-	self._hurt_box.body_entered.connect(self._on_hurt_box_area_body_entered)
-	self._hurt_box.body_exited.connect(func(_body: CharacterBody2D): self.modulate = Color.WHITE)
 
 
 func _physics_process(_delta: float) -> void:
 	if not self._health:
 		self._animated_sprite.animation = "front_idle"
 		self._animated_sprite.stop()
+
+		await self.get_tree().create_timer(3).timeout
+
+		self.get_tree().reload_current_scene()
 		return
 
 	for body in self._enemy_detection_area.get_overlapping_bodies():
-		if body.collision_layer & 0b100 > 0:
+		if self._is_enemy(body):
 			body.set_movement_target(self.global_position)
 
 	self.velocity = (Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED)
@@ -48,12 +47,10 @@ func _physics_process(_delta: float) -> void:
 	self.move_and_slide()
 
 
-func _on_hurt_box_area_body_entered(body: CharacterBody2D) -> void:
-	if body.collision_layer & 0b100 > 0 and self._health:
-		self._health -= 1
-		self.modulate = Color.RED
+func _is_enemy(body: CharacterBody2D) -> bool:
+	return body.collision_layer & Enums.CollisionLayer.ENEMY > 0
 
-		if not self._health:
-			await get_tree().create_timer(3).timeout
 
-			self.get_tree().reload_current_scene()
+func take_damage(amount: int) -> void:
+	if self._health:
+		self._health -= amount
