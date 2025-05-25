@@ -5,31 +5,22 @@ const _MOVEMENT_SPEED: float = 100.0
 var _animated_sprite: AnimatedSprite2D
 var _navigation_agent: NavigationAgent2D
 
-var _health: int
-
+var _health_component: HealthComponent
 
 func _ready() -> void:
-	self._health = 3
-
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
 	self._navigation_agent = self.find_child("NavigationAgent2D")
 
 	self._navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 
+	self._health_component = self.find_child("HealthComponent")
+	self._health_component.damage_taken.connect(_on_damage_taken)
 
 func set_movement_target(movement_target: Vector2) -> void:
 	self._navigation_agent.set_target_position(movement_target)
 
 
 func _physics_process(_delta) -> void:
-	if not self._health:
-		self._animated_sprite.stop()
-
-		await self.get_tree().create_timer(3).timeout
-
-		self.queue_free()
-		return
-
 	if self.velocity.x:
 		self._animated_sprite.flip_h = self.velocity.x < 0
 
@@ -54,7 +45,11 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	self.velocity = safe_velocity
 	self.move_and_slide()
 
+func _on_damage_taken(health: int) -> void:
+	print(health)
+	self.modulate = Color.RED
+	await get_tree().create_timer(0.2).timeout
+	self.modulate = Color.WHITE
 
-func take_damage(amount: int) -> void:
-	if self._health:
-		self._health -= amount
+	if not health:
+		self.queue_free()

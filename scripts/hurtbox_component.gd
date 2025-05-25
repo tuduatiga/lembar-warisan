@@ -1,5 +1,6 @@
-class_name HurtBox extends Area2D
+class_name HurtboxComponent extends Area2D
 
+@export var health_component: HealthComponent
 
 func _init() -> void:
 	self.collision_layer = Enums.CollisionLayer.HURTBOX
@@ -10,17 +11,11 @@ func _init() -> void:
 
 
 func _on_area_entered(hitbox: Area2D) -> void:
-	if hitbox is HitBox:
-		if self.owner == hitbox.owner:
-			return
-
-		hitbox.damage(self.attack)
-		self.owner.modulate = Color.RED
+	if hitbox is HitboxComponent:
+		health_component.damage(hitbox.attack)
 
 
 func _on_area_exited(hitbox: Area2D) -> void:
-	if hitbox is HitBox and self.owner:
+	if hitbox is HitboxComponent and self.owner:
 		if self.owner == hitbox.owner:
 			return
-
-		self.owner.modulate = Color.WHITE

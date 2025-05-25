@@ -1,32 +1,24 @@
 class_name Player extends CharacterBody2D
 
 const _SPEED: float = 200.0
-
-var _health: int
+const BULLET := preload("res://scenes/bullet.tscn")
 
 var _animated_sprite: AnimatedSprite2D
 var _collision_shape: CollisionShape2D
 var _enemy_detection_area: Area2D
+var _health_component: HealthComponent
 
 
 func _ready():
-	self._health = 6
-
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
 	self._collision_shape = self.find_child("CollisionShape2D")
 	self._enemy_detection_area = self.find_child("EnemyDetectionArea")
+	self._health_component = self.find_child("HealthComponent")
+
+	self._health_component.damage_taken.connect(_on_damage_taken)
 
 
 func _physics_process(_delta: float) -> void:
-	if not self._health:
-		self._animated_sprite.animation = "front_idle"
-		self._animated_sprite.stop()
-
-		await self.get_tree().create_timer(3).timeout
-
-		self.get_tree().reload_current_scene()
-		return
-
 	for body in self._enemy_detection_area.get_overlapping_bodies():
 		if self._is_enemy(body):
 			body.set_movement_target(self.global_position)
@@ -46,11 +38,26 @@ func _physics_process(_delta: float) -> void:
 
 	self.move_and_slide()
 
+func _on_damage_taken(health: int) -> void:
+	self.modulate = Color.RED
+	await get_tree().create_timer(0.2).timeout
+	self.modulate = Color.WHITE
+
+	if not health:
+		await get_tree().create_timer(3).timeout
+		self.get_tree().reload_current_scene()
+
+func _input(event):
+	if event.is_action_pressed("LMB"):
+		fire()
+
+func fire():
+	var bullet_instance = BULLET.instantiate()
+	bullet_instance.direction = (self.get_global_mouse_position() - self.global_position).normalized()
+
+	self.add_child.call_deferred(bullet_instance)
+
+	print("fire")
 
 func _is_enemy(body: CharacterBody2D) -> bool:
 	return body.collision_layer & Enums.CollisionLayer.ENEMY > 0
-
-
-func take_damage(amount: int) -> void:
-	if self._health:
-		self._health -= amount

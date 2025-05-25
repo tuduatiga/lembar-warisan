@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://du0thsgt5ipfi"]
+[gd_scene load_steps=3 format=3 uid="uid://du0thsgt5ipfi"]
 
 [ext_resource type="Script" uid="uid://qejycy7q4v2f" path="res://scripts/gen_marker.gd" id="1_qa5nm"]
+[ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="2_ig60c"]
 
 [node name="GenMarker" type="Node2D"]
 script = ExtResource("1_qa5nm")
+weighted_scenes = Array[ExtResource("2_ig60c")]([null, null, null, null, null])
 
 [node name="Marker2D" type="Marker2D" parent="."]
 

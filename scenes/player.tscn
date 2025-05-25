@@ -1,7 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://dv1ianyk7wosn"]
+[gd_scene load_steps=36 format=3 uid="uid://dv1ianyk7wosn"]
 
-[ext_resource type="Script" uid="uid://dpkv41jwvfo5n" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://dpkv41jwvfo5n" path="res://scripts/player.gd" id="1_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dkbqhoa5wuqm" path="res://assets/players/cakra.png" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://uommemjb8j1l" path="res://scenes/hurtbox_component.tscn" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://bennnpfghvch1" path="res://scenes/health_component.tscn" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("2_g2els")
@@ -230,7 +232,7 @@ height = 8.0
 radius = 56.1427
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_g2els")
+script = ExtResource("1_dqkch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
@@ -248,3 +250,14 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 shape = SubResource("CircleShape2D_g2els")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_dqkch")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_g2els")
+debug_color = Color(0.982462, 0.131187, 3.85046e-07, 0.42)
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_qlg0r")]
+max_health = 6

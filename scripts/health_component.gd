@@ -1,16 +1,15 @@
 class_name HealthComponent extends Node2D
 
-@export var max_health: int = 10
+signal damage_taken(health: int)
+
+@export var max_health: int
 
 var _health: int
 
-
-func _init() -> void:
+func _ready() -> void:
 	self._health = self.max_health
 
+func damage(attack: Attack):
+	self._health -= attack.attack_damage
 
-func damage(attack: AttackComponent):
-	self._health -= attack.damage
-
-	if not self._health:
-		self.owner.queue_free()
+	damage_taken.emit(self._health)
