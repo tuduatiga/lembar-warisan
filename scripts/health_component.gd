@@ -12,6 +12,6 @@ func _ready() -> void:
 
 
 func damage(attack: Attack):
-	self._health -= attack.attack_damage
+	self._health -= attack.damage
 
 	damage_taken.emit(self._health)

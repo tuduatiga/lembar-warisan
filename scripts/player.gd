@@ -39,14 +39,14 @@ func _physics_process(_delta: float) -> void:
 		Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED * dash_mult
 	)
 
-	if self.velocity.x:
-		self._animated_sprite.flip_h = self.velocity.x < 0
-		self._keris.scale.x = -1 if self.velocity.x < 0 else 1
-		self._keris.position.x = abs(self._keris.position.x) * (-1 if self.velocity.x < 0 else 1)
+	var should_flip_x = (get_global_mouse_position() - self.global_position).x < 0
+	self._animated_sprite.flip_h = should_flip_x
+	self._keris.scale.x = -1 if should_flip_x else 1
+	self._keris.position.x = abs(self._keris.position.x) * (-1 if should_flip_x else 1)
 
 	self._animated_sprite.speed_scale = 1 + self.velocity.length() / self._SPEED
 
-	var dir: String = "back" if self.velocity.y < 0 else "front"
+	var dir: String = "back" if (get_global_mouse_position() - self.global_position).y < 0 else "front"
 	if self.velocity.length_squared() > 0:
 		self._animated_sprite.animation = dir + "_walk"
 	else:
@@ -60,6 +60,8 @@ func _input(event: InputEvent) -> void:
 		self.slash()
 
 	if event.is_action_pressed("ranged_attack"):
+		self._keris.find_child("AnimationPlayer").stop()
+		self._keris.find_child("AnimationPlayer").play("slash")
 		_BULLET.instantiate().spawn(self)
 
 
