@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dh3obpwont6v2"]
+[gd_scene load_steps=16 format=3 uid="uid://dh3obpwont6v2"]
 
 [ext_resource type="Texture2D" uid="uid://bjcgoeyj3iyi0" path="res://assets/monster/pocong.png" id="1_c2xwj"]
 [ext_resource type="Script" uid="uid://bjacw1f1jhcx0" path="res://scripts/monsters/pocong.gd" id="1_wcc33"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bennnpfghvch1" path="res://scenes/health_component.tscn" id="4_o11gq"]
 [ext_resource type="PackedScene" uid="uid://csqdj1o2x2405" path="res://scenes/explosion.tscn" id="5_o11gq"]
 [ext_resource type="PackedScene" uid="uid://dm3o5dyy5xbdm" path="res://scenes/blood.tscn" id="6_u53we"]
+[ext_resource type="AudioStream" uid="uid://c1ritg4dlfu7" path="res://assets/audios/sfx/death_breath.mp3" id="7_xf2cq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcc33"]
 atlas = ExtResource("1_c2xwj")
@@ -94,6 +95,9 @@ debug_color = Color(1, 0, 0, 0.419608)
 position = Vector2(0, -2)
 max_health = 3
 
-[node name="Explosion" parent="." instance=ExtResource("5_o11gq")]
+[node name="ExplosionAnimatedSprite2D" parent="." instance=ExtResource("5_o11gq")]
 
 [node name="Blood" parent="." instance=ExtResource("6_u53we")]
+
+[node name="DeathBreathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xf2cq")

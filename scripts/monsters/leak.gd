@@ -37,7 +37,7 @@ func set_movement_target(movement_target: Vector2) -> void:
 		self.cast(movement_target)
 
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	if not self._navigation_agent:
 		return
 
@@ -72,7 +72,6 @@ func _on_damage_taken(health: int) -> void:
 	await get_tree().create_timer(0.2).timeout
 	self.modulate = Color.WHITE
 	self._blood.emitting = false
-
 
 	if health <= 0:
 		self._explosion_sprite.visible = true

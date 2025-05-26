@@ -1,9 +1,11 @@
 class_name Player extends CharacterBody2D
 
-@export var projectile_texture: Texture2D
-
 const _SPEED: float = 100.0
-const _PROJECTILE := preload("res://scenes/projectile.tscn")
+const _PROJECTILE: PackedScene = preload("res://scenes/projectile.tscn")
+
+var _died: bool = false
+
+@export var projectile_texture: Texture2D
 
 var _animated_sprite: AnimatedSprite2D
 var _collision_shape: CollisionShape2D
@@ -14,6 +16,8 @@ var _blood: CPUParticles2D
 var _dash_timer: Timer
 
 @onready var _slash_sound: Node2D = self.find_child("SlashSound")
+@onready var _scream_sfx: AudioStreamPlayer2D = self.find_child("ScreamingSFX")
+
 
 func _ready():
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
@@ -34,6 +38,9 @@ func _physics_process(_delta: float) -> void:
 		for body in self._enemy_detection_area.get_overlapping_bodies():
 			if body.is_in_group("Enemy"):
 				body.set_movement_target(self.global_position)
+
+	if self._died:
+		return
 
 	var dash_mult = 1
 	if Input.is_key_pressed(KEY_SPACE) and self._dash_timer.time_left == 0:
@@ -81,8 +88,12 @@ func _on_damage_taken(health: int) -> void:
 	self._blood.emitting = false
 
 	if health <= 0:
+		self._died = true
+		self._animated_sprite.animation = "front_idle"
+		self._animated_sprite.stop()
+		self._scream_sfx.play()
 		Engine.time_scale = 0.1
-		await get_tree().create_timer(0.8, true, false, true).timeout
+		await self._scream_sfx.finished
 		Engine.time_scale = 1
 		self.get_tree().reload_current_scene()
 

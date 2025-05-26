@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dkrqlyaxjdiht"]
+[gd_scene load_steps=22 format=3 uid="uid://dkrqlyaxjdiht"]
 
 [ext_resource type="Script" uid="uid://bxnk8epj4i6sb" path="res://scripts/monsters/tuyul.gd" id="1_l4m4o"]
 [ext_resource type="Texture2D" uid="uid://bfaspbu58pil2" path="res://assets/monster/tuyul.png" id="2_l4m4o"]
@@ -8,7 +8,8 @@
 [ext_resource type="Script" uid="uid://byppnbums8a0i" path="res://scripts/attack.gd" id="6_mh877"]
 [ext_resource type="PackedScene" uid="uid://csqdj1o2x2405" path="res://scenes/explosion.tscn" id="7_mh877"]
 [ext_resource type="PackedScene" uid="uid://dm3o5dyy5xbdm" path="res://scenes/blood.tscn" id="8_j8fyt"]
-[ext_resource type="PackedScene" uid="uid://fp27mmiga5cg" path="res://scenes/hit_sound.tscn" id="9_0ejgg"]
+[ext_resource type="AudioStream" uid="uid://f5y6bb70sdq3" path="res://assets/audios/sfx/kid_crying.mp3" id="9_0ejgg"]
+[ext_resource type="PackedScene" uid="uid://fp27mmiga5cg" path="res://scenes/hit_sound.tscn" id="10_gmmfo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3f7h"]
 atlas = ExtResource("2_l4m4o")
@@ -132,4 +133,8 @@ shape = SubResource("CircleShape2D_qbt8j")
 
 [node name="Blood" parent="." instance=ExtResource("8_j8fyt")]
 
-[node name="HitSound" parent="." instance=ExtResource("9_0ejgg")]
+[node name="KidCryingSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_0ejgg")
+pitch_scale = 0.75
+
+[node name="HitSound" parent="." instance=ExtResource("10_gmmfo")]

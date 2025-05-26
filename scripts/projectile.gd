@@ -3,9 +3,9 @@ extends Node2D
 
 const SPEED = 150.0
 
-var direction: Vector2 = Vector2.ZERO
-
 @export var texture: Texture2D
+
+var direction: Vector2 = Vector2.ZERO
 
 @onready var _sprite: Sprite2D = self.find_child("Sprite2D")
 @onready var _hitbox: HitboxComponent = self.find_child("HitboxComponent")
@@ -13,18 +13,19 @@ var direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	if self.texture:
-		self._sprite.texture = self.texture	
+		self._sprite.texture = self.texture
 
 	self._hitbox.body_hit.connect(_on_body_hit)
 	self._hitbox.area_hit.connect(_on_area_hit)
 
 
-func with_texture(texture: Texture2D) -> Projectile:
-	self.texture = texture
+func with_texture(p_texture: Texture2D) -> Projectile:
+	self.texture = p_texture
 	return self
 
-func with_modulate(modulate: Color) -> Projectile:
-	self._sprite.modulate = modulate
+
+func with_modulate(p_modulate: Color) -> Projectile:
+	self._sprite.modulate = p_modulate
 	return self
 
 
@@ -37,10 +38,10 @@ func spawn(proprietor: Node2D) -> Projectile:
 	return self
 
 
-func spawn_with_direction(proprietor: Node2D, direction: Vector2) -> Projectile:
+func spawn_with_direction(proprietor: Node2D, p_direction: Vector2) -> Projectile:
 	proprietor.get_tree().root.get_child(1).add_child(self)
 	self._hitbox.proprietor = proprietor
-	self.direction = direction
+	self.direction = p_direction
 	self._sprite.rotate(self.direction.angle())
 	self.global_position = proprietor.global_position + self.direction * 10
 	return self

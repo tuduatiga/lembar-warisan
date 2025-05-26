@@ -9,10 +9,14 @@ var _health_component: HealthComponent
 
 @onready var _blood: CPUParticles2D = self.find_child("Blood")
 @onready var _explosion_sprite: AnimatedSprite2D = self.find_child("Explosion")
+@onready var _death_breath_sfx: AudioStreamPlayer2D = self.find_child("DeathBreathSFX")
 
 
 func _ready() -> void:
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
+
+	self._explosion_sprite = self.find_child("ExplosionAnimatedSprite2D")
+	self._explosion_sprite.visible = false
 
 	self._navigation_agent = self.find_child("NavigationAgent2D")
 	self._navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
@@ -63,9 +67,13 @@ func _on_damage_taken(health: int) -> void:
 	self._blood.emitting = false
 
 	if health <= 0:
+		self._death_breath_sfx.play()
 		self._explosion_sprite.visible = true
 		self._explosion_sprite.play()
 		self._animated_sprite.visible = false
 		self._navigation_agent.queue_free()
 		await get_tree().create_timer(0.5).timeout
+		self._animated_sprite.queue_free()
+		self._explosion_sprite.queue_free()
+		await self._death_breath_sfx.finished
 		self.queue_free()
