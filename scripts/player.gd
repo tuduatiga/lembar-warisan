@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 const _SPEED: float = 100.0
 const _PROJECTILE: PackedScene = preload("res://scenes/projectile.tscn")
 
-var _died: bool = false
+var dead: bool = false
 
 @export var projectile_texture: Texture2D
 
@@ -34,13 +34,13 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
+	if self.dead:
+		return
+
 	if self._enemy_detection_area.monitoring:
 		for body in self._enemy_detection_area.get_overlapping_bodies():
 			if body.is_in_group("Enemy"):
 				body.set_movement_target(self.global_position)
-
-	if self._died:
-		return
 
 	var dash_mult = 1
 	if Input.is_key_pressed(KEY_SPACE) and self._dash_timer.time_left == 0:
@@ -70,6 +70,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if self.dead:
+		return
+	
 	if event.is_action_pressed("melee_attack"):
 		self.slash()
 
@@ -81,7 +84,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_damage_taken(health: int) -> void:
-	if self._died:
+	if self.dead:
 		return
 	
 	self._blood.emitting = true
@@ -91,7 +94,7 @@ func _on_damage_taken(health: int) -> void:
 	self._blood.emitting = false
 
 	if health <= 0:
-		self._died = true
+		self.dead = true
 		self._animated_sprite.animation = "front_idle"
 		self._animated_sprite.stop()
 		self._scream_sfx.play()

@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://ceog32nq6kv54" path="res://assets/tilemaps/dungeon.tres" id="2_aefnn"]
 [ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="3_0teo6"]
 [ext_resource type="PackedScene" uid="uid://bnp1nookh8iv8" path="res://scenes/gen_area.tscn" id="4_q5i2f"]
-[ext_resource type="Script" uid="uid://blhrc48bok50r" path="res://scripts/dungeon_area.gd" id="5_6rvsb"]
+[ext_resource type="PackedScene" uid="uid://be1mtp5v55k7o" path="res://scenes/dungeon_area.tscn" id="5_0teo6"]
 [ext_resource type="PackedScene" uid="uid://dh3obpwont6v2" path="res://scenes/monsters/pocong.tscn" id="7_6mbrl"]
 [ext_resource type="PackedScene" uid="uid://dkrqlyaxjdiht" path="res://scenes/monsters/tuyul.tscn" id="8_0teo6"]
 [ext_resource type="PackedScene" uid="uid://be8orjqr2fowc" path="res://scenes/monsters/leak.tscn" id="9_0teo6"]
@@ -49,7 +49,7 @@ metadata/_custom_type_script = "uid://lkmg24m4cryd"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5i2f"]
 size = Vector2(160, 192)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aefnn"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0teo6"]
 size = Vector2(160, 176)
 
 [node name="DungeonTest" type="Node2D"]
@@ -83,14 +83,12 @@ fallback_scene = "uid://deoy4cbvg2dns"
 position = Vector2(0, -336)
 shape = SubResource("RectangleShape2D_q5i2f")
 
-[node name="DungeonArea" type="Area2D" parent="."]
+[node name="DungeonArea" parent="." instance=ExtResource("5_0teo6")]
 position = Vector2(0, -240)
-collision_mask = 22
-script = ExtResource("5_6rvsb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonArea"]
 position = Vector2(0, -104)
-shape = SubResource("RectangleShape2D_aefnn")
+shape = SubResource("RectangleShape2D_0teo6")
 
 [node name="Bar" parent="." instance=ExtResource("2_6rvsb")]
 position = Vector2(-24, 0)

@@ -2,36 +2,31 @@ class_name Pocong extends CharacterBody2D
 
 const _MOVEMENT_SPEED: float = 30.0
 
-var _animated_sprite: AnimatedSprite2D
-var _navigation_agent: NavigationAgent2D
+var dead: bool = false
 
-var _health_component: HealthComponent
-
+@onready var _animated_sprite: AnimatedSprite2D = self.find_child("AnimatedSprite2D")
+@onready var _explosion_sprite: AnimatedSprite2D = self.find_child("ExplosionAnimatedSprite2D")
+@onready var _navigation_agent: NavigationAgent2D = self.find_child("NavigationAgent2D")
+@onready var _health_component: HealthComponent = self.find_child("HealthComponent")
+@onready var _hurtbox_component: HurtboxComponent = self.find_child("HurtboxComponent")
 @onready var _blood: CPUParticles2D = self.find_child("Blood")
-@onready var _explosion_sprite: AnimatedSprite2D = self.find_child("Explosion")
 @onready var _death_breath_sfx: AudioStreamPlayer2D = self.find_child("DeathBreathSFX")
 
-
 func _ready() -> void:
-	self._animated_sprite = self.find_child("AnimatedSprite2D")
-
-	self._explosion_sprite = self.find_child("ExplosionAnimatedSprite2D")
 	self._explosion_sprite.visible = false
-
-	self._navigation_agent = self.find_child("NavigationAgent2D")
 	self._navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
-
-	self._health_component = self.find_child("HealthComponent")
 	self._health_component.damage_taken.connect(_on_damage_taken)
 
 
 func set_movement_target(movement_target: Vector2) -> void:
-	if self._navigation_agent:
-		self._navigation_agent.set_target_position(movement_target)
+	if self.dead:
+		return
+
+	self._navigation_agent.set_target_position(movement_target)
 
 
 func _physics_process(_delta) -> void:
-	if not self._navigation_agent:
+	if self.dead:
 		return
 
 	if self.velocity.x:
@@ -67,6 +62,7 @@ func _on_damage_taken(health: int) -> void:
 	self._blood.emitting = false
 
 	if health <= 0:
+		self.dead = true
 		self._death_breath_sfx.play()
 		self._explosion_sprite.visible = true
 		self._explosion_sprite.play()
@@ -77,3 +73,7 @@ func _on_damage_taken(health: int) -> void:
 		self._explosion_sprite.queue_free()
 		await self._death_breath_sfx.finished
 		self.queue_free()
+
+func set_invincible(value: bool = true) -> void:
+	self._hurtbox_component.monitoring = not value
+	self._hurtbox_component.monitorable = not value

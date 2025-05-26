@@ -91,10 +91,6 @@ position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_ros2q")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="HealthComponent2" parent="." groups=["Enemy"] instance=ExtResource("4_o11gq")]
-position = Vector2(0, -2)
-max_health = 3
-
 [node name="ExplosionAnimatedSprite2D" parent="." instance=ExtResource("5_o11gq")]
 
 [node name="Blood" parent="." instance=ExtResource("6_u53we")]

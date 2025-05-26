@@ -2,17 +2,18 @@ class_name Leak extends CharacterBody2D
 
 @export var projectile_texture: Texture2D
 
+var dead: bool = false
+
 const _MOVEMENT_SPEED: float = 20.0
 const _PROJECTILE := preload("res://scenes/projectile.tscn")
 
-var _sprite: Sprite2D
-var _navigation_agent: NavigationAgent2D
-var _cast_timer: Timer
-
-var _health_component: HealthComponent
-
-@onready var _blood: CPUParticles2D = self.find_child("Blood")
+@onready var _sprite: Sprite2D = self.find_child("Sprite2D")
 @onready var _explosion_sprite: AnimatedSprite2D = self.find_child("Explosion")
+@onready var _navigation_agent: NavigationAgent2D = self.find_child("NavigationAgent2D")
+@onready var _cast_timer: Timer = self.find_child("CastTimer")
+@onready var _health_component: HealthComponent = self.find_child("HealthComponent")
+@onready var _hurtbox_component: HurtboxComponent = self.find_child("HurtboxComponent")
+@onready var _blood: CPUParticles2D = self.find_child("Blood")
 
 
 func _ready() -> void:
@@ -28,7 +29,7 @@ func _ready() -> void:
 
 
 func set_movement_target(movement_target: Vector2) -> void:
-	if not self._navigation_agent:
+	if self.dead:
 		return
 
 	self._navigation_agent.set_target_position(movement_target)
@@ -38,7 +39,7 @@ func set_movement_target(movement_target: Vector2) -> void:
 
 
 func _physics_process(_delta) -> void:
-	if not self._navigation_agent:
+	if self.dead:
 		return
 
 	if self.velocity.x:
@@ -74,6 +75,7 @@ func _on_damage_taken(health: int) -> void:
 	self._blood.emitting = false
 
 	if health <= 0:
+		self.dead = true
 		self._explosion_sprite.visible = true
 		self._explosion_sprite.play()
 		self._sprite.visible = false
@@ -108,3 +110,7 @@ func cast(target_position: Vector2):
 		)
 		. with_modulate(Color.BLACK)
 	)
+
+func set_invincible(value: bool = true) -> void:
+	self._hurtbox_component.monitoring = not value
+	self._hurtbox_component.monitorable = not value

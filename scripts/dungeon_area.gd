@@ -1,3 +1,4 @@
+class_name DungeonArea
 extends Area2D
 
 var _clear: bool
@@ -43,7 +44,8 @@ func _physics_process(_delta: float) -> void:
 					else:
 						(body.find_child("EnemyDetectionArea") as Area2D).monitoring = true
 
-				if body.collision_layer & Enums.CollisionLayer.ENEMY:
+				if body.collision_layer & Enums.CollisionLayer.ENEMY and not body.dead:
+					body.set_invincible(false)
 					should_be_clear = false
 
 		self._clear = should_be_clear
@@ -52,6 +54,9 @@ func _physics_process(_delta: float) -> void:
 func _on_body_entered(body: PhysicsBody2D) -> void:
 	if self._clear:
 		return
+
+	if body.is_in_group("Enemy") and not self._visited:
+		body.set_invincible.call_deferred(true)
 
 	if body is Player and not self._visited:
 		self._visited = true

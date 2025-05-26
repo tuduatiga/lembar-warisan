@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://fp27mmiga5cg"]
 
-[ext_resource type="Script" uid="uid://umoe5s0e4erw" path="res://scripts/hit_sound.gd" id="1_qu8rw"]
+[ext_resource type="Script" path="res://scripts/hit_sound.gd" id="1_qu8rw"]
 [ext_resource type="AudioStream" uid="uid://d27qb7qyo55ki" path="res://scenes/audios/sfx/hit-flesh-1.mp3" id="2_08xy8"]
 [ext_resource type="AudioStream" uid="uid://dx66546ic4j68" path="res://scenes/audios/sfx/hit-flesh-2.mp3" id="3_yebx7"]
 [ext_resource type="AudioStream" uid="uid://dkr61tb387lr6" path="res://scenes/audios/sfx/hit-flesh-3.mp3" id="4_08xy8"]

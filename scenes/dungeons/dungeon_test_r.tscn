@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://du0thsgt5ipfi" path="res://scenes/gen_marker.tscn" id="2_rwgn5"]
 [ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="3_dgpcc"]
 [ext_resource type="PackedScene" uid="uid://bnp1nookh8iv8" path="res://scenes/gen_area.tscn" id="4_rwgn5"]
-[ext_resource type="Script" uid="uid://blhrc48bok50r" path="res://scripts/dungeon_area.gd" id="5_cuwo4"]
+[ext_resource type="PackedScene" uid="uid://be1mtp5v55k7o" path="res://scenes/dungeon_area.tscn" id="5_bqq3o"]
 [ext_resource type="PackedScene" uid="uid://5j2uimwwyhq" path="res://scenes/bar.tscn" id="5_dgpcc"]
 [ext_resource type="PackedScene" uid="uid://dh3obpwont6v2" path="res://scenes/monsters/pocong.tscn" id="6_bqq3o"]
 [ext_resource type="PackedScene" uid="uid://dkrqlyaxjdiht" path="res://scenes/monsters/tuyul.tscn" id="7_4t67g"]
@@ -64,10 +64,8 @@ fallback_scene = "uid://c1rof8k3nxy4k"
 position = Vector2(336, 0)
 shape = SubResource("RectangleShape2D_pc6qo")
 
-[node name="DungeonArea" type="Area2D" parent="."]
+[node name="DungeonArea" parent="." instance=ExtResource("5_bqq3o")]
 position = Vector2(240, 0)
-collision_mask = 22
-script = ExtResource("5_cuwo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonArea"]
 position = Vector2(98, 0)

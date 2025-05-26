@@ -4,17 +4,17 @@ signal damage_taken(health: int)
 
 @export var max_health: int
 
-var _health: int
+var health: int
 
 
 func _ready() -> void:
-	self._health = self.max_health
+	self.health = self.max_health
 
 
 func damage(attack: Attack):
-	if _health <= 0:
+	if self.health <= 0:
 		return
 
-	self._health -= attack.damage
+	self.health -= attack.damage
 
-	damage_taken.emit(self._health)
+	damage_taken.emit(self.health)
