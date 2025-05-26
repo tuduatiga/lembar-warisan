@@ -81,6 +81,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_damage_taken(health: int) -> void:
+	if self._died:
+		return
+	
 	self._blood.emitting = true
 	self.modulate = Color.RED
 	await get_tree().create_timer(0.2).timeout

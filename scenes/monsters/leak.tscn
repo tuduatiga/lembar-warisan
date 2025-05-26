@@ -36,8 +36,8 @@ avoidance_enabled = true
 radius = 20.0
 neighbor_distance = 50.0
 max_speed = 20.0
-avoidance_layers = 2
-avoidance_mask = 2
+avoidance_layers = 4
+avoidance_mask = 4
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy"] instance=ExtResource("2_08sb5")]
 health_component = NodePath("../HealthComponent")
