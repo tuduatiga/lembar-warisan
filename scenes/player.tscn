@@ -288,6 +288,7 @@ energy = 0.5
 shadow_enabled = true
 texture = ExtResource("8_y4r1p")
 texture_scale = 0.5
+height = 16.0
 
 [node name="SlashSound" parent="." instance=ExtResource("9_ur7pv")]
 
