@@ -28,6 +28,9 @@ gdscript/warnings/untyped_declaration=2
 
 Player=""
 Enemy=""
+Wall=""
+EndBar=""
+DungeonArea=""
 
 [input]
 

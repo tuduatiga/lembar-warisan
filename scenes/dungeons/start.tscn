@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://chxpbu1xgua37"]
+[gd_scene load_steps=6 format=4 uid="uid://chxpbu1xgua37"]
 
+[ext_resource type="Script" uid="uid://cilupoufss11b" path="res://scripts/dungeons/start.gd" id="1_ldnq4"]
 [ext_resource type="TileSet" uid="uid://ceog32nq6kv54" path="res://assets/tilemaps/dungeon.tres" id="1_n72fe"]
 [ext_resource type="PackedScene" uid="uid://du0thsgt5ipfi" path="res://scenes/gen_marker.tscn" id="2_h4jbq"]
 [ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="3_tmeug"]
@@ -13,6 +14,10 @@ metadata/_custom_type_script = "uid://lkmg24m4cryd"
 [node name="Start" type="Node2D"]
 z_as_relative = false
 y_sort_enabled = true
+script = ExtResource("1_ldnq4")
+end_scene = "uid://d42nsw664unh"
+end_scene_l = "uid://dqsid3eox7mu"
+end_scene_r = "uid://badjqn1jibhp1"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1
@@ -22,5 +27,5 @@ tile_set = ExtResource("1_n72fe")
 [node name="GenMarker" parent="." instance=ExtResource("2_h4jbq")]
 position = Vector2(0, -112)
 weighted_scenes = Array[ExtResource("3_tmeug")]([SubResource("Resource_agnw8")])
-depth = 7
+depth = 1
 fallback_scene = "uid://deoy4cbvg2dns"

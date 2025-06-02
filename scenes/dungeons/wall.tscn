@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://ceog32nq6kv54" path="res://assets/tilemaps/dungeon.tres" id="1_bru8w"]
 
-[node name="Wall" type="Node2D"]
+[node name="Wall" type="Node2D" groups=["Wall"]]
 y_sort_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

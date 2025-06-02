@@ -19,7 +19,11 @@ func _physics_process(_delta: float) -> void:
 	if self._visited:
 		for body in self.get_overlapping_bodies():
 			if body is PhysicsBody2D:
-				if body is Bar and body.collision_layer & Enums.CollisionLayer.BAR > 0:
+				if (
+					body is Bar
+					and not body.owner.name.begins_with("End")
+					and body.collision_layer & Enums.CollisionLayer.BAR > 0
+				):
 					if body.open and not self._clear:
 						self._atmosphere_music.stop()
 						self._atmosphere_music.stream = AudioStreamMP3.load_from_file(
@@ -37,6 +41,14 @@ func _physics_process(_delta: float) -> void:
 						self._atmosphere_music.play(5)
 
 						body.transition_open()
+						if (
+							self.get_tree().get_nodes_in_group("DungeonArea").find_custom(
+								func(dungeon_area: DungeonArea) -> bool: return not dungeon_area._clear
+							)
+							== -1
+						):
+							for end_bar in self.get_tree().get_nodes_in_group("EndBar"):
+								end_bar.transition_open()
 
 				if body is Player:
 					if self._clear:

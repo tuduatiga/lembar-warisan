@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://ceog32nq6kv54" path="res://assets/tilemaps/dungeon.tres" id="1_bc8ko"]
 
-[node name="WallR" type="Node2D"]
+[node name="WallL" type="Node2D" groups=["Wall"]]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1
