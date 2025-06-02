@@ -69,6 +69,7 @@ func _on_damage_taken(health: int) -> void:
 		self._explosion_sprite.play()
 		self._animated_sprite.visible = false
 		self._navigation_agent.queue_free()
+		self._hurtbox_component.queue_free()
 		await get_tree().create_timer(0.5).timeout
 		self._animated_sprite.queue_free()
 		self._explosion_sprite.queue_free()
