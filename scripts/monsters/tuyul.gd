@@ -1,8 +1,8 @@
 class_name Tuyul extends CharacterBody2D
 
-var _movement_speed: float = 250.0
-
 var dead: bool = false
+
+var _movement_speed: float = 250.0
 
 @onready var _animated_sprite: AnimatedSprite2D = self.find_child("AnimatedSprite2D")
 @onready var _explosion_sprite: AnimatedSprite2D = self.find_child("Explosion")
@@ -68,10 +68,10 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 
 
 func _on_damage_taken(health: int) -> void:
-	self.modulate = Color.RED
+	self._animated_sprite.modulate = Color.RED
 	self._blood.emitting = true
 	await get_tree().create_timer(0.2).timeout
-	self.modulate = Color.WHITE
+	self._animated_sprite.modulate = Color.WHITE
 	self._blood.emitting = false
 
 	self._hit_sound.play_hit_sound()
@@ -88,6 +88,7 @@ func _on_damage_taken(health: int) -> void:
 		self._explosion_sprite.queue_free()
 		await self._kid_crying_sfx.finished
 		self.queue_free()
+
 
 func set_invincible(value: bool = true) -> void:
 	self._hurtbox_component.monitoring = not value

@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iwqyq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvlm"]
-bg_color = Color(0.35, 0.7, 0.525, 1)
+bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwqyq"]
 bg_color = Color(0, 0, 0, 1)
@@ -46,6 +46,6 @@ value = 80.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
 ignore_time_scale = true

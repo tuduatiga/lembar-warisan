@@ -1,11 +1,11 @@
 class_name Leak extends CharacterBody2D
 
+const _MOVEMENT_SPEED: float = 20.0
+const _PROJECTILE: Resource = preload("res://scenes/projectile.tscn")
+
 @export var projectile_texture: Texture2D
 
 var dead: bool = false
-
-const _MOVEMENT_SPEED: float = 20.0
-const _PROJECTILE := preload("res://scenes/projectile.tscn")
 
 @onready var _sprite: Sprite2D = self.find_child("Sprite2D")
 @onready var _explosion_sprite: AnimatedSprite2D = self.find_child("Explosion")
@@ -68,10 +68,10 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 
 
 func _on_damage_taken(health: int) -> void:
-	self.modulate = Color.RED
+	self._sprite.modulate = Color.RED
 	self._blood.emitting = true
 	await get_tree().create_timer(0.2).timeout
-	self.modulate = Color.WHITE
+	self._sprite.modulate = Color.WHITE
 	self._blood.emitting = false
 
 	if health <= 0:
@@ -110,6 +110,7 @@ func cast(target_position: Vector2) -> void:
 		)
 		. with_modulate(Color.BLACK)
 	)
+
 
 func set_invincible(value: bool = true) -> void:
 	self._hurtbox_component.monitoring = not value
