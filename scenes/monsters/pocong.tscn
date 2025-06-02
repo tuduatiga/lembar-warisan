@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dh3obpwont6v2"]
+[gd_scene load_steps=17 format=3 uid="uid://dh3obpwont6v2"]
 
 [ext_resource type="Texture2D" uid="uid://bjcgoeyj3iyi0" path="res://assets/monster/pocong.png" id="1_c2xwj"]
 [ext_resource type="Script" uid="uid://bjacw1f1jhcx0" path="res://scripts/monsters/pocong.gd" id="1_wcc33"]
+[ext_resource type="PackedScene" uid="uid://qocxyye4uog6" path="res://scenes/health_bar.tscn" id="3_iqhuh"]
 [ext_resource type="PackedScene" uid="uid://uommemjb8j1l" path="res://scenes/hurtbox_component.tscn" id="3_ros2q"]
 [ext_resource type="PackedScene" uid="uid://bennnpfghvch1" path="res://scenes/health_component.tscn" id="4_o11gq"]
 [ext_resource type="PackedScene" uid="uid://csqdj1o2x2405" path="res://scenes/explosion.tscn" id="5_o11gq"]
@@ -79,6 +80,8 @@ target_desired_distance = 20.0
 avoidance_enabled = true
 radius = 20.0
 neighbor_distance = 50.0
+
+[node name="HealthBar" parent="." instance=ExtResource("3_iqhuh")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_o11gq")]
 max_health = 3

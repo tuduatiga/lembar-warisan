@@ -72,7 +72,7 @@ func _physics_process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if self.dead:
 		return
-	
+
 	if event.is_action_pressed("melee_attack"):
 		self.slash()
 
@@ -86,7 +86,7 @@ func _input(event: InputEvent) -> void:
 func _on_damage_taken(health: int) -> void:
 	if self.dead:
 		return
-	
+
 	self._blood.emitting = true
 	self.modulate = Color.RED
 	await get_tree().create_timer(0.2).timeout
