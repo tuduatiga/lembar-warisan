@@ -3,9 +3,10 @@ class_name Player extends CharacterBody2D
 const _SPEED: float = 100.0
 const _PROJECTILE: PackedScene = preload("res://scenes/projectile.tscn")
 
-var dead: bool = false
-
 @export var projectile_texture: Texture2D
+
+var dead: bool = false
+var health_component: HealthComponent
 
 var _animated_sprite: AnimatedSprite2D
 var _collision_shape: CollisionShape2D
@@ -13,8 +14,6 @@ var _keris: Node2D
 var _enemy_detection_area: Area2D
 var _blood: CPUParticles2D
 var _dash_timer: Timer
-
-var health_component: HealthComponent
 
 @onready var _slash_sound: Node2D = self.find_child("SlashSound")
 @onready var _scream_sfx: AudioStreamPlayer2D = self.find_child("ScreamingSFX")
