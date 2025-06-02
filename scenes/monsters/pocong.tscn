@@ -64,7 +64,7 @@ radius = 3.0
 height = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iqhuh"]
-radius = 86.0058
+radius = 122.0
 
 [sub_resource type="Resource" id="Resource_pykyl"]
 script = ExtResource("11_n8y20")

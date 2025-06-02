@@ -91,6 +91,8 @@ func _on_attack_timer_timeout() -> void:
 		return
 
 	self.attack(self._target_position)
+	await get_tree().create_timer(0.2).timeout
+	self.attack(self._target_position)
 	self._attack_timer.wait_time = randf_range(2.0, 3.0)
 
 
