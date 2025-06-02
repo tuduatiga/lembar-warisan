@@ -10,10 +10,11 @@ var dead: bool = false
 var _animated_sprite: AnimatedSprite2D
 var _collision_shape: CollisionShape2D
 var _keris: Node2D
-var _health_component: HealthComponent
 var _enemy_detection_area: Area2D
 var _blood: CPUParticles2D
 var _dash_timer: Timer
+
+var health_component: HealthComponent
 
 @onready var _slash_sound: Node2D = self.find_child("SlashSound")
 @onready var _scream_sfx: AudioStreamPlayer2D = self.find_child("ScreamingSFX")
@@ -24,11 +25,11 @@ func _ready() -> void:
 	self._collision_shape = self.find_child("CollisionShape2D")
 	self._keris = self.find_child("Keris")
 	self._enemy_detection_area = self.find_child("EnemyDetectionArea")
-	self._health_component = self.find_child("HealthComponent")
+	self.health_component = self.find_child("HealthComponent")
 	self._blood = self.find_child("Blood")
 	self._dash_timer = self.find_child("DashTimer")
 
-	self._health_component.damage_taken.connect(_on_damage_taken)
+	self.health_component.damage_taken.connect(_on_damage_taken)
 
 	self._keris.find_child("Wrapper").find_child("HitboxComponent").proprietor = self
 
