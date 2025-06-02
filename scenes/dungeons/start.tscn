@@ -27,5 +27,5 @@ tile_set = ExtResource("1_n72fe")
 [node name="GenMarker" parent="." instance=ExtResource("2_h4jbq")]
 position = Vector2(0, -112)
 weighted_scenes = Array[ExtResource("3_tmeug")]([SubResource("Resource_agnw8")])
-depth = 1
+depth = 7
 fallback_scene = "uid://deoy4cbvg2dns"
