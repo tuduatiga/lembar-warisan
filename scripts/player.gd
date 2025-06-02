@@ -45,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 	var dash_mult: int = 1
 	if Input.is_key_pressed(KEY_SPACE) and self._dash_timer.time_left == 0:
 		self._dash_timer.start()
-		dash_mult = 10
+		dash_mult = 12
 
 	self.velocity = (
 		Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED * dash_mult

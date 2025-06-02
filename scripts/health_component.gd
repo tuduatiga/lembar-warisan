@@ -14,7 +14,7 @@ var _iframe_delay: float
 func _ready() -> void:
 	self.health = self.max_health
 	self._health_bar = self.owner.find_child("HealthBar")
-	self._iframe_delay = 1.0 if self.owner.get_groups().has("Player") else 0.5
+	self._iframe_delay = 0.3 if self.owner.get_groups().has("Player") else 0.1
 
 	if self._health_bar:
 		self._health_bar.init(self.health)
