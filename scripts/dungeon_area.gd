@@ -60,4 +60,5 @@ func _on_body_entered(body: PhysicsBody2D) -> void:
 
 	if body is Player and not self._visited:
 		self._visited = true
-		body.global_position.y = min(body.global_position.y, self.global_position.y - 16)
+		var dir: Vector2 = (self.global_position - body.global_position).normalized()
+		body.global_position += dir * (6 if abs(dir.x) > 0.5 else 18)

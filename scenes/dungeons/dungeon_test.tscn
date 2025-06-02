@@ -83,10 +83,10 @@ position = Vector2(0, -336)
 shape = SubResource("RectangleShape2D_q5i2f")
 
 [node name="DungeonArea" parent="." instance=ExtResource("5_0teo6")]
-position = Vector2(0, -240)
+position = Vector2(0, -328)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonArea"]
-position = Vector2(0, -104)
 shape = SubResource("RectangleShape2D_0teo6")
 
 [node name="Bar" parent="." instance=ExtResource("2_6rvsb")]
