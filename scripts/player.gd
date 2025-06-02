@@ -14,9 +14,11 @@ var _keris: Node2D
 var _enemy_detection_area: Area2D
 var _blood: CPUParticles2D
 var _dash_timer: Timer
+var _can_attack: bool = true
 
 @onready var _slash_sound: Node2D = self.find_child("SlashSound")
 @onready var _scream_sfx: AudioStreamPlayer2D = self.find_child("ScreamingSFX")
+@onready var _attack_timer: Timer = self.get_node("AttackTimer")
 
 
 func _ready() -> void:
@@ -31,6 +33,10 @@ func _ready() -> void:
 	self.health_component.damage_taken.connect(_on_damage_taken)
 
 	self._keris.find_child("Wrapper").find_child("HitboxComponent").proprietor = self
+
+	self._attack_timer.wait_time = 0.2
+	self._attack_timer.one_shot = true
+	self._attack_timer.timeout.connect(_on_attack_timer_timeout)
 
 
 func _physics_process(_delta: float) -> void:
@@ -77,10 +83,15 @@ func _input(event: InputEvent) -> void:
 		self.slash()
 
 	if event.is_action_pressed("ranged_attack"):
+		if not self._can_attack:
+			return
+
 		self._keris.find_child("AnimationPlayer").stop()
 		self._keris.find_child("AnimationPlayer").play("ranged")
 		self._slash_sound.play_sound()
 		_PROJECTILE.instantiate().with_texture(projectile_texture).spawn(self)
+		self._can_attack = false
+		self._attack_timer.start()
 
 
 func _on_damage_taken(health: int) -> void:
@@ -111,3 +122,7 @@ func slash() -> void:
 
 func set_enemies_monitoring_status(status: bool) -> void:
 	self._enemy_detection_area.monitoring = status
+
+func _on_attack_timer_timeout() -> void:
+	self._can_attack = true
+
