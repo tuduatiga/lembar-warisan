@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca661mvy3lv4l"]
+
+[ext_resource type="FontFile" uid="uid://c32e7xeuv50yk" path="res://assets/fonts/PublicPixel.ttf" id="1_n54lc"]
+[ext_resource type="Script" uid="uid://cb8oiwryxetbx" path="res://scripts/menu/pause_menu.gd" id="1_ux7g8"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ux7g8")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+tooltip_text = "Lanjutkan permainan"
+theme_override_fonts/font = ExtResource("1_n54lc")
+theme_override_font_sizes/font_size = 16
+text = "Lanjutkan"
+
+[node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+tooltip_text = "Mulai ulang permainan"
+theme_override_fonts/font = ExtResource("1_n54lc")
+theme_override_font_sizes/font_size = 16
+text = "Mulai Ulang"
+
+[node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+tooltip_text = "Keluar ke menu utama"
+theme_override_fonts/font = ExtResource("1_n54lc")
+theme_override_font_sizes/font_size = 16
+text = "Keluar"

@@ -1,0 +1,37 @@
+extends Control
+
+@onready var _margin_container: MarginContainer = $MarginContainer
+@onready var _settings_menu: SettingsMenu = $SettingsMenu
+
+@onready var _play_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/PlayButton
+@onready var _settings_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/SettingsButton
+@onready var _exit_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/ExitButton
+
+@onready var _game: PackedScene = preload("res://scenes/game.tscn")
+
+
+func _ready() -> void:
+	self._play_button.button_down.connect(self._on_play_button_pressed)
+	self._settings_button.button_down.connect(self._on_settings_button_pressed)
+	self._exit_button.button_down.connect(self._on_exit_button_pressed)
+
+	self._settings_menu.exit_settings_menu.connect(self._on_exit_settings_menu)
+
+
+func _on_play_button_pressed() -> void:
+	self.get_tree().change_scene_to_packed(self._game)
+
+
+func _on_settings_button_pressed() -> void:
+	self._margin_container.visible = false
+	self._settings_menu.set_process(true)
+	self._settings_menu.visible = true
+
+
+func _on_exit_settings_menu() -> void:
+	self._margin_container.visible = true
+	self._settings_menu.visible = false
+
+
+func _on_exit_button_pressed() -> void:
+	self.get_tree().quit()

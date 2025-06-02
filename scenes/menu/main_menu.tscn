@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://elgvi6ad86nv"]
+
+[ext_resource type="Script" uid="uid://c8245lrwbow6p" path="res://scripts/menu/main_menu.gd" id="1_247la"]
+[ext_resource type="Texture2D" uid="uid://bo2ryc2qak2w3" path="res://assets/backgrounds/Frieren, Fern, and Qual.jpg" id="1_yqeox"]
+[ext_resource type="FontFile" uid="uid://c32e7xeuv50yk" path="res://assets/fonts/PublicPixel.ttf" id="2_vjb58"]
+[ext_resource type="LabelSettings" uid="uid://cpqhmfudqseeq" path="res://resources/menu/header_label.tres" id="3_kiqgm"]
+[ext_resource type="PackedScene" uid="uid://blxojnb3tqrrf" path="res://scenes/menu/settings/settings_menu.tscn" id="4_kiqgm"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_247la")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yqeox")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sōsō no Furīren"
+label_settings = ExtResource("3_kiqgm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Separator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+tooltip_text = "Mulai bermain"
+theme_override_fonts/font = ExtResource("2_vjb58")
+theme_override_font_sizes/font_size = 16
+text = "Mulai"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+tooltip_text = "Pengaturan permainan"
+theme_override_fonts/font = ExtResource("2_vjb58")
+theme_override_font_sizes/font_size = 16
+text = "Pengaturan"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+tooltip_text = "Keluar dari permainan"
+theme_override_fonts/font = ExtResource("2_vjb58")
+theme_override_font_sizes/font_size = 16
+text = "Keluar"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("4_kiqgm")]
+visible = false
+layout_mode = 1
