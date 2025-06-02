@@ -16,14 +16,14 @@ func _ready() -> void:
 		if not self.fallback_scene:
 			return
 
-		var FallbackScene = load(self.fallback_scene)
+		var FallbackScene: Resource = load(self.fallback_scene)
 		if FallbackScene:
 			self.get_child(0).add_child.call_deferred(FallbackScene.instantiate())
 
 		return
 
 	var cumulative_weights: Array = self.weighted_scenes.reduce(
-		func(acc, weighted: WeightedScene):
+		func(acc: Array, weighted: WeightedScene) -> Array:
 			return acc + [weighted.weight + (0 if acc.size() == 0 else acc[-1])],
 		[]
 	)
@@ -32,7 +32,7 @@ func _ready() -> void:
 		(
 			self
 			. weighted_scenes[cumulative_weights.find_custom(
-				func(weight: int): return chosen_weight <= weight
+				func(weight: int) -> bool: return chosen_weight <= weight
 			)]
 			. scene
 		)

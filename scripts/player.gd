@@ -19,7 +19,7 @@ var _dash_timer: Timer
 @onready var _scream_sfx: AudioStreamPlayer2D = self.find_child("ScreamingSFX")
 
 
-func _ready():
+func _ready() -> void:
 	self._animated_sprite = self.find_child("AnimatedSprite2D")
 	self._collision_shape = self.find_child("CollisionShape2D")
 	self._keris = self.find_child("Keris")
@@ -42,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 			if body.is_in_group("Enemy"):
 				body.set_movement_target(self.global_position)
 
-	var dash_mult = 1
+	var dash_mult: int = 1
 	if Input.is_key_pressed(KEY_SPACE) and self._dash_timer.time_left == 0:
 		self._dash_timer.start()
 		dash_mult = 10
@@ -51,7 +51,7 @@ func _physics_process(_delta: float) -> void:
 		Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED * dash_mult
 	)
 
-	var should_flip_x = (get_global_mouse_position() - self.global_position).x < 0
+	var should_flip_x: bool = (get_global_mouse_position() - self.global_position).x < 0
 	self._animated_sprite.flip_h = should_flip_x
 	self._keris.scale.x = -1 if should_flip_x else 1
 	self._keris.position.x = abs(self._keris.position.x) * (-1 if should_flip_x else 1)
@@ -104,10 +104,10 @@ func _on_damage_taken(health: int) -> void:
 		self.get_tree().reload_current_scene()
 
 
-func slash():
+func slash() -> void:
 	self._keris.find_child("AnimationPlayer").stop()
 	self._keris.find_child("AnimationPlayer").play("slash")
 
 
-func set_enemies_monitoring_status(status: bool):
+func set_enemies_monitoring_status(status: bool) -> void:
 	self._enemy_detection_area.monitoring = status

@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	self.position += self.direction * self.SPEED * delta
 
 
-func _on_area_hit(area: Area2D):
+func _on_area_hit(area: Area2D) -> void:
 	if self._hitbox.proprietor:
 		if self._hitbox.proprietor.is_in_group("Player") and area.is_in_group("Enemy"):
 			self.queue_free()
@@ -62,7 +62,7 @@ func _on_area_hit(area: Area2D):
 			self.queue_free()
 
 
-func _on_body_hit(body: Node2D):
+func _on_body_hit(body: Node2D) -> void:
 	if self._hitbox.proprietor:
 		if self._hitbox.proprietor == body:
 			return

@@ -33,7 +33,7 @@ func set_movement_target(movement_target: Vector2) -> void:
 	self._navigation_agent.set_target_position(movement_target)
 
 
-func _physics_process(_delta) -> void:
+func _physics_process(_delta: float) -> void:
 	if self.dead:
 		return
 

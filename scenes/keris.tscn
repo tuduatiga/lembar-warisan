@@ -193,7 +193,7 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_ay26d"]
 script = ExtResource("3_gkl2f")
-damage = 0
+damage = 3
 position = Vector2(0, 0)
 knockback = 0
 metadata/_custom_type_script = "uid://byppnbums8a0i"

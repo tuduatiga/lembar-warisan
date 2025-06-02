@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	var should_be_clear = true
+	var should_be_clear: bool = true
 	if self._visited:
 		for body in self.get_overlapping_bodies():
 			if body is PhysicsBody2D:

@@ -13,7 +13,7 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 
 
-func play_hit_sound():
+func play_hit_sound() -> void:
 	if not can_play:
 		return
 
@@ -25,5 +25,5 @@ func play_hit_sound():
 	can_play = false
 
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	can_play = true

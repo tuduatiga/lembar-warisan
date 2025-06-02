@@ -5,7 +5,7 @@ var _wait_time: float
 var _time_scale: float
 
 
-func _init(wait_time, time_scale = 0.5) -> void:
+func _init(wait_time: float, time_scale: float = 0.5) -> void:
 	self._wait_time = wait_time
 	self._time_scale = time_scale
 

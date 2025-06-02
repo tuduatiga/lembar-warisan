@@ -16,7 +16,7 @@ func _ready() -> void:
 		self._health_bar.init(self.health)
 
 
-func damage(attack: Attack):
+func damage(attack: Attack) -> void:
 	if self.health <= 0:
 		return
 

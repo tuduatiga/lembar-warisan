@@ -38,7 +38,7 @@ func set_movement_target(movement_target: Vector2) -> void:
 		self.cast(movement_target)
 
 
-func _physics_process(_delta) -> void:
+func _physics_process(_delta: float) -> void:
 	if self.dead:
 		return
 
@@ -84,7 +84,7 @@ func _on_damage_taken(health: int) -> void:
 		self.queue_free()
 
 
-func cast(target_position: Vector2):
+func cast(target_position: Vector2) -> void:
 	(
 		_PROJECTILE
 		. instantiate()

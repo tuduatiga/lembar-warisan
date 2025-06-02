@@ -1,7 +1,7 @@
 class_name Bar extends StaticBody2D
 
-@export var open = true
-@export_enum("front", "right", "left") var dir = "front"
+@export var open: bool = true
+@export_enum("front", "right", "left") var dir: String = "front"
 var _sprite: AnimatedSprite2D
 var _collision: CollisionShape2D
 

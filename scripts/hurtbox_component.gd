@@ -14,7 +14,7 @@ func _init() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		if not self.owner == area.proprietor:
-			var is_same_group_cb = func(group) -> bool:
+			var is_same_group_cb: Callable = func(group: String) -> bool:
 				return area["proprietor" if area.proprietor else "owner"].get_groups().has(group)
 
 			if self.owner.get_groups().filter(is_same_group_cb).size():

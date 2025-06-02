@@ -1,7 +1,7 @@
 extends Node2D
 
 
-func _ready():
+func _ready() -> void:
 	Engine.time_scale = 1
 
 func _input(event: InputEvent) -> void:

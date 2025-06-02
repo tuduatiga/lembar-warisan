@@ -12,7 +12,7 @@ func _area_entered(area: Area2D) -> void:
 	if not area is GenArea:
 		return
 
-	var FallbackScene = load(self.fallback_scene)
+	var FallbackScene: Resource = load(self.fallback_scene)
 	if not FallbackScene:
 		return
 

@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Enums="*res://scripts/enums/collision_layer.gd"
 AtmosphereMusic="*res://scenes/audios/atmospheres/atmosphere_music.tscn"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+
 [global_group]
 
 Player=""
