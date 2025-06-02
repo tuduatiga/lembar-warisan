@@ -1,11 +1,11 @@
 class_name Projectile
 extends Node2D
 
-const SPEED = 150.0
-
 @export var texture: Texture2D
+@export var bullet_speed: float
 
 var direction: Vector2 = Vector2.ZERO
+var _speed: float = 150.0
 
 @onready var _sprite: Sprite2D = self.find_child("Sprite2D")
 @onready var _hitbox: HitboxComponent = self.find_child("HitboxComponent")
@@ -29,26 +29,30 @@ func with_modulate(p_modulate: Color) -> Projectile:
 	return self
 
 
-func spawn(proprietor: Node2D) -> Projectile:
+func spawn(proprietor: Node2D, speed: float = 150) -> Projectile:
 	proprietor.get_tree().root.get_child(1).add_child(self)
 	self._hitbox.proprietor = proprietor
 	self.direction = (self.get_global_mouse_position() - proprietor.global_position).normalized()
 	self._sprite.rotate(self.direction.angle())
 	self.global_position = proprietor.global_position + self.direction * 10
+	self._speed = speed
 	return self
 
 
-func spawn_with_direction(proprietor: Node2D, p_direction: Vector2) -> Projectile:
+func spawn_with_direction(
+	proprietor: Node2D, p_direction: Vector2, speed: float = 150
+) -> Projectile:
 	proprietor.get_tree().root.get_child(1).add_child(self)
 	self._hitbox.proprietor = proprietor
 	self.direction = p_direction
 	self._sprite.rotate(self.direction.angle())
 	self.global_position = proprietor.global_position + self.direction * 10
+	self._speed = speed
 	return self
 
 
 func _physics_process(delta: float) -> void:
-	self.position += self.direction * self.SPEED * delta
+	self.position += self.direction * self._speed * delta
 
 
 func _on_area_hit(area: Area2D) -> void:

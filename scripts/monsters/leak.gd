@@ -20,7 +20,7 @@ func _ready() -> void:
 	self._sprite = self.find_child("Sprite2D")
 	self._navigation_agent = self.find_child("NavigationAgent2D")
 
-	self._navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
+	self._navigation_agent.velocity_computed.connect(_on_velocity_computed)
 
 	self._cast_timer = self.find_child("CastTimer")
 
@@ -36,6 +36,7 @@ func set_movement_target(movement_target: Vector2) -> void:
 	if self._cast_timer.time_left == 0:
 		self._cast_timer.start()
 		self.cast(movement_target)
+		self._cast_timer.wait_time = randf_range(3.0, 4.0)
 
 
 func _physics_process(_delta: float) -> void:
@@ -91,7 +92,7 @@ func cast(target_position: Vector2) -> void:
 		_PROJECTILE
 		. instantiate()
 		. with_texture(self.projectile_texture)
-		. spawn_with_direction(self, (target_position - self.global_position).normalized())
+		. spawn_with_direction(self, (target_position - self.global_position).normalized(), 100)
 		. with_modulate(Color.BLACK)
 	)
 	(
@@ -99,7 +100,7 @@ func cast(target_position: Vector2) -> void:
 		. instantiate()
 		. with_texture(self.projectile_texture)
 		. spawn_with_direction(
-			self, (target_position - self.global_position).normalized().rotated(PI / 4.0)
+			self, (target_position - self.global_position).normalized().rotated(PI / 4.0), 100
 		)
 		. with_modulate(Color.BLACK)
 	)
@@ -108,7 +109,7 @@ func cast(target_position: Vector2) -> void:
 		. instantiate()
 		. with_texture(self.projectile_texture)
 		. spawn_with_direction(
-			self, (target_position - self.global_position).normalized().rotated(-PI / 4.0)
+			self, (target_position - self.global_position).normalized().rotated(-PI / 4.0), 100
 		)
 		. with_modulate(Color.BLACK)
 	)

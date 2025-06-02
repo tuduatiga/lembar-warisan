@@ -1,13 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://dh3obpwont6v2"]
+[gd_scene load_steps=22 format=3 uid="uid://dh3obpwont6v2"]
 
 [ext_resource type="Texture2D" uid="uid://bjcgoeyj3iyi0" path="res://assets/monster/pocong.png" id="1_c2xwj"]
 [ext_resource type="Script" uid="uid://bjacw1f1jhcx0" path="res://scripts/monsters/pocong.gd" id="1_wcc33"]
+[ext_resource type="Texture2D" uid="uid://chjp6rfi0brxy" path="res://assets/bullet.png" id="2_8xu6o"]
 [ext_resource type="PackedScene" uid="uid://qocxyye4uog6" path="res://scenes/health_bar.tscn" id="3_iqhuh"]
 [ext_resource type="PackedScene" uid="uid://uommemjb8j1l" path="res://scenes/hurtbox_component.tscn" id="3_ros2q"]
 [ext_resource type="PackedScene" uid="uid://bennnpfghvch1" path="res://scenes/health_component.tscn" id="4_o11gq"]
 [ext_resource type="PackedScene" uid="uid://csqdj1o2x2405" path="res://scenes/explosion.tscn" id="5_o11gq"]
 [ext_resource type="PackedScene" uid="uid://dm3o5dyy5xbdm" path="res://scenes/blood.tscn" id="6_u53we"]
 [ext_resource type="AudioStream" uid="uid://c1ritg4dlfu7" path="res://assets/audios/sfx/death_breath.mp3" id="7_xf2cq"]
+[ext_resource type="PackedScene" uid="uid://bv4kywbn3hhji" path="res://scenes/hitbox_component.tscn" id="10_3jweo"]
+[ext_resource type="Script" uid="uid://byppnbums8a0i" path="res://scripts/attack.gd" id="11_n8y20"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcc33"]
 atlas = ExtResource("1_c2xwj")
@@ -60,10 +63,21 @@ height = 6.0
 radius = 3.0
 height = 12.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqhuh"]
+radius = 86.0058
+
+[sub_resource type="Resource" id="Resource_pykyl"]
+script = ExtResource("11_n8y20")
+damage = 1
+position = Vector2(0, 0)
+knockback = 0
+metadata/_custom_type_script = "uid://byppnbums8a0i"
+
 [node name="Pocong" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 29
 script = ExtResource("1_wcc33")
+_projectile_texture = ExtResource("2_8xu6o")
 metadata/_edit_vertical_guides_ = [-35.0]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -75,11 +89,7 @@ autoplay = "default"
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_c2xwj")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 20.0
-avoidance_enabled = true
-radius = 20.0
-neighbor_distance = 50.0
+[node name="DirectionTimer" type="Timer" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("3_iqhuh")]
 
@@ -92,7 +102,7 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_ros2q")
-debug_color = Color(1, 0, 0, 0.419608)
+debug_color = Color(1, 1, 0, 0.419608)
 
 [node name="ExplosionAnimatedSprite2D" parent="." instance=ExtResource("5_o11gq")]
 
@@ -100,3 +110,22 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="DeathBreathSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_xf2cq")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(0, -4)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_iqhuh")
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="MoveTimer" type="Timer" parent="."]
+
+[node name="HitboxComponent" parent="." instance=ExtResource("10_3jweo")]
+attack = SubResource("Resource_pykyl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_ros2q")
+debug_color = Color(1, 0, 0, 0.419608)

@@ -4,7 +4,7 @@ var health: int:
 	set = _on_health_set
 
 @onready var _damage_bar: ProgressBar = self.find_child("DamageBar")
-@onready var _timer: Timer = self.find_child("Timer")
+@onready var _timer: Timer = self.get_node("DamageTimer")
 
 
 func init(p_health: int) -> void:
