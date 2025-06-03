@@ -23,14 +23,14 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	self._margin_container.visible = false
+	self._margin_container.hide()
 	self._settings_menu.set_process(true)
-	self._settings_menu.visible = true
+	self._settings_menu.show()
 
 
 func _on_exit_settings_menu() -> void:
-	self._margin_container.visible = true
-	self._settings_menu.visible = false
+	self._margin_container.show()
+	self._settings_menu.hide()
 
 
 func _on_exit_button_pressed() -> void:
