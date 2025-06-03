@@ -4,15 +4,13 @@ class_name PauseMenu extends Control
 @onready var _restart_button: Button = $PanelContainer/MarginContainer/VBoxContainer/RestartButton
 @onready var _exit_button: Button = $PanelContainer/MarginContainer/VBoxContainer/ExitButton
 
-@onready var _main_menu: PackedScene = preload("res://scenes/menu/main_menu.tscn")
-
 
 func _ready() -> void:
 	self.hide()
 
-	self._resume_button.button_down.connect(self._on_resume_button_pressed)
-	self._restart_button.button_down.connect(self._on_restart_button_pressed)
-	self._exit_button.button_down.connect(self._on_exit_button_pressed)
+	self._resume_button.pressed.connect(self._on_resume_button_pressed)
+	self._restart_button.pressed.connect(self._on_restart_button_pressed)
+	self._exit_button.pressed.connect(self._on_exit_button_pressed)
 
 
 func _input(event: InputEvent) -> void:
@@ -28,12 +26,13 @@ func _on_resume_button_pressed() -> void:
 
 
 func _on_restart_button_pressed() -> void:
-	self.get_tree().paused = false
+	self._resume()
 	self.get_tree().reload_current_scene()
 
 
 func _on_exit_button_pressed() -> void:
-	pass
+	self._resume()
+	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 
 
 func _resume() -> void:

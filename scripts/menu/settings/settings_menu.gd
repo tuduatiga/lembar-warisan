@@ -9,7 +9,7 @@ func _ready() -> void:
 	self.hide()
 	self.set_process(false)
 
-	self._exit_button.button_down.connect(self._on_exit_button_pressed)
+	self._exit_button.pressed.connect(self._on_exit_button_pressed)
 
 
 func _on_exit_button_pressed() -> void:

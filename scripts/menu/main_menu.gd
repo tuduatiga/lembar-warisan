@@ -11,9 +11,9 @@ extends Control
 
 
 func _ready() -> void:
-	self._play_button.button_down.connect(self._on_play_button_pressed)
-	self._settings_button.button_down.connect(self._on_settings_button_pressed)
-	self._exit_button.button_down.connect(self._on_exit_button_pressed)
+	self._play_button.pressed.connect(self._on_play_button_pressed)
+	self._settings_button.pressed.connect(self._on_settings_button_pressed)
+	self._exit_button.pressed.connect(self._on_exit_button_pressed)
 
 	self._settings_menu.exit_settings_menu.connect(self._on_exit_settings_menu)
 
