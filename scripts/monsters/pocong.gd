@@ -46,10 +46,11 @@ func _physics_process(_delta: float) -> void:
 	if self.dead:
 		return
 
-	for body in self._detection_area.get_overlapping_bodies():
-		if body.is_in_group("Player"):
-			self._is_hostile = true
-			self._target_position = body.global_position
+	if self._detection_area.monitoring:
+		for body in self._detection_area.get_overlapping_bodies():
+			if body.is_in_group("Player"):
+				self._is_hostile = true
+				self._target_position = body.global_position
 
 	match _state:
 		MOVE:

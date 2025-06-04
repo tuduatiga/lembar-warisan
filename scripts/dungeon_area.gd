@@ -58,6 +58,8 @@ func _physics_process(_delta: float) -> void:
 
 				if body.collision_layer & Enums.CollisionLayer.ENEMY and not body.dead:
 					body.set_invincible(false)
+					if body.find_child("DetectionArea"):
+						body.find_child("DetectionArea").monitoring = true
 					should_be_clear = false
 
 		self._clear = should_be_clear
@@ -69,6 +71,8 @@ func _on_body_entered(body: PhysicsBody2D) -> void:
 
 	if body.is_in_group("Enemy") and not self._visited:
 		body.set_invincible.call_deferred(true)
+		if body.find_child("DetectionArea"):
+			body.find_child("DetectionArea").monitoring = false
 
 	if body is Player and not self._visited:
 		self._visited = true

@@ -18,7 +18,7 @@ func _ready() -> void:
 	self._sprite.animation = self.dir if self.dir == "front" else "side"
 	self._sprite.flip_h = self.dir == "left"
 	self._collision.position.x *= -1 if self.dir == "left" else 1
-	self._sprite.frame = 0 if self.open else max(_sprite.sprite_frames.get_frame_count(self.dir), 0)
+	self._sprite.frame = 0 if self.open else max(_sprite.sprite_frames.get_frame_count(self._sprite.animation), 0)
 
 	self.set_collision_layer_value(4, not self.open)
 
