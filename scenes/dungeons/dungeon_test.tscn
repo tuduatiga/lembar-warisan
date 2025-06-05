@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bsfkacdf1hmg6"]
+[gd_scene load_steps=19 format=4 uid="uid://bsfkacdf1hmg6"]
 
 [ext_resource type="PackedScene" uid="uid://du0thsgt5ipfi" path="res://scenes/gen_marker.tscn" id="2_6mbrl"]
 [ext_resource type="PackedScene" uid="uid://5j2uimwwyhq" path="res://scenes/bar.tscn" id="2_6rvsb"]
@@ -9,6 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://dh3obpwont6v2" path="res://scenes/monsters/pocong.tscn" id="7_6mbrl"]
 [ext_resource type="PackedScene" uid="uid://dkrqlyaxjdiht" path="res://scenes/monsters/tuyul.tscn" id="8_0teo6"]
 [ext_resource type="PackedScene" uid="uid://be8orjqr2fowc" path="res://scenes/monsters/leak.tscn" id="9_0teo6"]
+[ext_resource type="PackedScene" uid="uid://jkwoht5ftles" path="res://scenes/besek.tscn" id="10_xgma3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5i2f"]
+size = Vector2(160, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0teo6"]
+size = Vector2(160, 188)
 
 [sub_resource type="Resource" id="Resource_5j5ro"]
 script = ExtResource("3_0teo6")
@@ -46,12 +53,6 @@ scene = "uid://dkb2dnv255klp"
 weight = 3
 metadata/_custom_type_script = "uid://lkmg24m4cryd"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5i2f"]
-size = Vector2(160, 192)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0teo6"]
-size = Vector2(160, 176)
-
 [node name="DungeonTest" type="Node2D"]
 y_sort_enabled = true
 
@@ -59,6 +60,20 @@ y_sort_enabled = true
 z_index = -1
 tile_map_data = PackedByteArray("AAABAP//AAAEAAEAAAD+////AAABAAEAAAD/////AAACAAIAAAAAAP//AAACAAEAAAD///j/AAACAAIAAAAAAPj/AAABAAIAAAABAPj/AAAFAAIAAAD+//n/AAAAAAIAAAD///n/AAADAAMAAAAAAPn/AAACAAMAAAABAPn/AAAFAAIAAAD+//r/AAAAAAIAAAD///r/AAACAAMAAAAAAPr/AAADAAEAAAABAPr/AAAFAAIAAAD+//v/AAABAAMAAAD///v/AAACAAMAAAAAAPv/AAACAAIAAAABAPv/AAAFAAIAAAD+//z/AAABAAMAAAD///z/AAABAAIAAAAAAPz/AAADAAIAAAABAPz/AAAFAAIAAAD+//3/AAABAAMAAAD///3/AAADAAMAAAAAAP3/AAABAAIAAAABAP3/AAAEAAMAAAD+//7/AAAAAAIAAAD///7/AAACAAIAAAAAAP7/AAADAAIAAAABAP7/AAAEAAMAAAD///T/AAACAAEAAAAAAPT/AAACAAEAAAABAPT/AAAEAAMAAAD///X/AAADAAMAAAAAAPX/AAACAAMAAAABAPX/AAAFAAIAAAD///b/AAADAAEAAAAAAPb/AAACAAMAAAABAPb/AAAFAAIAAAD///f/AAADAAIAAAAAAPf/AAACAAEAAAABAPf/AAAEAAMAAAD///D/AAABAAIAAAAAAPD/AAAEAAIAAAABAPD/AAAEAAMAAAD///H/AAAEAAIAAAAAAPH/AAADAAIAAAABAPH/AAAFAAIAAAD///L/AAACAAMAAAAAAPL/AAADAAMAAAABAPL/AAAEAAMAAAD///P/AAADAAMAAAAAAPP/AAADAAIAAAABAPP/AAAFAAIAAAACAPD/AAADAAQAAAD9//D/AAABAAQAAAADAPD/AAABAAQAAAAEAPD/AAACAAQAAAD8//D/AAADAAQAAAD7/+//AAAAAAIAAAD7/+7/AAAAAAIAAAD7/+3/AAAAAAIAAAD7/+f/AAABAAMAAAD7/+b/AAAAAAIAAAD7/+X/AAABAAAAAAAEAO//AAAFAAIAAAAEAO7/AAAEAAMAAAAEAO3/AAAFAAIAAAAEAOf/AAAEAAMAAAAEAOb/AAAEAAMAAAAEAOX/AAAFAAEAAAD8/+X/AAAEAAQAAAD8/+b/AAACAAIAAAD8/+f/AAACAAMAAAD8/+j/AAADAAIAAAD8/+n/AAADAAEAAAD8/+r/AAADAAEAAAD8/+v/AAACAAEAAAD8/+z/AAADAAMAAAD8/+3/AAADAAMAAAD8/+7/AAACAAMAAAD8/+//AAACAAEAAAD9/+X/AAACAAAAAAD9/+b/AAAEAAIAAAD9/+f/AAACAAIAAAD9/+j/AAADAAIAAAD9/+n/AAABAAIAAAD9/+r/AAADAAEAAAD9/+v/AAACAAMAAAD9/+z/AAACAAEAAAD9/+3/AAABAAIAAAD9/+7/AAACAAMAAAD9/+//AAACAAIAAAD+/+b/AAADAAEAAAD+/+f/AAACAAMAAAD+/+j/AAADAAMAAAD+/+n/AAACAAMAAAD+/+r/AAABAAIAAAD+/+v/AAADAAEAAAD+/+z/AAADAAMAAAD+/+3/AAABAAIAAAD+/+7/AAACAAEAAAD+/+//AAADAAIAAAD//+b/AAACAAEAAAD//+f/AAADAAIAAAD//+j/AAACAAMAAAD//+n/AAADAAIAAAD//+r/AAADAAEAAAD//+v/AAACAAEAAAD//+z/AAACAAIAAAD//+3/AAACAAEAAAD//+7/AAACAAEAAAD//+//AAADAAMAAAAAAOb/AAADAAEAAAAAAOf/AAAEAAIAAAAAAOj/AAABAAIAAAAAAOn/AAACAAMAAAAAAOr/AAAEAAIAAAAAAOv/AAABAAIAAAAAAOz/AAAEAAIAAAAAAO3/AAAEAAIAAAAAAO7/AAAEAAIAAAAAAO//AAACAAMAAAABAOb/AAACAAEAAAABAOf/AAADAAMAAAABAOj/AAADAAIAAAABAOn/AAAEAAIAAAABAOr/AAACAAMAAAABAOv/AAACAAIAAAABAOz/AAADAAMAAAABAO3/AAABAAIAAAABAO7/AAADAAMAAAABAO//AAAEAAIAAAACAOX/AAADAAQAAAACAOb/AAADAAMAAAACAOf/AAACAAMAAAACAOj/AAADAAIAAAACAOn/AAADAAIAAAACAOr/AAACAAMAAAACAOv/AAACAAEAAAACAOz/AAAEAAIAAAACAO3/AAACAAEAAAACAO7/AAACAAIAAAACAO//AAAEAAIAAAADAOX/AAADAAQAAAADAOb/AAACAAIAAAADAOf/AAACAAMAAAADAOj/AAADAAMAAAADAOn/AAAEAAIAAAADAOr/AAADAAMAAAADAOv/AAACAAEAAAADAOz/AAADAAMAAAADAO3/AAAEAAIAAAADAO7/AAACAAIAAAADAO//AAAEAAIAAAD7/+j/AAABAAMAAAAEAOj/AAAEAAMAAAD+//f/AAABAAMAAAD+//j/AAAAAAIAAAD+//D/AAABAAMAAAD+//H/AAABAAMAAAD+//L/AAAAAAIAAAD+//P/AAABAAMAAAD+//T/AAABAAMAAAD+//X/AAABAAMAAAD+//b/AAAAAAIAAAD7//D/AAACAAAAAAA=")
 tile_set = ExtResource("2_aefnn")
+
+[node name="GenArea" parent="." instance=ExtResource("4_q5i2f")]
+fallback_scene = "uid://deoy4cbvg2dns"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GenArea"]
+position = Vector2(0, -336)
+shape = SubResource("RectangleShape2D_q5i2f")
+
+[node name="DungeonArea" parent="." instance=ExtResource("5_0teo6")]
+position = Vector2(0, -336)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonArea"]
+shape = SubResource("RectangleShape2D_0teo6")
 
 [node name="GenMarker" parent="." instance=ExtResource("2_6mbrl")]
 position = Vector2(0, -416)
@@ -74,20 +89,6 @@ fallback_scene = "uid://c1rof8k3nxy4k"
 position = Vector2(-64, -336)
 weighted_scenes = Array[ExtResource("3_0teo6")]([SubResource("Resource_aefnn"), SubResource("Resource_6mbrl")])
 fallback_scene = "uid://dixx3o6lwbfeh"
-
-[node name="GenArea" parent="." instance=ExtResource("4_q5i2f")]
-fallback_scene = "uid://deoy4cbvg2dns"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GenArea"]
-position = Vector2(0, -336)
-shape = SubResource("RectangleShape2D_q5i2f")
-
-[node name="DungeonArea" parent="." instance=ExtResource("5_0teo6")]
-position = Vector2(0, -328)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonArea"]
-shape = SubResource("RectangleShape2D_0teo6")
 
 [node name="Bar" parent="." instance=ExtResource("2_6rvsb")]
 position = Vector2(-24, 0)
@@ -139,3 +140,33 @@ position = Vector2(61, -327)
 
 [node name="Leak" parent="." instance=ExtResource("9_0teo6")]
 position = Vector2(0, -336)
+
+[node name="Besek" parent="." instance=ExtResource("10_xgma3")]
+position = Vector2(56, -309)
+
+[node name="Besek2" parent="." instance=ExtResource("10_xgma3")]
+position = Vector2(40, -309)
+
+[node name="Besek3" parent="." instance=ExtResource("10_xgma3")]
+position = Vector2(-40, -309)
+
+[node name="Besek4" parent="." instance=ExtResource("10_xgma3")]
+position = Vector2(-56, -309)
+
+[node name="Besek5" parent="." instance=ExtResource("10_xgma3")]
+position = Vector2(56, -373)
+
+[node name="Besek9" parent="." instance=ExtResource("10_xgma3")]
+position = Vector2(56, -365)
+
+[node name="Besek6" parent="." instance=ExtResource("10_xgma3")]
+position = Vector2(40, -373)
+
+[node name="Besek7" parent="." instance=ExtResource("10_xgma3")]
+position = Vector2(-40, -373)
+
+[node name="Besek8" parent="." instance=ExtResource("10_xgma3")]
+position = Vector2(-56, -373)
+
+[node name="Besek10" parent="." instance=ExtResource("10_xgma3")]
+position = Vector2(-56, -365)

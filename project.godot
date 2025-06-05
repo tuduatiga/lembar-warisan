@@ -31,6 +31,8 @@ Enemy=""
 Wall=""
 EndBar=""
 DungeonArea=""
+Destructible=""
+GenArea=""
 
 [input]
 

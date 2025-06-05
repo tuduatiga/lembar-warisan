@@ -1,13 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgctcj78aqmid"]
+[gd_scene load_steps=10 format=3 uid="uid://dgctcj78aqmid"]
 
 [ext_resource type="Script" uid="uid://b0mexiqrs1n47" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dv1ianyk7wosn" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://chxpbu1xgua37" path="res://scenes/dungeons/start.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://dh3obpwont6v2" path="res://scenes/monsters/pocong.tscn" id="3_u5sy4"]
 [ext_resource type="Script" uid="uid://dh7okt0krmjsa" path="res://scripts/camera_2d.gd" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://c8fxlbyynqy1f" path="res://assets/other/heart.png" id="5_iywne"]
 [ext_resource type="Script" path="res://scripts/hearth_bar.gd" id="5_p57ef"]
+[ext_resource type="Script" uid="uid://bbbt4iswrwxri" path="res://scripts/minimap.gd" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://ca661mvy3lv4l" path="res://scenes/menu/pause_menu.tscn" id="7_u5sy4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5sy4"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -15,9 +22,6 @@ script = ExtResource("1_lnu2h")
 
 [node name="Start" parent="." instance=ExtResource("1_yqjtg")]
 position = Vector2(0, 64)
-
-[node name="Pocong" parent="." instance=ExtResource("3_u5sy4")]
-position = Vector2(-43, -15)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 
@@ -34,24 +38,54 @@ script = ExtResource("4_lbhrr")
 color = Color(0.214227, 0.214227, 0.214227, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-offset = Vector2(16, 16)
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 16, 16)
 
-[node name="HearthBar" type="HBoxContainer" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="HearthBar" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
-offset_right = 16.0
-offset_bottom = 16.0
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 2
 script = ExtResource("5_p57ef")
 
-[node name="HearthPanel0" type="Panel" parent="CanvasLayer/HearthBar"]
-custom_minimum_size = Vector2(16, 16)
+[node name="HearthPanel0" type="Panel" parent="CanvasLayer/MarginContainer/HBoxContainer/HearthBar"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HearthSprite" type="Sprite2D" parent="CanvasLayer/MarginContainer/HBoxContainer/HearthBar/HearthPanel0"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_iywne")
+centered = false
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
 
-[node name="HearthSprite" type="Sprite2D" parent="CanvasLayer/HearthBar/HearthPanel0"]
-position = Vector2(8, 8)
-texture = ExtResource("5_iywne")
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/MarginContainer/HBoxContainer/SubViewportContainer"]
+size = Vector2i(192, 192)
+
+[node name="MinimapPanel" type="Panel" parent="CanvasLayer/MarginContainer/HBoxContainer/SubViewportContainer/SubViewport"]
+clip_contents = true
+custom_minimum_size = Vector2(192, 192)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u5sy4")
+script = ExtResource("7_gee14")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

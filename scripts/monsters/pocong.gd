@@ -20,6 +20,7 @@ var _target_position: Vector2 = Vector2.ZERO
 @onready var _explosion_sprite: AnimatedSprite2D = self.find_child("ExplosionAnimatedSprite2D")
 @onready var _health_component: HealthComponent = self.find_child("HealthComponent")
 @onready var _hurtbox_component: HurtboxComponent = self.find_child("HurtboxComponent")
+@onready var _hitbox_component: HitboxComponent = self.find_child("HitboxComponent")
 @onready var _blood: CPUParticles2D = self.find_child("Blood")
 @onready var _death_breath_sfx: AudioStreamPlayer2D = self.find_child("DeathBreathSFX")
 @onready var _detection_area: Area2D = self.find_child("DetectionArea")
@@ -114,6 +115,7 @@ func _on_damage_taken(health: int) -> void:
 		self._explosion_sprite.visible = true
 		self._explosion_sprite.play()
 		self._animated_sprite.visible = false
+		self._hitbox_component.queue_free()
 		await get_tree().create_timer(0.5).timeout
 		self._animated_sprite.queue_free()
 		self._explosion_sprite.queue_free()

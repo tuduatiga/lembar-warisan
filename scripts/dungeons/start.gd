@@ -8,10 +8,22 @@ extends Node2D
 
 
 func _ready() -> void:
-	_marker.done_gen.connect(self._on_done_gen)
+	self._marker.done_gen.connect(self._on_done_gen1)
 
 
-func _on_done_gen() -> void:
+func _physics_process(delta: float) -> void:
+	pass
+
+
+func _on_done_gen1() -> void:
+	await get_tree().create_timer(0).timeout
+	var done_gen2: bool = self.get_tree().get_nodes_in_group("GenArea").all(
+		func(node: Node) -> bool: return node.get_overlapping_areas().filter(func(area: Area2D) -> bool: return area is GenArea).size() == 0
+	)
+	if done_gen2:
+		self._on_done_gen2()
+
+func _on_done_gen2() -> void:
 	var end_wall: Node2D = self.get_tree().get_nodes_in_group("Wall").reduce(
 		func(acc: Node2D, curr: Node2D) -> Node2D:
 			return (
@@ -32,3 +44,5 @@ func _on_done_gen() -> void:
 
 	end_wall.get_parent().add_child.call_deferred(EndScene.instantiate())
 	end_wall.queue_free.call_deferred()
+
+	self.get_tree().root.get_node("Game").find_child("MinimapPanel").queue_redraw.call_deferred()

@@ -30,7 +30,7 @@ func with_modulate(p_modulate: Color) -> Projectile:
 
 
 func spawn(proprietor: Node2D, speed: float = 150) -> Projectile:
-	proprietor.get_tree().root.get_child(1).add_child(self)
+	proprietor.get_node("/root/Game").add_child(self)
 	self._hitbox.proprietor = proprietor
 	self.direction = (self.get_global_mouse_position() - proprietor.global_position).normalized()
 	self._sprite.rotate(self.direction.angle())
@@ -42,7 +42,7 @@ func spawn(proprietor: Node2D, speed: float = 150) -> Projectile:
 func spawn_with_direction(
 	proprietor: Node2D, p_direction: Vector2, speed: float = 150
 ) -> Projectile:
-	proprietor.get_tree().root.get_child(1).add_child(self)
+	proprietor.get_node("/root/Game").add_child(self)
 	self._hitbox.proprietor = proprietor
 	self.direction = p_direction
 	self._sprite.rotate(self.direction.angle())

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://chxpbu1xgua37"]
+[gd_scene load_steps=7 format=4 uid="uid://chxpbu1xgua37"]
 
 [ext_resource type="Script" uid="uid://cilupoufss11b" path="res://scripts/dungeons/start.gd" id="1_ldnq4"]
 [ext_resource type="TileSet" uid="uid://ceog32nq6kv54" path="res://assets/tilemaps/dungeon.tres" id="1_n72fe"]
 [ext_resource type="PackedScene" uid="uid://du0thsgt5ipfi" path="res://scenes/gen_marker.tscn" id="2_h4jbq"]
 [ext_resource type="Script" uid="uid://lkmg24m4cryd" path="res://scripts/weighted_scene.gd" id="3_tmeug"]
+[ext_resource type="PackedScene" uid="uid://jkwoht5ftles" path="res://scenes/besek.tscn" id="5_h4jbq"]
 
 [sub_resource type="Resource" id="Resource_agnw8"]
 script = ExtResource("3_tmeug")
@@ -29,3 +30,15 @@ position = Vector2(0, -112)
 weighted_scenes = Array[ExtResource("3_tmeug")]([SubResource("Resource_agnw8")])
 depth = 7
 fallback_scene = "uid://deoy4cbvg2dns"
+
+[node name="Besek" parent="." instance=ExtResource("5_h4jbq")]
+position = Vector2(40, -101)
+
+[node name="Besek2" parent="." instance=ExtResource("5_h4jbq")]
+position = Vector2(56, -101)
+
+[node name="Besek3" parent="." instance=ExtResource("5_h4jbq")]
+position = Vector2(-56, -101)
+
+[node name="Besek4" parent="." instance=ExtResource("5_h4jbq")]
+position = Vector2(-40, -101)

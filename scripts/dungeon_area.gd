@@ -1,13 +1,14 @@
 class_name DungeonArea
 extends Area2D
 
-var _clear: bool
+@export var clear: bool = false
+
 var _visited: bool
 var _atmosphere_music: AudioStreamPlayer2D
 
 
 func _ready() -> void:
-	self._clear = false
+	self.clear = false
 	self._visited = false
 	self._atmosphere_music = get_node("/root/AtmosphereMusic")
 
@@ -24,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 					and not body.owner.name.begins_with("End")
 					and body.collision_layer & Enums.CollisionLayer.BAR > 0
 				):
-					if body.open and not self._clear:
+					if body.open and not self.clear:
 						self._atmosphere_music.stop()
 						self._atmosphere_music.stream = AudioStreamMP3.load_from_file(
 							"res://assets/audios/atmospheres/tension.mp3"
@@ -33,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 
 						body.transition_close()
 
-					if not body.open and self._clear:
+					if not body.open and self.clear:
 						self._atmosphere_music.stop()
 						self._atmosphere_music.stream = AudioStreamMP3.load_from_file(
 							"res://assets/audios/atmospheres/main.mp3"
@@ -43,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 						body.transition_open()
 						if (
 							self.get_tree().get_nodes_in_group("DungeonArea").find_custom(
-								func(dungeon_area: DungeonArea) -> bool: return not dungeon_area._clear
+								func(dungeon_area: DungeonArea) -> bool: return not dungeon_area.clear
 							)
 							== -1
 						):
@@ -51,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 								end_bar.transition_open()
 
 				if body is Player:
-					if self._clear:
+					if self.clear:
 						(body.find_child("EnemyDetectionArea") as Area2D).monitoring = false
 					else:
 						(body.find_child("EnemyDetectionArea") as Area2D).monitoring = true
@@ -62,17 +63,26 @@ func _physics_process(_delta: float) -> void:
 						body.find_child("DetectionArea").monitoring = true
 					should_be_clear = false
 
-		self._clear = should_be_clear
+				if body.is_in_group("Destructible"):
+					body.set_invincible(false)
+
+		self.clear = should_be_clear
 
 
 func _on_body_entered(body: PhysicsBody2D) -> void:
-	if self._clear:
+	if body is Player:
+		self.get_tree().root.get_node("Game").find_child("MinimapPanel").queue_redraw.call_deferred()
+
+	if self.clear:
 		return
 
 	if body.is_in_group("Enemy") and not self._visited:
 		body.set_invincible.call_deferred(true)
 		if body.find_child("DetectionArea"):
 			body.find_child("DetectionArea").monitoring = false
+
+	if body.is_in_group("Destructible") and not self._visited:
+		body.set_invincible.call_deferred(true)
 
 	if body is Player and not self._visited:
 		self._visited = true

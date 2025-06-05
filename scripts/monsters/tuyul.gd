@@ -9,6 +9,7 @@ var _movement_speed: float = 250.0
 @onready var _navigation_agent: NavigationAgent2D = self.find_child("NavigationAgent2D")
 @onready var _health_component: HealthComponent = self.find_child("HealthComponent")
 @onready var _hurtbox_component: HurtboxComponent = self.find_child("HurtboxComponent")
+@onready var _hitbox_component: HitboxComponent = self.find_child("HitboxComponent")
 @onready var _blood: CPUParticles2D = self.find_child("Blood")
 @onready var _hit_sound: Node2D = self.find_child("HitSound")
 @onready var _kid_crying_sfx: AudioStreamPlayer2D = self.find_child("KidCryingSFX")
@@ -84,6 +85,7 @@ func _on_damage_taken(health: int) -> void:
 		self._animated_sprite.visible = false
 		self._navigation_agent.queue_free()
 		self._hurtbox_component.queue_free()
+		self._hitbox_component.queue_free()
 		await get_tree().create_timer(0.5).timeout
 		self._animated_sprite.queue_free()
 		self._explosion_sprite.queue_free()

@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://jkwoht5ftles"]
+
+[ext_resource type="Script" uid="uid://b20ss32fglire" path="res://scripts/besek.gd" id="1_851ac"]
+[ext_resource type="Texture2D" uid="uid://brcv8oqdav02g" path="res://assets/decorations/decoration.png" id="1_o8lv3"]
+[ext_resource type="PackedScene" uid="uid://bennnpfghvch1" path="res://scenes/health_component.tscn" id="2_y78qn"]
+[ext_resource type="PackedScene" uid="uid://uommemjb8j1l" path="res://scenes/hurtbox_component.tscn" id="3_w7f51"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y78qn"]
+size = Vector2(14, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_851ac"]
+size = Vector2(14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_851ac"]
+atlas = ExtResource("1_o8lv3")
+region = Rect2(33, 17, 2, 2)
+
+[node name="Besek" type="StaticBody2D" groups=["Destructible"]]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_851ac")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+texture = ExtResource("1_o8lv3")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_y78qn")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_y78qn")]
+max_health = 3
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_w7f51")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_851ac")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="BreakParticle" type="CPUParticles2D" parent="."]
+position = Vector2(0, -8)
+emitting = false
+amount = 4
+texture = SubResource("AtlasTexture_851ac")
+lifetime = 0.1
+one_shot = true
+speed_scale = 0.25
+randomness = 0.17
+emission_shape = 1
+emission_sphere_radius = 13.41
+spread = 180.0
+initial_velocity_max = 84.16
+angle_min = -177.6
+angle_max = 108.1
