@@ -17,7 +17,7 @@ region = Rect2(33, 17, 2, 2)
 
 [node name="Besek" type="StaticBody2D" groups=["Destructible"]]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 31
 script = ExtResource("1_851ac")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

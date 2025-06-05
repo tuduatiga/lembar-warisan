@@ -3,5 +3,5 @@
 [ext_resource type="Script" uid="uid://blhrc48bok50r" path="res://scripts/dungeon_area.gd" id="1_yfiox"]
 
 [node name="DungeonArea" type="Area2D" groups=["DungeonArea"]]
-collision_mask = 22
+collision_mask = 30
 script = ExtResource("1_yfiox")

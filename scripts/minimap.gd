@@ -1,14 +1,10 @@
 extends Panel
 
-const UNVISITED_COLOR = Color(0.45, 0.45, 0.45, 1.0)
+const UNVISITED_COLOR = Color(0.35, 0.35, 0.35, 1.0)
 const VISITED_COLOR = Color(0.65, 0.65, 0.65, 1.0)
 const ROOM_RECT_SIZE = 32.0
 const SCALE = 7.0
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass  # Replace with function body.
 
 
 func _draw() -> void:
