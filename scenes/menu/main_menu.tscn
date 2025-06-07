@@ -1,10 +1,76 @@
-[gd_scene load_steps=6 format=3 uid="uid://elgvi6ad86nv"]
+[gd_scene load_steps=39 format=3 uid="uid://elgvi6ad86nv"]
 
 [ext_resource type="Script" uid="uid://c8245lrwbow6p" path="res://scripts/menu/main_menu.gd" id="1_247la"]
-[ext_resource type="Texture2D" uid="uid://bo2ryc2qak2w3" path="res://assets/backgrounds/Frieren, Fern, and Qual.jpg" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://dil7w2jrglxin" path="res://assets/backgrounds/main-menu.png" id="2_hj162"]
 [ext_resource type="FontFile" uid="uid://c32e7xeuv50yk" path="res://assets/fonts/PublicPixel.ttf" id="2_vjb58"]
 [ext_resource type="LabelSettings" uid="uid://cpqhmfudqseeq" path="res://resources/menu/header_label.tres" id="3_kiqgm"]
 [ext_resource type="PackedScene" uid="uid://blxojnb3tqrrf" path="res://scenes/menu/settings/settings_menu.tscn" id="4_kiqgm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hj162"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xn6kt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_isoef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgo02"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vovv2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1k4da"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bbqo6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4hu8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1nwe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_prbor"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27h4x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdhp0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pstia"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_41tvm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxdmp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3h20m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uaj4g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_si58d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_anexq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qvxhw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_do53f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1bw8o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q78k2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_neoyv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wof4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fgrcj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofc3y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fau4l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42qp1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12yd3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_26v5e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rp6ip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dckix"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -23,7 +89,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_yqeox")
+texture = ExtResource("2_hj162")
+expand_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -32,61 +99,129 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
+columns = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 theme_override_constants/separation = 16
 
-[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Sōsō no Furīren"
+text = "Lembar
+Warisan"
 label_settings = ExtResource("3_kiqgm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-alignment = 1
-
-[node name="Separator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Separator" type="Control" parent="MarginContainer/GridContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="MarginContainer/GridContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 tooltip_text = "Mulai bermain"
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.32, 0.32, 0.32, 1)
+theme_override_colors/font_hover_color = Color(0.32, 0.32, 0.32, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.32, 0.32, 0.32, 1)
+theme_override_colors/font_pressed_color = Color(0.32, 0.32, 0.32, 1)
 theme_override_fonts/font = ExtResource("2_vjb58")
 theme_override_font_sizes/font_size = 16
-text = "Mulai"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hj162")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_xn6kt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_isoef")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_qgo02")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_vovv2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1k4da")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bbqo6")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_d4hu8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_p1nwe")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_prbor")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_27h4x")
+text = "> Mulai"
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MarginContainer/GridContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 tooltip_text = "Pengaturan permainan"
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.32, 0.32, 0.32, 1)
+theme_override_colors/font_hover_color = Color(0.32, 0.32, 0.32, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.32, 0.32, 0.32, 1)
+theme_override_colors/font_pressed_color = Color(0.32, 0.32, 0.32, 1)
 theme_override_fonts/font = ExtResource("2_vjb58")
 theme_override_font_sizes/font_size = 16
-text = "Pengaturan"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gdhp0")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pstia")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_41tvm")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vxdmp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3h20m")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_uaj4g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_si58d")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_anexq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qvxhw")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_do53f")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1bw8o")
+text = "> Pengaturan"
 
-[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="MarginContainer/GridContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 tooltip_text = "Keluar dari permainan"
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.321569, 0.321569, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.321569, 0.321569, 0.321569, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.321569, 0.321569, 0.321569, 1)
+theme_override_colors/font_pressed_color = Color(0.32, 0.32, 0.32, 1)
 theme_override_fonts/font = ExtResource("2_vjb58")
 theme_override_font_sizes/font_size = 16
-text = "Keluar"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q78k2")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_neoyv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wof4p")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_fgrcj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ofc3y")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_fau4l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_42qp1")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_12yd3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_26v5e")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_rp6ip")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dckix")
+text = "> Keluar"
+metadata/_edit_lock_ = true
 
 [node name="SettingsMenu" parent="." instance=ExtResource("4_kiqgm")]
 visible = false

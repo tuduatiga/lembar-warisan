@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxgg3dgbp6mr3" path="res://scripts/menu/settings/settings_menu.gd" id="1_cags2"]
 [ext_resource type="FontFile" uid="uid://c32e7xeuv50yk" path="res://assets/fonts/PublicPixel.ttf" id="2_0sh77"]
-[ext_resource type="Texture2D" uid="uid://bo2ryc2qak2w3" path="res://assets/backgrounds/Frieren, Fern, and Qual.jpg" id="2_7w5fs"]
+[ext_resource type="Texture2D" uid="uid://d1spc05pjcebs" path="res://assets/backgrounds/brick-bg.png" id="2_7w5fs"]
 [ext_resource type="LabelSettings" uid="uid://cpqhmfudqseeq" path="res://resources/menu/header_label.tres" id="3_cags2"]
 [ext_resource type="PackedScene" uid="uid://dcjuhxcwtvun6" path="res://scenes/menu/settings/settings_tab_container.tscn" id="4_7w5fs"]
 
@@ -23,6 +23,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_7w5fs")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -32,16 +34,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
-
-[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

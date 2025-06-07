@@ -3,9 +3,9 @@ extends Control
 @onready var _margin_container: MarginContainer = $MarginContainer
 @onready var _settings_menu: SettingsMenu = $SettingsMenu
 
-@onready var _play_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/PlayButton
-@onready var _settings_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/SettingsButton
-@onready var _exit_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/ExitButton
+@onready var _play_button: Button = $MarginContainer/GridContainer/VBoxContainer/VBoxContainer/PlayButton
+@onready var _settings_button: Button = $MarginContainer/GridContainer/VBoxContainer/VBoxContainer/SettingsButton
+@onready var _exit_button: Button = $MarginContainer/GridContainer/VBoxContainer/VBoxContainer/ExitButton
 
 @onready var _game: PackedScene = preload("res://scenes/game.tscn")
 
