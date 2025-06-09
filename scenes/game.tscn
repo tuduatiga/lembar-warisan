@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgctcj78aqmid"]
+[gd_scene load_steps=15 format=3 uid="uid://dgctcj78aqmid"]
 
 [ext_resource type="Script" uid="uid://b0mexiqrs1n47" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dv1ianyk7wosn" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ca661mvy3lv4l" path="res://scenes/menu/pause_menu.tscn" id="7_u5sy4"]
 [ext_resource type="FontFile" uid="uid://c32e7xeuv50yk" path="res://assets/fonts/PublicPixel.ttf" id="8_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bl8kffm3j2xbs" path="res://scenes/menu/final_menu.tscn" id="11_kvpfn"]
-[ext_resource type="PackedScene" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="12_dinhu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kvpfn"]
 font = ExtResource("8_vtaks")
@@ -150,12 +149,3 @@ label_settings = SubResource("LabelSettings_dinhu")
 
 [node name="FinalMenu" parent="CanvasLayer" instance=ExtResource("11_kvpfn")]
 visible = false
-
-[node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("12_dinhu")]
-offset_left = 68.0001
-offset_top = -276.0
-offset_right = 368.0
-offset_bottom = 24.0
-scale = Vector2(0.7, 0.7)
-joystick_mode = 1
-visibility_mode = 2

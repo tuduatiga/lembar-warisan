@@ -90,7 +90,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_hj162")
-expand_mode = 2
+expand_mode = 3
+stretch_mode = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -221,7 +222,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_26v5e")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_rp6ip")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_dckix")
 text = "> Keluar"
-metadata/_edit_lock_ = true
 
 [node name="SettingsMenu" parent="." instance=ExtResource("4_kiqgm")]
 visible = false
