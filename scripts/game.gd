@@ -10,7 +10,3 @@ func _ready() -> void:
 	self._canvas_layer.find_child("HearthBar").init(self._player)
 
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_R:
-			self.get_tree().reload_current_scene()
