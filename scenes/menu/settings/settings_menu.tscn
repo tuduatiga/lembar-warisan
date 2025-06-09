@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://blxojnb3tqrrf"]
+[gd_scene load_steps=6 format=3 uid="uid://blxojnb3tqrrf"]
 
 [ext_resource type="Script" uid="uid://bxgg3dgbp6mr3" path="res://scripts/menu/settings/settings_menu.gd" id="1_cags2"]
 [ext_resource type="FontFile" uid="uid://c32e7xeuv50yk" path="res://assets/fonts/PublicPixel.ttf" id="2_0sh77"]
 [ext_resource type="Texture2D" uid="uid://d1spc05pjcebs" path="res://assets/backgrounds/brick-bg.png" id="2_7w5fs"]
 [ext_resource type="LabelSettings" uid="uid://cpqhmfudqseeq" path="res://resources/menu/header_label.tres" id="3_cags2"]
+[ext_resource type="Script" uid="uid://bbvr8jxijhu48" path="res://scripts/menu/settings/window_mode_button.gd" id="5_7w5fs"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -82,68 +83,44 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar/MarginContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar/MarginContainer/VBoxContainer"]
+[node name="WindowModeButton" type="Control" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_0sh77")
-text = "What a Sigma"
+size_flags_vertical = 4
+script = ExtResource("5_7w5fs")
 
-[node name="Layar2" type="TabBar" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer"]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_0sh77")
-metadata/_tab_index = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar/MarginContainer/ScrollContainer/VBoxContainer/WindowModeButton"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 20.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar2/MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar/MarginContainer/ScrollContainer/VBoxContainer/WindowModeButton/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar2/MarginContainer/VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 2
 theme_override_fonts/font = ExtResource("2_0sh77")
-text = "What a Sigma"
+text = "Mode Jendela"
 
-[node name="Layar3" type="TabBar" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer"]
-visible = false
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar/MarginContainer/ScrollContainer/VBoxContainer/WindowModeButton/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 64
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar/MarginContainer/ScrollContainer/VBoxContainer/WindowModeButton/HBoxContainer"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_0sh77")
-metadata/_tab_index = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar3/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SettingTabContainer/TabContainer/Layar3/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_0sh77")
-text = "What a Sigma"
+theme_override_font_sizes/font_size = 16
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
