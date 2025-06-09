@@ -11,17 +11,25 @@ func _ready() -> void:
 	self._marker.done_gen.connect(self._on_done_gen1)
 
 
-func _physics_process(delta: float) -> void:
-	pass
-
-
 func _on_done_gen1() -> void:
 	await get_tree().create_timer(0).timeout
+
 	var done_gen2: bool = self.get_tree().get_nodes_in_group("GenArea").all(
-		func(node: Node) -> bool: return node.get_overlapping_areas().filter(func(area: Area2D) -> bool: return area is GenArea).size() == 0
+		func(node: Node) -> bool:
+			return (
+				(
+					node
+					. get_overlapping_areas()
+					. filter(func(area: Area2D) -> bool: return area is GenArea)
+					. size()
+				)
+				== 0
+			)
 	)
+
 	if done_gen2:
 		self._on_done_gen2()
+
 
 func _on_done_gen2() -> void:
 	var end_wall: Node2D = self.get_tree().get_nodes_in_group("Wall").reduce(
@@ -46,3 +54,6 @@ func _on_done_gen2() -> void:
 	end_wall.queue_free.call_deferred()
 
 	self.get_tree().root.get_node("Game").find_child("MinimapPanel").queue_redraw.call_deferred()
+
+	await get_tree().create_timer(1).timeout
+	self.get_tree().root.get_node("Game").find_child("LoadingScreen").hide()
