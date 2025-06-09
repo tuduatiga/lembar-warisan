@@ -279,7 +279,7 @@ shape = SubResource("CircleShape2D_g2els")
 [node name="Blood" parent="." instance=ExtResource("6_tuyoq")]
 
 [node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.7
 one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

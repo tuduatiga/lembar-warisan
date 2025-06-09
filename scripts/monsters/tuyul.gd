@@ -4,6 +4,8 @@ var dead: bool = false
 
 var _movement_speed: float = 250.0
 
+var _kill_score: int = 5
+
 @onready var _animated_sprite: AnimatedSprite2D = self.find_child("AnimatedSprite2D")
 @onready var _explosion_sprite: AnimatedSprite2D = self.find_child("Explosion")
 @onready var _navigation_agent: NavigationAgent2D = self.find_child("NavigationAgent2D")
@@ -79,6 +81,7 @@ func _on_damage_taken(health: int) -> void:
 
 	if health <= 0:
 		self.dead = true
+		self.get_tree().root.get_node("Game").get_node("GameManager").add_score(self._kill_score)
 		self._kid_crying_sfx.play()
 		self._explosion_sprite.visible = true
 		self._explosion_sprite.play()

@@ -39,7 +39,7 @@ func _ready() -> void:
 	self._attack_timer.timeout.connect(_on_attack_timer_timeout)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if self.dead:
 		return
 
@@ -48,14 +48,17 @@ func _physics_process(_delta: float) -> void:
 			if body.is_in_group("Enemy"):
 				body.set_movement_target(self.global_position)
 
-	var dash_mult: int = 1
 	if Input.is_key_pressed(KEY_SPACE) and self._dash_timer.time_left == 0:
 		self._dash_timer.start()
-		dash_mult = 12
 
 	self.velocity = (
-		Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED * dash_mult
+		Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED
 	)
+
+	if self._dash_timer.time_left > 0 and self._dash_timer.time_left <= 0.2:
+		self.velocity += (
+			Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED
+		)
 
 	var should_flip_x: bool = (get_global_mouse_position() - self.global_position).x < 0
 	self._animated_sprite.flip_h = should_flip_x
@@ -98,6 +101,8 @@ func _on_damage_taken(health: int) -> void:
 	if self.dead:
 		return
 
+	self.get_tree().root.get_node("Game").get_node("GameManager").reset_score_multiplier()
+
 	self._blood.emitting = true
 	self.modulate = Color.RED
 	await get_tree().create_timer(0.2).timeout
@@ -112,7 +117,8 @@ func _on_damage_taken(health: int) -> void:
 		Engine.time_scale = 0.1
 		await self._scream_sfx.finished
 		Engine.time_scale = 1
-		self.get_tree().reload_current_scene()
+		self.get_tree().root.get_node("Game").get_node("GameManager").lose()
+		self.queue_free.call_deferred()
 
 
 func slash() -> void:

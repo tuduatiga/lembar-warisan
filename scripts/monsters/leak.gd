@@ -7,6 +7,8 @@ const _PROJECTILE: Resource = preload("res://scenes/projectile.tscn")
 
 var dead: bool = false
 
+var _kill_score: int = 20
+
 @onready var _sprite: Sprite2D = self.find_child("Sprite2D")
 @onready var _explosion_sprite: AnimatedSprite2D = self.find_child("Explosion")
 @onready var _navigation_agent: NavigationAgent2D = self.find_child("NavigationAgent2D")
@@ -77,6 +79,7 @@ func _on_damage_taken(health: int) -> void:
 
 	if health <= 0:
 		self.dead = true
+		self.get_tree().root.get_node("Game").get_node("GameManager").add_score(self._kill_score)
 		self._explosion_sprite.visible = true
 		self._explosion_sprite.play()
 		self._navigation_agent.queue_free()

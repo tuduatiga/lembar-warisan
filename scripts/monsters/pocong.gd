@@ -16,6 +16,8 @@ var _state: int = IDLE
 var _is_hostile: bool = false
 var _target_position: Vector2 = Vector2.ZERO
 
+var _kill_score: int = 10
+
 @onready var _animated_sprite: AnimatedSprite2D = self.find_child("AnimatedSprite2D")
 @onready var _explosion_sprite: AnimatedSprite2D = self.find_child("ExplosionAnimatedSprite2D")
 @onready var _health_component: HealthComponent = self.find_child("HealthComponent")
@@ -111,6 +113,7 @@ func _on_damage_taken(health: int) -> void:
 
 	if health <= 0:
 		self.dead = true
+		self.get_tree().root.get_node("Game").get_node("GameManager").add_score(self._kill_score)
 		self._death_breath_sfx.play()
 		self._explosion_sprite.visible = true
 		self._explosion_sprite.play()

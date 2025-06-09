@@ -66,6 +66,9 @@ func _physics_process(_delta: float) -> void:
 				if body.is_in_group("Destructible"):
 					body.set_invincible(false)
 
+		if not self.clear and should_be_clear:
+			self.get_tree().root.get_node("Game").get_node("GameManager").inc_room_cleared()
+
 		self.clear = should_be_clear
 
 
