@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://vxdwglvx4vvp"]
+
+[ext_resource type="Script" uid="uid://c5yukk1ethjui" path="res://scripts/menu/settings/settings_option_button.gd" id="1_dhigs"]
+[ext_resource type="FontFile" uid="uid://c32e7xeuv50yk" path="res://assets/fonts/PublicPixel.ttf" id="2_2jcaf"]
+
+[node name="SettingsOptionButton" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+script = ExtResource("1_dhigs")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_2jcaf")
+text = "What a sigma."
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 64
+
+[node name="OptionButton" type="OptionButton" parent="."]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_2jcaf")
+theme_override_font_sizes/font_size = 16
