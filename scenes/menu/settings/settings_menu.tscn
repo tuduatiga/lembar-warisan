@@ -4,8 +4,8 @@
 [ext_resource type="FontFile" uid="uid://c32e7xeuv50yk" path="res://assets/fonts/PublicPixel.ttf" id="2_0sh77"]
 [ext_resource type="Texture2D" uid="uid://d1spc05pjcebs" path="res://assets/backgrounds/brick-bg.png" id="2_7w5fs"]
 [ext_resource type="LabelSettings" uid="uid://cpqhmfudqseeq" path="res://resources/menu/header_label.tres" id="3_cags2"]
-[ext_resource type="Script" uid="uid://bbvr8jxijhu48" path="res://scripts/menu/settings/tab_screen/window_mode_button.gd" id="5_7w5fs"]
-[ext_resource type="PackedScene" uid="uid://vxdwglvx4vvp" path="res://scenes/menu/settings/settings_option_button.tscn" id="6_vrdyy"]
+[ext_resource type="Script" path="res://scripts/menu/settings/tab_screen/window_mode_button.gd" id="5_7w5fs"]
+[ext_resource type="PackedScene" uid="uid://c0nvo12bvotl4" path="res://scenes/menu/settings/settings_option_button.tscn" id="6_vrdyy"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
