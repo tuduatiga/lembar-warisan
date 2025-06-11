@@ -39,7 +39,7 @@ func _ready() -> void:
 	self._attack_timer.timeout.connect(_on_attack_timer_timeout)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if self.dead:
 		return
 
@@ -51,14 +51,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_SPACE) and self._dash_timer.time_left == 0:
 		self._dash_timer.start()
 
-	self.velocity = (
-		Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED
-	)
+	self.velocity = (Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED)
 
 	if self._dash_timer.time_left > 0 and self._dash_timer.time_left <= 0.2:
-		self.velocity += (
-			Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED
-		)
+		self.velocity += (Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * self._SPEED)
 
 	var should_flip_x: bool = (get_global_mouse_position() - self.global_position).x < 0
 	self._animated_sprite.flip_h = should_flip_x
@@ -129,6 +125,6 @@ func slash() -> void:
 func set_enemies_monitoring_status(status: bool) -> void:
 	self._enemy_detection_area.monitoring = status
 
+
 func _on_attack_timer_timeout() -> void:
 	self._can_attack = true
-

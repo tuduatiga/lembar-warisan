@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0nvo12bvotl4"]
 
-[ext_resource type="Script" path="res://scripts/menu/settings/settings_option_button.gd" id="1_dhigs"]
+[ext_resource type="Script" uid="uid://c5yukk1ethjui" path="res://scripts/menu/settings/settings_option_button.gd" id="1_dhigs"]
 [ext_resource type="FontFile" uid="uid://c32e7xeuv50yk" path="res://assets/fonts/PublicPixel.ttf" id="2_2jcaf"]
 
 [node name="SettingsOptionButton" type="HBoxContainer"]

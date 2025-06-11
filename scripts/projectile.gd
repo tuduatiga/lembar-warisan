@@ -35,8 +35,12 @@ func spawn(proprietor: Node2D, speed: float = 150) -> Projectile:
 	var proprietor_pos: Vector2 = proprietor.global_position
 	self.direction = (self.get_global_mouse_position() - proprietor_pos).normalized()
 	self._sprite.rotate(self.direction.angle())
-	var dir_angle: float = self.direction.angle()
-	# var on_the_bottom_edge: bool = (dir_angle <= 0 and dir_angle > -PI / 8) or (dir_angle > -PI and dir_angle < -7/8*PI)
+	# var dir_angle: float = self.direction.angle()
+	# var on_the_bottom_edge: bool = (
+	# dir_angle <= 0 and dir_angle > -PI / 8
+	# ) or (
+	# dir_angle > -PI and dir_angle < -7/8*PI
+	# )
 	#
 	# if on_the_bottom_edge:
 	# 	proprietor_pos.y -= 8.0
