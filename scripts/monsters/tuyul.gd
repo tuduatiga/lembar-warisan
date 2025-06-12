@@ -81,7 +81,7 @@ func _on_damage_taken(health: int) -> void:
 
 	if health <= 0:
 		self.dead = true
-		self.get_tree().root.get_node("Game").get_node("GameManager").add_score(self._kill_score)
+		$/root/Game/GameManager.add_score(self._kill_score)
 		self._kid_crying_sfx.play()
 		self._explosion_sprite.visible = true
 		self._explosion_sprite.play()

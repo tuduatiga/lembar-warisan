@@ -7,4 +7,4 @@ func _ready() -> void:
 
 func _body_entered(body: PhysicsBody2D) -> void:
 	if body.is_in_group("Player"):
-		self.get_tree().root.get_node("Game").get_node("GameManager").win()
+		$/root/Game/GameManager.win()

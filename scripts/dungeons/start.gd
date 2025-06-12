@@ -53,8 +53,8 @@ func _on_done_gen2() -> void:
 	end_wall.get_parent().add_child.call_deferred(EndScene.instantiate())
 	end_wall.queue_free.call_deferred()
 
-	self.get_tree().root.get_node("Game").get_node("GameManager").set_room_total(self.get_tree().get_node_count_in_group("DungeonArea"))
-	self.get_tree().root.get_node("Game").find_child("MinimapPanel").queue_redraw.call_deferred()
+	$/root/Game/GameManager.set_room_total(self.get_tree().get_node_count_in_group("DungeonArea"))
+	$/root/Game.find_child("MinimapPanel").queue_redraw.call_deferred()
 
 	await get_tree().create_timer(1).timeout
-	self.get_tree().root.get_node("Game").find_child("LoadingScreen").hide()
+	$/root/Game.find_child("LoadingScreen").hide()

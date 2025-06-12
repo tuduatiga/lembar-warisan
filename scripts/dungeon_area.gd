@@ -67,14 +67,14 @@ func _physics_process(_delta: float) -> void:
 					body.set_invincible(false)
 
 		if not self.clear and should_be_clear:
-			self.get_tree().root.get_node("Game").get_node("GameManager").inc_room_cleared()
+			$/root/Game/GameManager.inc_room_cleared()
 
 		self.clear = should_be_clear
 
 
 func _on_body_entered(body: PhysicsBody2D) -> void:
 	if body is Player:
-		self.get_tree().root.get_node("Game").find_child("MinimapPanel").queue_redraw.call_deferred()
+		$/root/Game.find_child("MinimapPanel").queue_redraw.call_deferred()
 
 	if self.clear:
 		return

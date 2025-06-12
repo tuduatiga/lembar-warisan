@@ -97,7 +97,7 @@ func _on_damage_taken(health: int) -> void:
 	if self.dead:
 		return
 
-	self.get_tree().root.get_node("Game").get_node("GameManager").reset_score_multiplier()
+	$/root/Game/GameManager.reset_score_multiplier()
 
 	self._blood.emitting = true
 	self.modulate = Color.RED
@@ -113,7 +113,7 @@ func _on_damage_taken(health: int) -> void:
 		Engine.time_scale = 0.1
 		await self._scream_sfx.finished
 		Engine.time_scale = 1
-		self.get_tree().root.get_node("Game").get_node("GameManager").lose()
+		$/root/Game/GameManager.lose()
 		self.queue_free.call_deferred()
 
 

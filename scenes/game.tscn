@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://7iwnyc8ligsr" path="res://scenes/game_manager.tscn" id="2_0tnpc"]
 [ext_resource type="Script" uid="uid://dh7okt0krmjsa" path="res://scripts/camera_2d.gd" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://c8fxlbyynqy1f" path="res://assets/other/heart.png" id="5_iywne"]
-[ext_resource type="Script" uid="uid://0bp7r7p7m1hp" path="res://scripts/hearth_bar.gd" id="5_p57ef"]
+[ext_resource type="Script" path="res://scripts/hearth_bar.gd" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://bbbt4iswrwxri" path="res://scripts/minimap.gd" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://ca661mvy3lv4l" path="res://scenes/menu/pause_menu.tscn" id="7_u5sy4"]
 [ext_resource type="FontFile" uid="uid://c32e7xeuv50yk" path="res://assets/fonts/PublicPixel.ttf" id="8_vtaks"]
